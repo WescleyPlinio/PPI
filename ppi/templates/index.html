@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} Início {% endblock  %}
+{% block conteudo %}
+<!-- Menu -->
+
+<div class="container">
+    <div class="row g-0">
+        <div class="col-md-8 d-flex justify-content-start align-items-center">
+            <h1 class="text-white text-left" style="font-size: 3.5em;">
+                Plataforma dos <a style="color: rgb(255, 128, 0);">Projetos</a> <br> <a style="color: rgb(228, 12, 228);">Integradores</a>
+            </h1>
+        </div>
+        <div class="col-md-4 d-flex justify-content-end align-items-center">
+            <img src="{% static 'imgs/LogoIso.svg' %}" alt="Logo" style="max-height: 350px;">
+        </div>
+    </div>
+</div>
+
+<!-- Destaques -->
+
+ <div class="container-fluid" style="background-color: rgb(1, 1, 91);">   
+    <div class="container d-flex flex-column">
+        <h1 class="text-center my-4" style="color: rgb(255, 128, 0);">Destaques:</h1>
+        <div class="row g-0">
+            {% for x in range%}
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card mb-5" style="width: 20rem;">
+                    <img src="static/imgs/placeholder.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Projeto integrador</h5>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+ </div>
+
+ <!-- Texto explicativo -->
+ <div class="container py-5">
+    <h1 style="color: rgb(228, 12, 228);">
+        O que é este site?
+    </h1>
+    <p class="text-white">
+        A Plataforma dos Projetos Integradores é um sistema que trás em suas mãos todos os projetos integradores do campus SPP já criados, permitindo que você possa visualizá-los.
+    </p>
+</div>
+
+{% endblock conteudo %}

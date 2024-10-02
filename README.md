@@ -14,5 +14,5 @@
 - HTML e CSS
 - JavaScript
 - Python
-- Bootstrap
+- Bootstrap e Django
 - API do Suap.
