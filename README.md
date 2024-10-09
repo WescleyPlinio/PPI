@@ -6,6 +6,10 @@
 - João Henrique
 - Wescley Plínio
 
+## Orientadoras:
+- Pedrina Célia
+- Fernanda Lígia
+
 ## Para este sistema, serão usadas as seguintes Ferramentas:
 - HTML e CSS
 - JavaScript e Python
