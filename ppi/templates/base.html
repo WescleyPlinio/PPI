@@ -28,20 +28,19 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <form class="d-flex ms-auto" role="search">
               <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
-              <button class="btn btn-outline-light" type="submit">Search</button>
             </form>
             <ul class="navbar-nav  mb-2 mb-lg-0 ms-auto d-flex align-items-center">
               <li class="nav-item mx-3">
-                <a class="nav-link text-white" href="#">Informática</a>
+                <a class="nav-link text-white" href="#"><img src="{% static 'imgs/infoweb.svg' %}" style="max-width: 1.8rem; margin-right: 5px;" alt="Informática">Informática</a>
               </li>
               <li class="nav-item mx-3"> 
-                <a class="nav-link text-white" aria-disabled="true">Edificações</a>
+                <a class="nav-link text-white" href="#"><img src="{% static 'imgs/mamb.svg' %}" style="max-width: 1.8rem; margin-right: 5px;" alt="Edificações">Edificações</a>
               </li>
               <li class="nav-item mx-3"> 
-                <a class="nav-link text-white" aria-disabled="true">Meio ambiente</a>
+                <a class="nav-link text-white" href="#"><img src="{% static 'imgs/edific.svg' %}" style="max-width: 1.8rem; margin-right: 5px;" alt="Meio ambiente">Meio ambiente</a>
               </li>
               <li class="nav-item mx-3"> 
-                <a class="nav-link" aria-disaloginbled="true" href="{% url 'login' %}"><img style="max-width: 50px;" src="{% static 'imgs/btnlogin.svg' %}" alt="login"></a>
+                <a class="nav-link" href="{% url 'login' %}"><img style="max-width: 50px;" src="{% static 'imgs/btnlogin.svg' %}" alt="login"></a>
               </li>
             </ul> 
           </div>
