@@ -4,14 +4,14 @@
 {% block conteudo %}
 <!-- Menu -->
 
-<div class="container">
+<div class="container mb-3 py-3">
     <div class="row g-0">
         <div class="col-md-8 d-flex justify-content-center align-items-center">
             <h1 class="text-white text-left" style="font-size: 3.5em;">
-                Plataforma dos <a style="color: rgb(255, 128, 0);">Projetos</a> <br> <a style="color: rgb(228, 12, 228);">Integradores</a>
+                Plataforma dos <a style="color: rgb(255, 128, 0);">Projetos</a> <a style="color: rgb(228, 12, 228);">Integradores</a>
             </h1>
         </div>
-        <div class="col-md-4 d-flex justify-content-center align-items-center">
+        <div class="col-md-4 d-flex justify-content-end align-items-center">
             <img src="{% static 'imgs/LogoPPI.svg' %}" alt="Logo" style="max-height: 15rem;">
         </div>
     </div>
@@ -19,13 +19,12 @@
 
 <!-- Destaques -->
 
- <div class="container-fluid" style="background-color: rgb(1, 1, 91);">   
+ <div class="container-fluid" style="background-color: rgb(14, 30, 70);">   
     <div class="container d-flex flex-column">
-        <h1 class="text-center my-4" style="color: rgb(255, 128, 0);">Destaques:</h1>
-        <div class="d-flex flex-wrap justify-content-evenly">
+        <div class="d-flex flex-wrap justify-content-evenly py-4">
             {% for x in range%}
             <div class="d-flex justify-content-center">
-                <div class="card mb-5" style="max-width: 18rem;">
+                <div class="card my-3" style="max-width: 20rem;">
                     <img src="static/imgs/placeholder.png" class="card-img-top" alt="...">
                 </div>
             </div>
@@ -35,7 +34,7 @@
  </div>
 
  <!-- Texto explicativo -->
- <div class="container mt-4">
+<div class="container mt-4 py-4">
     <h1 style="color: rgb(228, 12, 228);">
         O que são projetos integradores?
     </h1>
@@ -45,13 +44,14 @@
 </div>
 
  <!-- Texto explicativo -->
- <div class="container mt-4">
-    <h1 style="color: rgb(228, 12, 228);">
-        O que é este site?
-    </h1>
-    <p class="text-white">
-        A Plataforma dos Projetos Integradores é um sistema que trás em suas mãos todos os projetos integradores do campus SPP já criados, permitindo que você possa visualizá-los.
-    </p>
+<div class="container-fluid" style="background-color: rgb(14, 30, 70);">
+    <div class="container mt-4 py-4">
+        <h1 style="color: rgb(228, 12, 228);">
+            O que é este site?
+        </h1>
+        <p class="text-white">
+            A Plataforma dos Projetos Integradores é um sistema que trás em suas mãos todos os projetos integradores do campus SPP já criados, permitindo que você possa visualizá-los.
+        </p>
+    </div>
 </div>
-
 {% endblock conteudo %}

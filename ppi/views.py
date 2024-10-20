@@ -8,3 +8,9 @@ def index(request):
 
 def login(request):
     return render(request, "login.html")
+
+def info(request):
+    context = {
+        "range" : range(16)
+    }
+    return render(request, "cursoinfo.html", context)
