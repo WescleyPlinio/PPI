@@ -22,14 +22,11 @@
  <div class="container-fluid" style="background-color: rgb(1, 1, 91);">   
     <div class="container d-flex flex-column">
         <h1 class="text-center my-4" style="color: rgb(255, 128, 0);">Destaques:</h1>
-        <div class="row g-0">
+        <div class="d-flex flex-wrap justify-content-evenly">
             {% for x in range%}
-            <div class="col-md-4 d-flex justify-content-center">
-                <div class="card mb-5" style="width: 20rem;">
+            <div class="d-flex justify-content-center">
+                <div class="card mb-5" style="max-width: 18rem;">
                     <img src="static/imgs/placeholder.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">Projeto integrador</h5>
-                    </div>
                 </div>
             </div>
             {% endfor %}
@@ -38,7 +35,17 @@
  </div>
 
  <!-- Texto explicativo -->
- <div class="container py-5">
+ <div class="container mt-4">
+    <h1 style="color: rgb(228, 12, 228);">
+        O que são projetos integradores?
+    </h1>
+    <p class="text-white">
+        Um projeto integrador é uma atividade que conecta diferentes áreas de conhecimento, permitindo que você aplique o que aprendeu na prática para resolver problemas reais de forma mais completa e colaborativa.
+    </p>
+</div>
+
+ <!-- Texto explicativo -->
+ <div class="container mt-4">
     <h1 style="color: rgb(228, 12, 228);">
         O que é este site?
     </h1>
