@@ -14,3 +14,15 @@ def info(request):
         "range" : range(16)
     }
     return render(request, "cursoinfo.html", context)
+
+def edific(request):
+    context = {
+        "range" : range(16)
+    }
+    return render(request, "cursoedific.html", context)
+
+def mamb(request):
+    context = {
+        "range" : range(16)
+    }
+    return render(request, "cursomamb.html", context)
