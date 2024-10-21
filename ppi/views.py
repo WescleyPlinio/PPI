@@ -26,3 +26,6 @@ def mamb(request):
         "range" : range(16)
     }
     return render(request, "cursomamb.html", context)
+
+def post(request):
+    return render(request, "post.html")
