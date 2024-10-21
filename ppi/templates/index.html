@@ -2,51 +2,52 @@
 {% load static %}
 {% block title %} Início {% endblock  %}
 {% block conteudo %}
-<!-- Menu -->
 
-<div class="container mb-3 py-3">
+<!-- Menu -->
+<div class="container custom-container mb-3 py-3">
     <div class="row g-0">
-        <div class="col-md-8 d-flex justify-content-center align-items-center">
+        <div class="col-md-7 d-flex justify-content-start align-items-center">
             <h1 class="text-white text-left" style="font-size: 3.5em;">
                 Plataforma dos <a style="color: rgb(255, 128, 0);">Projetos</a> <a style="color: rgb(228, 12, 228);">Integradores</a>
             </h1>
         </div>
-        <div class="col-md-4 d-flex justify-content-end align-items-center">
-            <img src="{% static 'imgs/LogoPPI.svg' %}" alt="Logo" style="max-height: 15rem;">
+        <div class="col-md-5 d-flex justify-content-end align-items-center">
+            <img src="{% static 'imgs/LogoPPI.svg' %}" alt="Logo" style="max-height: 25rem;">
         </div>
     </div>
 </div>
 
 <!-- Destaques -->
-
- <div class="container-fluid" style="background-color: rgb(14, 30, 70);">   
-    <div class="container d-flex flex-column">
+<div class="container-fluid" style="background-color: rgb(14, 30, 70);">   
+    <div class="container custom-container d-flex flex-column">
         <div class="d-flex flex-wrap justify-content-evenly py-4">
             {% for x in range%}
             <div class="d-flex justify-content-center">
-                <div class="card my-3" style="max-width: 20rem;">
+                <div class="card my-3" style="max-width: 13rem;">
                     <img src="static/imgs/placeholder.png" class="card-img-top" alt="...">
                 </div>
             </div>
             {% endfor %}
         </div>
     </div>
- </div>
-
- <!-- Texto explicativo -->
-<div class="container mt-4 py-4">
-    <h1 style="color: rgb(228, 12, 228);">
-        O que são projetos integradores?
-    </h1>
-    <p class="text-white">
-        Um projeto integrador é uma atividade que conecta diferentes áreas de conhecimento, permitindo que você aplique o que aprendeu na prática para resolver problemas reais de forma mais completa e colaborativa.
-    </p>
 </div>
 
  <!-- Texto explicativo -->
-<div class="container-fluid" style="background-color: rgb(14, 30, 70);">
-    <div class="container mt-4 py-4">
-        <h1 style="color: rgb(228, 12, 228);">
+<div class="container-fluid">
+    <div class="container custom-container mt-4 py-4">
+        <h1 class="roxinho">
+            O que são projetos integradores?
+        </h1>
+        <p class="text-white">
+            Um projeto integrador é uma atividade que conecta diferentes áreas de conhecimento, permitindo que você aplique o que aprendeu na prática para resolver problemas reais de forma mais completa e colaborativa.
+        </p>
+    </div>
+</div>
+
+ <!-- Texto explicativo -->
+<div class="container-fluid blueback">
+    <div class="container custom-container mt-4 py-4">
+        <h1 class="roxinho">
             O que é este site?
         </h1>
         <p class="text-white">

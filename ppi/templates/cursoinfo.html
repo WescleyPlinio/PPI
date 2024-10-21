@@ -4,25 +4,25 @@
 {% block conteudo %}
 
 <!-- Menu -->
-<div class="container mb-5 py-3">
+<div class="container custom-container mb-5 py-3">
     <div class="row g-0">
         <div class="col-md-8 d-flex justify-content-center align-items-center">
             <h1 class="text-white text-left" style="font-size: 3.5em;">
-                Projetos do curso de <a style="color: rgb(246, 82, 255);">Informática para Internet</a> 
+                Projetos do curso de <a class="roxinho">Informática para Internet</a> 
             </h1>
         </div>
         <div class="col-md-4 d-flex justify-content-end align-items-center">
-            <img src="{% static 'imgs/infoweb.svg' %}" alt="Logo" style="max-height: 15rem;">
+            <img src="{% static 'imgs/infoweb.svg' %}" alt="Logo" style="max-height: 25rem;">
         </div>
     </div>
 </div>
 
 <!-- Feed -->
 <div class="container-fluid blueback">
-    <div class="container">
-        <div class="d-flex flex-wrap justify-content-between">
+    <div class="container custom-container">
+        <div class="d-flex flex-wrap justify-content-evenly">
             {% for x in range%}
-            <div class="card my-4" style="max-width: 25rem;">
+            <div class="card m-4" style="max-width: 25rem;">
                 <img src="{% static "imgs/placeholder.png" %}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title roxinho">Projetinho</h5>
