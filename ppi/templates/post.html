@@ -4,12 +4,12 @@
 {% block conteudo %}
 
 <!-- Menu -->
-<div class="container custom-container mb-3 py-3">
+<div class="container container mb-3 py-3">
     <div class="row g-0">
         <div class="col-md-7 d-flex justify-content-start align-items-center">
             <div>
                 <h1 class="roxinho text-left" style="font-size: 3em;">
-                    Projeto If Shop
+                    If Shop
                 </h1>
                 <p class="text-white text-left">
                     O IF Shop é um sistema focado em ser uma plataforma 
@@ -18,66 +18,111 @@
             </div>
         </div>
         <div class="col-md-5 d-flex justify-content-end align-items-center">
-            <img src="{% static 'imgs/LogoPPI.svg' %}" alt="Logo" style="max-height: 20rem;">
+            <img src="{% static 'imgs/infoweb.svg' %}" alt="Logo" style="max-height: 8rem;">
         </div>
     </div>
 </div>
 
 <!-- Sobre o projeto -->
 <div class="container-fluid blueback">   
-    <div class="container custom-container py-3">
+    <div class="container container py-5">
         <div class="row g-0">
-            <div class="col-md-8">
-                <h1 class="text-left laranja">Sobre o If Shop</h1>
-                <p class="text-white text-left">
-                    Ao permitir que os alunos publiquem seus projetos 
-                    integradores em uma plataforma dedicada, abrimos 
-                    caminho para uma série de benefícios. Em primeiro 
-                    lugar, proporcionamos aos estudantes uma oportunidade 
-                    valiosa de apresentar seus trabalhos para um público 
-                    mais amplo, o que pode aumentar sua motivação e 
-                    engajamento no processo de aprendizagem.
-                    Ao permitir que os alunos publiquem seus projetos 
-                    integradores em uma plataforma dedicada, abrimos 
-                    caminho para uma série de benefícios. Em primeiro 
-                    lugar, proporcionamos aos estudantes uma oportunidade 
-                    valiosa de apresentar seus trabalhos para um público 
-                    mais amplo, o que pode aumentar sua motivação e 
-                    engajamento no processo de aprendizagem.
-                </p>
-                <div class="d-flex justify-content-end align-items-center py-2">
-                    <a class="text-white text-left nav-link">Data de publicação: 05/11/2024</a>
-                    <a class="text-left ms-2" style="color: rgb(255, 145, 77);"> baixar PDF </a>
-                </div> 
+            <div class="col-md-4 d-flex justify-content-start align-items-center py-2">
+                <img src="{% static 'imgs/placeholder.png' %}" alt="Logo" style="max-width: 100%;" class="px-3">
             </div>    
-            <div class="col-md-4 d-flex justify-content-end align-items-center py-2">
-                <img src="{% static 'imgs/infoweb.svg' %}" alt="Logo" style="max-height: 10rem;">
+            <div class="col-md-8 d-flex justify-content-start align-items-center">
+                <div>
+                    <h1 class="text-left laranja">Sobre o If Shop</h1>
+                    <p class="text-white text-left">
+                        Ao permitir que os alunos publiquem seus projetos 
+                        integradores em uma plataforma dedicada, abrimos 
+                        caminho para uma série de benefícios. Em primeiro 
+                        lugar, proporcionamos aos estudantes uma oportunidade 
+                        valiosa de apresentar seus trabalhos para um público 
+                        mais amplo, o que pode aumentar sua motivação e 
+                        engajamento no processo de aprendizagem.
+                        Ao permitir que os alunos publiquem seus projetos 
+                        integradores em uma plataforma dedicada, abrimos 
+                        caminho para uma série de benefícios. Em primeiro 
+                        lugar, proporcionamos aos estudantes uma oportunidade 
+                        valiosa de apresentar seus trabalhos para um público 
+                        mais amplo, o que pode aumentar sua motivação e 
+                        engajamento no processo de aprendizagem.
+                    </p>
+                    <div class="d-flex justify-content-end align-items-center py-2">
+                        <a class="text-white text-left nav-link">Data de publicação: 05/11/2024</a>
+                        <a class="text-left ms-2" style="color: rgb(255, 145, 77);"> baixar PDF </a>
+                    </div> 
+                </div>
             </div>    
         </div>
+    </div>
+</div>
+
+{% comment %} <!-- Componentes -->
+<div class="container-fluid py-3">
+    <div class="container container">
+
+        <h1 class="text-center laranja">Componentes</h1>
+
+        <!-- Div alunos -->
         <div class="d-flex flex-wrap justify-content-evenly align-items-center py-5">
+            {% for x in range3 %}
             <div>
-                <img src="{% static "imgs/fern.jpg" %}" style="max-width: 15rem;" class="rounded-circle" alt="...">
-                <h5 class="text-center roxinho">Aluno</h5>
+                <img src="{% static "imgs/usericn.jpg" %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
+                <h5 class="text-center roxinho mt-1">Aluno</h5>
             </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Div orientadores -->
+        <div class="d-flex flex-wrap justify-content-evenly align-items-center py-5">
+            {% for x in range2 %}
             <div>
-                <img src="{% static "imgs/fern.jpg" %}" style="max-width: 15rem;" class="rounded-circle" alt="...">
-                <h5 class="text-center roxinho">Aluno</h5>
+                <img src="{% static "imgs/usericn.jpg" %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
+                <h5 class="text-center roxinho mt-1">Orientador</h5>
             </div>
-            <div>
-                <img src="{% static "imgs/fern.jpg" %}" style="max-width: 15rem;" class="rounded-circle" alt="...">
-                <h5 class="text-center roxinho">Aluno</h5>
+            {% endfor %}
+        </div>
+
+    </div>
+</div> {% endcomment %}
+
+<!-- Componentes -->
+<div class="container-fluid py-5">
+    <div class="container container">
+        <div class="row g-0">
+            <div class="col-md-6">
+
+                <h1 class="text-center laranja">Desenvolvedores:</h1>
+                <!-- Div alunos -->
+                <div class="d-flex flex-wrap justify-content-evenly align-items-center py-3">
+                    {% for x in range3 %}
+                    <div>
+                        <img src="{% static "imgs/usericn.jpg" %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
+                        <h5 class="text-center roxinho mt-1">Aluno</h5>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+            
+            <div class="col-md-6">
+
+                <h1 class="text-center laranja">Orientadores:</h1>
+                <!-- Div orientadores -->
+                <div class="d-flex flex-wrap justify-content-evenly align-items-center py-3">
+                    {% for x in range2 %}
+                    <div>
+                        <img src="{% static "imgs/usericn.jpg" %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
+                        <h5 class="text-center roxinho mt-1">Orientador</h5>
+                    </div>
+                    {% endfor %}
+                </div>
+
             </div>
         </div>
-        <div class="d-flex flex-wrap justify-content-evenly align-items-center py-5">
-            <div>
-                <img src="{% static "imgs/fern.jpg" %}" style="max-width: 15rem;" class="rounded-circle" alt="...">
-                <h5 class="text-center roxinho">Orientador</h5>
-            </div>
-            <div>
-                <img src="{% static "imgs/fern.jpg" %}" style="max-width: 15rem;" class="rounded-circle" alt="...">
-                <h5 class="text-center roxinho">Orientador</h5>
-            </div>
-        </div>
+
     </div>
 </div>
 

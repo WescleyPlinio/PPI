@@ -28,4 +28,8 @@ def mamb(request):
     return render(request, "cursomamb.html", context)
 
 def post(request):
-    return render(request, "post.html")
+    context = {
+        "range2" : range(2),
+        "range3" : range(3),
+    }
+    return render(request, "post.html", context)
