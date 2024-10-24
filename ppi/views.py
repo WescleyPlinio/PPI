@@ -4,7 +4,7 @@ from .models import Post
 def index(request):
     context = {
         "posts" : Post.objects.all,
-        "range" : range(6)
+        "range" : range(3)
     }
     return render(request, "index.html", context)
 
@@ -12,7 +12,9 @@ def login(request):
     return render(request, "login.html")
 
 def info(request):
+    post = Post.objects.all
     context = {
+        "post" : post,
         "range" : range(16)
     }
     return render(request, "cursoinfo.html", context)
@@ -30,11 +32,8 @@ def mamb(request):
     return render(request, "cursomamb.html", context)
 
 def post(request, id):
-    post = Post.objects.all
     post = Post.objects.get(id=id)
     context = {
         "post" : post,
-        "range2" : range(2),
-        "range3" : range(3),
     }
     return render(request, "post.html", context)
