@@ -10,7 +10,7 @@
 - Pedrina Célia
 - Fernanda Lígia
 
-## Para este sistema, serão usadas as seguintes Ferramentas:
+## Para este sistema, são usadas as seguintes Ferramentas:
 - HTML e CSS
 - JavaScript e Python
 - Bootstrap e Django
