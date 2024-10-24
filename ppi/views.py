@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from .models import Post
 
 def index(request):
     context = {
+        "posts" : Post.objects.all,
         "range" : range(6)
     }
     return render(request, "index.html", context)
@@ -27,8 +29,11 @@ def mamb(request):
     }
     return render(request, "cursomamb.html", context)
 
-def post(request):
+def post(request, id):
+    post = Post.objects.all
+    post = Post.objects.get(id=id)
     context = {
+        "post" : post,
         "range2" : range(2),
         "range3" : range(3),
     }

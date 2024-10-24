@@ -7,7 +7,7 @@ urlpatterns = [
     path("projetos/info/", views.info, name = "pinfo"),
     path("projetos/edific/", views.edific, name = "pedific"),
     path("projetos/mamb/", views.mamb, name = "pmamb"),
-    path("post/id/", views.post, name = "post"),
+    path("post/<int:id>/", views.post, name = "post"),
 ]
 
 
