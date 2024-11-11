@@ -4,30 +4,30 @@
 {% block conteudo %}
 
 <!-- Menu -->
-<div class="container container mb-3 py-3">
+<div class="container mb-3 py-5">
     <div class="row g-0">
-        <div class="col-md-7 d-flex justify-content-start align-items-center">
+        <div class="col-md-8 d-flex justify-content-start align-items-center">
             <div>
-                <h1 class="roxinho text-left" style="font-size: 3em;">
+                <h1 class="roxinho text-left" style="font-size: 5em;">
                     {{post.titulo}}
                 </h1>
-                <p class="text-white text-left">
+                <p class="text-white text-left" style="font-size: 1.5em;">
                     {{post.justificativa}}
                 </p>
             </div>
         </div>
-        <div class="col-md-5 d-flex justify-content-end align-items-center">
-            <img src="{% static 'imgs/infoweb.svg' %}" alt="Logo" style="max-height: 8rem;">
+        <div class="col-md-4 d-flex justify-content-end align-items-center">
+            <img src="{% static 'imgs/infoweb.svg' %}" alt="Logo" style="max-height: 12rem;">
         </div>
     </div>
 </div>
 
 <!-- Sobre o projeto -->
 <div class="container-fluid blueback">   
-    <div class="container container py-5">
+    <div class="container py-5">
         <div class="row g-0">
             <div class="col-md-4 d-flex justify-content-start align-items-center py-2">
-                <img src="{% static 'imgs/placeholder.png' %}" alt="Logo" style="max-width: 100%;" class="px-3">
+                <img src="{% static 'imgs/placeholder.png' %}" alt="Logo" style="max-width: 100%;" class="pe-2">
             </div>    
             <div class="col-md-8 d-flex justify-content-start align-items-center">
                 <div>
@@ -46,13 +46,13 @@
 </div>
 
 <!-- Componentes -->
-<div class="container-fluid py-3">
+<div class="container-fluid py-2">
     <div class="container container">
 
-        <h1 class="text-center laranja">Componentes</h1>
-
+        <h1 class="text-center laranja">Alunos:</h1>
+        
         <!-- Div alunos -->
-        <div class="d-flex flex-wrap justify-content-evenly align-items-center py-5">
+        <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
             {% for aluno in post.usuarios1.all %}
             <div>
                 <img src="{% static "imgs/usericn.jpg" %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
@@ -61,8 +61,10 @@
             {% endfor %}
         </div>
         
+        <h1 class="text-center laranja">Orientadores:</h1>
+
         <!-- Div orientadores -->
-        <div class="d-flex flex-wrap justify-content-evenly align-items-center py-5">
+        <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
             {% for prof in post.usuarios2.all %}
             <div>
                 <img src="{% static "imgs/usericn.jpg" %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
@@ -73,43 +75,5 @@
 
     </div>
 </div>
-
-<!-- Componentes -->
-{% comment %} <div class="container-fluid py-5">
-    <div class="container container">
-        <div class="row g-0">
-            <div class="col-md-6">
-
-                <h1 class="text-center laranja">Desenvolvedores:</h1>
-                <!-- Div alunos -->
-                <div class="d-flex flex-wrap justify-content-evenly align-items-center py-3">
-                    {% for x in range3 %}
-                    <div>
-                        <img src="{% static "imgs/usericn.jpg" %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
-                        <h5 class="text-center roxinho mt-1">Aluno</h5>
-                    </div>
-                    {% endfor %}
-                </div>
-
-            </div>
-            
-            <div class="col-md-6">
-
-                <h1 class="text-center laranja">Orientadores:</h1>
-                <!-- Div orientadores -->
-                <div class="d-flex flex-wrap justify-content-evenly align-items-center py-3">
-                    {% for x in range2 %}
-                    <div>
-                        <img src="{% static "imgs/usericn.jpg" %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
-                        <h5 class="text-center roxinho mt-1">Orientador</h5>
-                    </div>
-                    {% endfor %}
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-</div> {% endcomment %}
 
 {% endblock conteudo %}
