@@ -17,7 +17,7 @@ class Usuario2(models.Model):
 class Post(models.Model):
     titulo = models.CharField(max_length=50)
     justificativa = models.TextField(max_length=120)
-    resumo = models.TextField(max_length=255)
+    resumo = models.TextField(max_length=2000)
     data_publi = models.DateField(auto_now=True)
     usuarios1 = models.ManyToManyField(Usuario1)
     usuarios2 = models.ManyToManyField(Usuario2)

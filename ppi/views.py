@@ -20,13 +20,17 @@ def info(request):
     return render(request, "cursoinfo.html", context)
 
 def edific(request):
+    post = Post.objects.all
     context = {
+        "post" : post,
         "range" : range(16)
     }
     return render(request, "cursoedific.html", context)
 
 def mamb(request):
+    post = Post.objects.all
     context = {
+        "post" : post,
         "range" : range(16)
     }
     return render(request, "cursomamb.html", context)
