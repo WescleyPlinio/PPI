@@ -41,3 +41,28 @@ def post(request, id):
         "post" : post,
     }
     return render(request, "post.html", context)
+
+def addpost(request):
+
+    context = {
+
+    }
+
+    if request.method == "POST":
+        post = Post(titulo = request.POST['titulo'],
+                    justificativa = request.POST['justificativa'],
+                    capa = request.POST['capa'],
+                    pdf = request.POST['pdf'],
+                    resumo = request.POST['resumo'],
+                    curso = request.POST['curso'],
+                    alunos = request.POST['alunos'],
+                    orientadores = request.POST['orientadores'],
+                    )
+        
+        post.save()
+        
+        return render (request, "addpost.html", context)
+
+    else:
+        return render (request, "addpost.html", context)
+
