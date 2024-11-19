@@ -3,23 +3,82 @@
 {% block tittle %} Adicionar posts {% endblock tittle %}
 {% block conteudo %}
 
-<div class="container-fluid blueback">
-    <form>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+<div class="container custom-container mb-5 py-3">
+          <h1 class="text-white text-center" style="font-size: 3.5em;">
+              Adicione seu <a class="roxinho">projeto aqui!</a> 
+          </h1>
 </div>
+<div class="container-fluid blueback py-5">
+  <div class="form-container mx-auto custom-container">
+    <form action="your-backend-endpoint" method="POST" enctype="multipart/form-data">
+      <div class="row g-0">
+        <div class="col-md-6 p-3">
+          <!-- Título -->
+          <div class="form-group">
+            <label for="title">Título:</label>
+            <input class="blueback" type="text" id="title" name="title" placeholder="Digite o título do projeto" required>
+          </div>
+          <!-- Resumo -->
+          <div class="form-group">
+            <label for="summary">Resumo:</label>
+              <textarea class="blueback" id="summary" name="summary" placeholder="Digite o resumo do projeto" rows="5" required></textarea>
+          </div>
+          <!-- Objetivo -->
+          <div class="form-group">
+            <label for="objective">Objetivo:</label>
+            <textarea class="blueback"id="objective" name="objective" placeholder="Descreva o objetivo do projeto" rows="5" required></textarea>
+          </div>
+          <!-- Data -->
+          <div class="form-group">
+            <label for="date">Data:</label>
+            <input class="blueback" type="date" id="date" name="date" required>
+          </div>
+          <!-- PDF -->
+          <div class="form-group">
+            <label for="pdf">Arquivo PDF:</label>
+            <input class="blueback" type="file" id="pdf" name="pdf" accept=".pdf" required>
+          </div>
+        </div>
 
-{% endblock conteudo %}
+        <div class="col-md-6 p-3">
+          <!-- Imagens -->
+          <div class="form-group">
+            <label for="images">Imagens:</label>
+            <input class="blueback" type="file" id="images" name="images[]" accept="image/*" multiple>
+          </div>
+          <!-- Alunos -->
+          <div class="form-group">
+            <label for="students">Alunos (separados por vírgula):</label>
+            <input class="blueback" type="text" id="students" name="students" placeholder="nomes dos alunos" required>
+          </div>
+          <!-- Professores -->
+          <div class="form-group">
+            <label for="teachers">Professores (separados por vírgula):</label>
+            <input class="blueback" type="text" id="teachers" name="teachers" placeholder="nome do professor orientador" required>
+          </div>
+          <!-- Curso -->
+          <div class="form-group">
+            <label for="course">Curso:</label>
+            <select class="blueback" id="course" name="course" required>
+              <option class="blueback" value="" disabled selected>Selecione o curso</option>
+              <option class="blueback" value="ciencias-da-computacao">Informática</option>
+              <option class="blueback" value="engenharia">Edificações</option>
+              <option class="blueback" value="design">Meio Ambiente</option>
+            </select>
+          </div>
+          <!-- Palavras-Chave -->
+          <div class="form-group">
+            <label for="keywords">Palavras-Chave (separadas por vírgula):</label>
+            <input class="blueback" type="text" id="keywords" name="keywords" placeholder="Ex.: inovação, tecnologia, pesquisa" required>
+          </div>
+          <!-- Botão de Submissão -->
+          <div class="form-group mt-4">
+            <button type="submit">Adicionar Projeto</button>
+          </div>
+
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+  {% endblock conteudo %}
