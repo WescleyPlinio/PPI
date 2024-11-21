@@ -57,6 +57,7 @@
           border: none;
           padding: 10px 20px;
           font-size: 16px;
+          border: 1px solid #ccc;
           border-radius: 4px;
           cursor: pointer;
       }
@@ -66,6 +67,32 @@
       input::placeholder,
       textarea::placeholder {
         color: #ffffff;
+      }
+
+      input[type="date"] {
+        color: white; 
+      }
+
+      input[type="file"] {
+        color: white; 
+      }
+      
+      select{
+        color: white;
+        background-color: white;
+      }
+
+      option{
+        color: white;
+        background-color: white;
+      }
+
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(50%);
+      }
+
+      input, textarea, select {
+        border: none;
       }
     </style>
   </head>
