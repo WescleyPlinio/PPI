@@ -7,18 +7,50 @@
     <div class="row g-0">
         <div class= "col-md-8">
             <div class = "row g-0">
-                <div class= "col-md-6"><img src="{% static 'imgs/btnlogin.svg' %}" alt="imgperfil" style= "max-width:80%;"></div>
-                <div class= "col-md-6">
-                    <p class= "text-white">Professor</p>
-                    <h1 class = "roxinho">Ari Barreto</h1>
-                    <p class= "text-white">@aribarreto</p>
+                <div class= "col-md-6 d-flex justify-content-center align-items-center"><img src="{% static 'imgs/btnlogin.svg' %}" alt="imgperfil" style= "max-width:70%;"></div>
+                <div class= "col-md-6 d-flex justify-content-start align-items-center ">
+                    <ul>
+                        <p class= "text-white">Professor</p>
+                        <h1 class = "roxinho">Ari Barreto</h1>
+                        <p class= "text-white">@aribarreto</p>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div class= "col-md-4">
-            <button>editar perfil</button>
-            <button>Adicionar projeto</button>
+        <div class= "col-md-4 d-flex flex-wrap justify-content-end align-items-center">
+            <ul>
+                <button type= 'button' class= "btn btn-light my-2" style= "width:70%;">editar perfil</button>
+                <a href="{% url 'form_post' %}">
+                    <button type= 'button' class= "btn blueback laranja my-2" style= "width:70%;">Adicionar projeto</button>
+                </a>
+            </ul>
         </div>
+    </div>
+</div>
+
+<!-- participações -->
+<div class="container-fluid blueback">
+    <h1 class="laranja text-center py-3" style="font-size: 3.5em;">
+        Participações
+    </h1>
+    <div class= "container custom-container d-flex justify-content-evenly align-items-center flex-wrap">
+        {% for x in range %}
+        {% for projeto in projetos %}
+        <div class="card m-4" style="max-width: 25rem; background-color: rgb(5, 14, 43);">
+                <div class="card-body">
+                  <h3 class="card-title roxinho">{{projeto.titulo}}</h3>
+                  <h6 class="card-subtitle mb-2 laranja">Orientado por {{projeto.usuarios2}}</h6>
+                  <p class="card-text text-white">{{projeto.justificativa}}</p>
+                  <a href="{% url "post" 1 %}" class="card-link">
+                    <button type= 'button'  class= "btn btn-light my-2">Vizualizar</button>
+                  </a>
+                  <a href="#" class="card-link">
+                    <button type= 'button' class= "btn btn-light my-2">Editar</button>
+                  </a>
+                </div>
+              </div>
+        {% endfor %}
+        {% endfor %}
     </div>
 </div>
 

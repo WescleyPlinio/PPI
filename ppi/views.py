@@ -69,8 +69,10 @@ def addpost(request):
 
 def verperfil(request):
 
+    post = Post.objects.all
     context = {
-
+        "projetos" : post,
+        "range" : range(6)
     }
 
     return render (request, "verperfil.html", context)
