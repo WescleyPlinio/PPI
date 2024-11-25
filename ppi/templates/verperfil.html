@@ -1,6 +1,25 @@
 {% extends "base.html" %}
 {% load static %}
-{% block tittle %} Ver post.titulo {% endblock tittle %}
+{% block tittle %} Ver (post.titulo) {% endblock tittle %}
 {% block conteudo %}
+<!-- Menu -->
+<div class="container custom-container mb-5 py-3">
+    <div class="row g-0">
+        <div class= "col-md-8">
+            <div class = "row g-0">
+                <div class= "col-md-6"><img src="{% static 'imgs/btnlogin.svg' %}" alt="imgperfil" style= "max-width:80%;"></div>
+                <div class= "col-md-6">
+                    <p class= "text-white">Professor</p>
+                    <h1 class = "roxinho">Ari Barreto</h1>
+                    <p class= "text-white">@aribarreto</p>
+                </div>
+            </div>
+        </div>
+        <div class= "col-md-4">
+            <button>editar perfil</button>
+            <button>Adicionar projeto</button>
+        </div>
+    </div>
+</div>
 
 {% endblock conteudo %}
