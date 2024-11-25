@@ -54,10 +54,12 @@
         <!-- Div alunos -->
         <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
             {% for aluno in post.usuarios1.all %}
+            <a href="{% url 'verperfil' %}">
             <div>
                 <img src="{% static "imgs/usericn.jpg" %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
                 <h5 class="text-center roxinho mt-1">{{aluno.nome}}</h5>
             </div>
+            </a>
             {% endfor %}
         </div>
         

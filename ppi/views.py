@@ -65,4 +65,12 @@ def addpost(request):
 
     else:
         return render (request, "addpost.html", context)
+    
 
+def verperfil(request):
+
+    context = {
+
+    }
+
+    return render (request, "verperfil.html", context)
