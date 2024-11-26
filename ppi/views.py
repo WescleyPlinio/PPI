@@ -4,7 +4,6 @@ from .models import Post
 def index(request):
     context = {
         "posts" : Post.objects.all,
-        "range" : range(2)
     }
     return render(request, "index.html", context)
 
@@ -72,7 +71,7 @@ def verperfil(request):
     post = Post.objects.all
     context = {
         "projetos" : post,
-        "range" : range(6)
+        "range" : range(3)
     }
 
     return render (request, "verperfil.html", context)
