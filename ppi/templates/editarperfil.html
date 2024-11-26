@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block tittle %} Editar perfil {% endblock tittle %}
+{% block conteudo %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card p-4 blueback">
+                <form id="profileForm" action="#" method="POST">
+                    <!-- Exibir foto de perfil -->
+                    <div class="text-center mb-4">
+                        <div class="profile-photo-container">
+                            <img src="https://via.placeholder.com/120" id="profileImage" alt="Foto de Perfil" onclick="changeProfilePhoto()">
+                        </div>
+                        <input type="file" name="profilePhoto" id="fileInput" class="d-none" onchange="previewPhoto(event)">
+                        <label for="fileInput" class="change-photo-label laranja">Clique para mudar a foto</label>
+                    </div>
+                    
+                    <!-- @ -->
+                    <div class="mb-3">
+                        <label for="arroba" class="form-label text-white">@ / Usuário</label>
+                        <input type="arroba" class="form-control" id="arroba" name="arroba" required>
+                    </div>
+
+                    <!-- Nome de Usuário -->
+                    <div class="mb-3">
+                        <label for="username" class="form-label text-white">Nome de Usuário</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+
+                    <!-- Botão Salvar -->
+                    <button type="submit" class="btn btn-primary w-100">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function changeProfilePhoto() {
+        document.getElementById('fileInput').click();
+    }
+
+    function previewPhoto(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const imgElement = document.getElementById('profileImage');
+                imgElement.src = e.target.result; // Atualiza a imagem da foto de perfil
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+{% endblock conteudo %}

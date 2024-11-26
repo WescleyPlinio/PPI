@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block tittle %} Ver (post.titulo) {% endblock tittle %}
+{% block tittle %} Perfil {% endblock tittle %}
 {% block conteudo %}
 <!-- Menu -->
 <div class="container custom-container mb-5 py-3">
@@ -19,7 +19,9 @@
         </div>
         <div class= "col-md-4 d-flex flex-wrap justify-content-end align-items-center">
             <ul>
-                <button type= 'button' class= "btn btn-light my-2" style= "width:70%;">editar perfil</button>
+                <a href="{% url 'editarperfil' %}">
+                    <button type= 'button' class= "btn btn-light my-2" style= "width:70%;">editar perfil</button>
+                </a>
                 <a href="{% url 'form_post' %}">
                     <button type= 'button' class= "btn blueback laranja my-2" style= "width:70%;">Adicionar projeto</button>
                 </a>

@@ -75,3 +75,11 @@ def verperfil(request):
     }
 
     return render (request, "verperfil.html", context)
+
+def editarperfil(request):
+
+    context = {
+        
+    }
+
+    return render(request, "editarperfil.html", context)

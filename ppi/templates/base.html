@@ -93,6 +93,25 @@
       input, textarea, select {
         border: none;
       }
+      .profile-photo-container img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+        border: 3px solid #ddd;
+    }
+    .change-photo-label {
+        color: #007BFF;
+        cursor: pointer;
+        margin-top: 10px;
+        text-align: center;
+    }
+    html, body {
+      height: 100%; /* Garantir que o corpo ocupe toda a altura da tela */
+      display: grid;
+      grid-template-rows: 1fr auto; /* 1fr para o conteúdo ocupar o espaço restante, auto para o footer */
+    }
     </style>
   </head>
   <body style="background-color: rgb(5, 14, 43);">

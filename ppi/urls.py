@@ -10,6 +10,7 @@ urlpatterns = [
     path("post/<int:id>/", views.post, name = "post"),
     path("novos_projetos/", views.addpost, name = "form_post"),
     path("perfil/", views.verperfil, name = "verperfil"),
+    path("editar_perfil/", views.editarperfil, name = "editarperfil"),
 ]
 
 
