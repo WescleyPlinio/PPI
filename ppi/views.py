@@ -4,7 +4,7 @@ from .models import Post
 def index(request):
     context = {
         "posts" : Post.objects.all,
-        "range" : range(3)
+        "range" : range(2)
     }
     return render(request, "index.html", context)
 
