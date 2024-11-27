@@ -7,8 +7,10 @@
     <div class="row g-0">
         <div class= "col-md-8">
             <div class = "row g-0">
-                <div class= "col-md-6 d-flex justify-content-center align-items-center"><img src="{% static 'imgs/btnlogin.svg' %}" alt="imgperfil" style= "max-width:70%;"></div>
-                <div class= "col-md-6 d-flex justify-content-start align-items-center ">
+                <div class= "col-md-3 d-flex justify-content-start align-items-center">
+                    <img src="{% static 'imgs/ari.jpg' %}" class="rounded-circle" alt="imgperfil" style= "max-width:70%;">
+                </div>
+                <div class= "col-md-9 d-flex justify-content-start align-items-center ">
                     <ul>
                         <p class= "text-white">Professor</p>
                         <h1 class = "roxinho">Ari Barreto</h1>
@@ -20,10 +22,10 @@
         <div class= "col-md-4 d-flex flex-wrap justify-content-end align-items-center">
             <ul>
                 <a href="{% url 'editarperfil' %}">
-                    <button type= 'button' class= "btn btn-light my-2" style= "width:70%;">editar perfil</button>
+                    <button type= 'button' class= "btn w-100 btn-light my-2">editar perfil</button>
                 </a>
                 <a href="{% url 'form_post' %}">
-                    <button type= 'button' class= "btn blueback laranja my-2" style= "width:70%;">Adicionar projeto</button>
+                    <button type= 'button' class= "btn w-100 blueback laranja my-2">Adicionar projeto</button>
                 </a>
             </ul>
         </div>
