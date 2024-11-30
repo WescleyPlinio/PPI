@@ -24,3 +24,20 @@ class Post(models.Model):
 
     def __str__(self):
         return self.titulo
+    
+class Curso(models.Model):
+    nome = models.CharField(max_length=50)
+    logo = models.ImageField()
+    
+    def __str__(self):
+        return self.nome
+
+class Projeto(models.Model):
+    titulo = models.CharField(max_length=80)
+    descricao = models.TextField(max_length=120)
+    resumo = models.TextField(max_length=2000)
+    capa = models.ImageField()
+    curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.nome
