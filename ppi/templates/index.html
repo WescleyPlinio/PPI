@@ -22,12 +22,12 @@
     <div class="container custom-container d-flex flex-column">
         <div class="d-flex flex-wrap justify-content-evenly py-4">
             {% for post in posts %}
-            <div class="card my-3" style="max-width: 45em;">
+            <div class="card my-3 mx-1" style="max-width: 38em;">
                 <div class="row g-0">
-                    <div class="col-md-4">
+                    <div class="col">
                     <img src="{% static "imgs/reuni.jfif" %}" class="w-100 img-fluid rounded-start" alt="...">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col">
                     <div class="card-body">
                         <h5 class="card-title roxinho">{{post.titulo}}</h5>
                         <p class="card-text">{{post.justificativa}}</p>
