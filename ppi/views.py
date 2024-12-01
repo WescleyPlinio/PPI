@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from .models import Post
+from .models import Post, Projeto
 
 def index(request):
     context = {
-        "posts" : Post.objects.all,
+        "posts" : Projeto.objects.all,
     }
     return render(request, "index.html", context)
 
@@ -35,7 +35,7 @@ def mamb(request):
     return render(request, "cursomamb.html", context)
 
 def post(request, id):
-    post = Post.objects.get(id=id)
+    post = Projeto.objects.get(id=id)
     context = {
         "post" : post,
     }

@@ -17,7 +17,9 @@
             </div>
         </div>
         <div class="col-md-4 d-flex justify-content-end align-items-center">
-            <img src="{% static 'imgs/infoweb.svg' %}" alt="Logo" style="max-height: 12rem;">
+            {% if post.curso.logo %}
+                <img src="{{ post.curso.logo.url }}" alt="Logo" style="max-height: 12rem;">
+            {% endif %}
         </div>
     </div>
 </div>
@@ -25,12 +27,47 @@
 <!-- Sobre o projeto -->
 <div class="container-fluid blueback">   
     <div class="container py-5">
-        <div class="row g-0">
-            <div class="col-md-5 d-flex justify-content-start align-items-center py-2">
-                <img src="{% static 'imgs/reuni.jfif' %}" alt="Logo" class="w-100 pe-4" class="pe-3">
+        <div class="row g-0 py-2">
+            <div class="col-md-5 d-flex justify-content-start align-items-center">
+                
+                <div id="carouselExample" class="carousel slide w-100 pe-3" data-bs-ride="carousel">
+                    <!-- Indicadores -->
+                    <div class="carousel-indicators">
+                        {% for photo in post.photos.all %}
+                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="{{ forloop.counter0 }}" 
+                                class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% endif %}" 
+                                aria-label="Slide {{ forloop.counter }}"></button>
+                        {% endfor %}
+                    </div>
+                
+                    <!-- Slides -->
+                    <div class="carousel-inner">
+                        {% for photo in post.photos.all %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <img src="{{ photo.photo.url }}" class="d-block w-100" alt="Image {{ forloop.counter }}">
+                            {% if photo.caption %}
+                            <div class="carousel-caption d-none d-md-block">
+                                <p>{{ photo.caption }}</p>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                
+                    <!-- Controles -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
             </div>    
             <div class="col-md-7 d-flex justify-content-start align-items-center">
-                <div>
+                <div class="w-100">
                     <h1 class="text-left laranja">{{post.titulo}}</h1>
                     <p class="text-white text-left">
                         {{post.resumo}}
