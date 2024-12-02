@@ -8,11 +8,11 @@
     <div class="row g-0">
         <div class="col-md-8 d-flex justify-content-start align-items-center">
             <h1 class="text-white text-left" style="font-size: 3.5em;">
-                Projetos do curso de <a class="roxinho">Informática para Internet</a> 
+                Projetos do curso de <a class="roxinho">{{curso.titulo}}</a> 
             </h1>
         </div>
         <div class="col-md-4 d-flex justify-content-end align-items-center">
-            <img src="{% static 'imgs/infoweb.svg' %}" alt="Logo" style="max-height: 20rem;">
+            <img src="{{curso.logo.url}}" alt="Logo" style="max-height: 20rem;">
         </div>
     </div>
 </div>

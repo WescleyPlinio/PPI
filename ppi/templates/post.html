@@ -93,7 +93,7 @@
             {% for aluno in post.usuarios1.all %}
             <a href="{% url 'verperfil' %}" style="text-decoration: none;">
                 <div>
-                    <img src="{% static "imgs/usericn.jpg" %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
+                    <img src="{% if aluno.foto %} {{aluno.foto.url}} {% else %} {% static 'imgs/usericn.jpg' %}{% endif %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
                     <h5 class="text-center roxinho mt-1">{{aluno.nome}}</h5>
                 </div>
             </a>

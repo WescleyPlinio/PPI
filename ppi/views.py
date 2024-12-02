@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import Post, Projeto
+from django.shortcuts import render, get_object_or_404
+from .models import Projeto, Curso
 
 def index(request):
     context = {
@@ -10,29 +10,15 @@ def index(request):
 def login(request):
     return render(request, "login.html")
 
-def info(request):
-    post = Post.objects.all
+def info(request, id):
+    curso = get_object_or_404(Curso, id = id)
+    post = Projeto.objects.all
     context = {
+        "curso" : curso,
         "post" : post,
         "range" : range(4)
     }
-    return render(request, "cursoinfo.html", context)
-
-def edific(request):
-    post = Post.objects.all
-    context = {
-        "post" : post,
-        "range" : range(4)
-    }
-    return render(request, "cursoedific.html", context)
-
-def mamb(request):
-    post = Post.objects.all
-    context = {
-        "post" : post,
-        "range" : range(4)
-    }
-    return render(request, "cursomamb.html", context)
+    return render(request, "cursofeed.html", context)
 
 def post(request, id):
     post = Projeto.objects.get(id=id)
@@ -48,14 +34,14 @@ def addpost(request):
     }
 
     if request.method == "POST":
-        post = Post(titulo = request.POST['titulo'],
-                    justificativa = request.POST['justificativa'],
+        post = Projeto(titulo = request.POST['titulo'],
+                    descricao = request.POST['descricao'],
                     capa = request.POST['capa'],
                     pdf = request.POST['pdf'],
                     resumo = request.POST['resumo'],
                     curso = request.POST['curso'],
-                    alunos = request.POST['alunos'],
-                    orientadores = request.POST['orientadores'],
+                    usuarios1 = request.POST['usuarios1'],
+                    usuarios2 = request.POST['usuarios2'],
                     )
         
         post.save()
@@ -68,7 +54,7 @@ def addpost(request):
 
 def verperfil(request):
 
-    post = Post.objects.all
+    post = Projeto.objects.all
     context = {
         "projetos" : post,
         "range" : range(3)
