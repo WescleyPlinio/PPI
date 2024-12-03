@@ -21,25 +21,20 @@
 <div class="container-fluid" style="background-color: rgb(14, 30, 70);">   
     <div class="container custom-container d-flex flex-column">
         <div class="d-flex flex-wrap justify-content-evenly py-4">
+          <h1 class="laranja text-center">Destaques:</h1>
             <div id="postCarousel" class="carousel slide" data-bs-ride="carousel">
-                <!-- Indicadores -->
-                <div class="carousel-indicators">
-                  {% for chunk in post_chunks %}
-                    <button type="button" data-bs-target="#postCarousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></button>
-                  {% endfor %}
-                </div>
               
                 <!-- Slides -->
-                <div class="carousel-inner w-100">
+                <div class="carousel-inner">
                   {% for chunk in post_chunks %}
                     <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                      <div class="row g-3"> <!-- Alterei 'g-0' para 'g-3' para dar mais espaço entre as colunas -->
+                      <div class="row g-3"> 
                         {% for post in chunk %}
-                          <div class="col-md-6"> <!-- Adicionando col-md-6 para exibir dois itens por slide -->
+                          <div class="col-md-6"> 
                             <div class="card my-3 mx-1" style="max-width: 38em;">
                               <div class="row g-0">
                                 <div class="col d-flex align-items-center">
-                                  <img src="{{ post.capa.url }}" class="w-100 img-fluid rounded-start" alt="...">
+                                  <img src="{{ post.capa.url }}" class="h-100 img-fluid rounded-start" alt="...">
                                 </div>
                                 <div class="col">
                                   <div class="card-body">
@@ -57,13 +52,13 @@
                   {% endfor %}
                 </div>
               
-                <!-- Controles (Botões Anterior e Próximo) -->
                 <button class="carousel-control-prev position-absolute top-50 start-0 translate-middle-y" type="button" data-bs-target="#postCarousel" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="carousel-control-prev-icon position-absolute top-50 start-0 translate-middle-y" aria-hidden="true"></span>
                   <span class="visually-hidden">Anterior</span>
                 </button>
+
                 <button class="carousel-control-next position-absolute top-50 end-0 translate-middle-y" type="button" data-bs-target="#postCarousel" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="carousel-control-next-icon position-absolute top-50 end-0 translate-middle-y" aria-hidden="true"></span>
                   <span class="visually-hidden">Próximo</span>
                 </button>
             </div>
@@ -78,7 +73,7 @@
             O que são projetos integradores?
         </h1>
         <p class="text-white">
-            Um projeto integrador é uma atividade que conecta diferentes áreas de conhecimento, permitindo que você aplique o que aprendeu na prática para resolver problemas reais de forma mais completa e colaborativa.
+          Os projetos integradores são iniciativas que conectam diferentes disciplinas e áreas do conhecimento do ensino médio integrado (entre outros). Esses projetos têm como objetivo principal consolidar a aprendizagem ao permitir que os estudantes apliquem na prática os conceitos teóricos aprendidos em sala de aula, muitas vezes atendendo demandas reais da comunidade, empresas ou setores públicos.
         </p>
     </div>
 </div>

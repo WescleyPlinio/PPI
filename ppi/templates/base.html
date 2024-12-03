@@ -133,7 +133,7 @@
 
               {% for curso in cursos %}
               <li class="nav-item mx-3">
-                <a class="{% if request.path == '/projetos/{{curso.id}}' %} roxinho {% else %} text-white {% endif %}  nav-link" href="{% url 'projetos' curso.id %}"><img src="{{ curso.logo.url }}" style="max-width: 1.8rem; margin-right: 5px;" alt="Informática">{{ curso.titulo }}</a>
+                <a class="{% if request.path == '/projetos/' %} roxinho {% else %} text-white {% endif %} nav-link" href="{% url 'projetos' curso.id %}"><img src="{{ curso.logo.url }}" style="max-width: 1.8rem; margin-right: 5px;" alt="Informática">{{ curso.titulo }}</a>
               </li>
               {% endfor %}
           
