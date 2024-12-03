@@ -21,22 +21,52 @@
 <div class="container-fluid" style="background-color: rgb(14, 30, 70);">   
     <div class="container custom-container d-flex flex-column">
         <div class="d-flex flex-wrap justify-content-evenly py-4">
-            {% for post in posts %}
-            <div class="card my-3 mx-1" style="max-width: 38em;">
-                <div class="row g-0">
-                    <div class="col d-flex align-items-center">
-                    <img src="{{ post.capa.url }}" class="w-100 img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col">
-                    <div class="card-body">
-                        <h5 class="card-title roxinho">{{post.titulo}}</h5>
-                        <p class="card-text">{{post.descricao}}</p>
-                        <a class="text-end laranja" href="{% url "post" post.id %}">Ver Post</a>
-                    </div>
-                    </div>
+            <div id="postCarousel" class="carousel slide" data-bs-ride="carousel">
+                <!-- Indicadores -->
+                <div class="carousel-indicators">
+                  {% for chunk in post_chunks %}
+                    <button type="button" data-bs-target="#postCarousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></button>
+                  {% endfor %}
                 </div>
+              
+                <!-- Slides -->
+                <div class="carousel-inner w-100">
+                  {% for chunk in post_chunks %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                      <div class="row g-3"> <!-- Alterei 'g-0' para 'g-3' para dar mais espaço entre as colunas -->
+                        {% for post in chunk %}
+                          <div class="col-md-6"> <!-- Adicionando col-md-6 para exibir dois itens por slide -->
+                            <div class="card my-3 mx-1" style="max-width: 38em;">
+                              <div class="row g-0">
+                                <div class="col d-flex align-items-center">
+                                  <img src="{{ post.capa.url }}" class="w-100 img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col">
+                                  <div class="card-body">
+                                    <h5 class="card-title roxinho">{{ post.titulo }}</h5>
+                                    <p class="card-text">{{ post.descricao }}</p>
+                                    <a class="text-end laranja" href="{% url 'post' post.id %}">Ver Post</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              
+                <!-- Controles (Botões Anterior e Próximo) -->
+                <button class="carousel-control-prev position-absolute top-50 start-0 translate-middle-y" type="button" data-bs-target="#postCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next position-absolute top-50 end-0 translate-middle-y" type="button" data-bs-target="#postCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Próximo</span>
+                </button>
             </div>
-            {% endfor %}
         </div>
     </div>
 </div>

@@ -1,9 +1,13 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Projeto, Curso
+from django.core.paginator import Paginator
 
 def index(request):
+    posts = Projeto.objects.all()
+    chunk_size = 2  # número de posts por slide no carrossel
+    post_chunks = [posts[i:i + chunk_size] for i in range(0, len(posts), chunk_size)]
     context = {
-        "posts" : Projeto.objects.all,
+        "post_chunks": post_chunks,
     }
     return render(request, "index.html", context)
 
@@ -12,11 +16,11 @@ def login(request):
 
 def info(request, id):
     curso = get_object_or_404(Curso, id = id)
-    post = Projeto.objects.all
+    posts = Projeto.objects.filter( curso = curso )
     context = {
         "curso" : curso,
-        "post" : post,
-        "range" : range(4)
+        "post" : posts,
+        "range" : range(3)
     }
     return render(request, "cursofeed.html", context)
 
