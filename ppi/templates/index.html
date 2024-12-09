@@ -27,10 +27,10 @@
           {% for post in posts %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
               <div class="d-flex justify-content-center align-items-center">
-                <div class="card my-3 mx-1" style="max-width: 65%; max-height: 15em;">
+                <div class="card my-3 mx-1" style="max-width: 65%;">
                   <div class="row g-0">
                     <div class="col-md-6 col-12 d-flex align-items-center">
-                      <img src="{{ post.capa.url }}" class="img-fluid rounded-start h-100" style="max-height:100%;" alt="{{ post.titulo }}">
+                      <img src="{{ post.capa.url }}" class="img-fluid rounded-start h-100" style="max-height: 100%;" alt="{{ post.titulo }}">
                     </div>
                     <div class="col-md-6 col-12">
                       <div class="card-body">
