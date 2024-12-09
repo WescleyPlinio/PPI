@@ -103,11 +103,19 @@
 
         <!-- Div orientadores -->
         <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
+<<<<<<< HEAD
             {% for aluno in post.usuarios2.all %}
             <a href="{% url 'verperfil' %}" style="text-decoration: none;">
                 <div>
                     <img src="{% if aluno.foto %} {{aluno.foto.url}} {% else %} {% static 'imgs/usericn.jpg' %}{% endif %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
                     <h5 class="text-center roxinho mt-1">{{aluno.nome}}</h5>
+=======
+            {% for prof in post.usuarios2.all %}
+            <a href="{% url 'verperfil' %}" style="text-decoration: none;">
+                <div>
+                    <img src="{% if prof.foto %} {{prof.foto.url}} {% else %} {% static 'imgs/usericn.jpg' %}{% endif %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
+                    <h5 class="text-center roxinho mt-1">{{prof.nome}}</h5>
+>>>>>>> a09d686962644843a9b06afd4a6989a48e85311f
                 </div>
             </a>
             {% endfor %}
