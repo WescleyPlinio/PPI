@@ -20,49 +20,43 @@
 <!-- Destaques -->
 <div class="container-fluid" style="background-color: rgb(14, 30, 70);">   
     <div class="container custom-container d-flex flex-column">
-      <div class="d-flex flex-wrap justify-content-evenly py-4">
-          <h1 class="laranja text-center w-100">Destaques:</h1>
-            <div id="postCarousel" class="carousel slide" data-bs-ride="carousel">
-              
-                <!-- Slides -->
-                <div class="carousel-inner">
-                  {% for chunk in post_chunks %}
-                    <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                      <div class="row g-3"> 
-                        {% for post in chunk %}
-                          <div class="col-md-6"> 
-                            <div class="card my-3 mx-1" style="max-width: 38em;">
-                              <div class="row g-0">
-                                <div class="col d-flex align-items-center">
-                                  <img src="{{ post.capa.url }}" class="h-100 img-fluid rounded-start" alt="...">
-                                </div>
-                                <div class="col">
-                                  <div class="card-body">
-                                    <h5 class="card-title roxinho">{{ post.titulo }}</h5>
-                                    <p class="card-text">{{ post.descricao }}</p>
-                                    <a class="text-end laranja" href="{% url 'post' post.id %}">Ver Post</a>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        {% endfor %}
+      <h1 class="laranja text-center">Destaques:</h1>
+      <div id="postCarousel" class="carousel slide" data-bs-ride="carousel">
+        <!-- Slides -->
+        <div class="carousel-inner">
+          {% for post in posts %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+              <div class="d-flex justify-content-center align-items-center">
+                <div class="card my-3 mx-1" style="max-width: 65%; max-height: 15em;">
+                  <div class="row g-0">
+                    <div class="col-md-6 col-12 d-flex align-items-center">
+                      <img src="{{ post.capa.url }}" class="img-fluid rounded-start h-100" style="max-height:100%;" alt="{{ post.titulo }}">
+                    </div>
+                    <div class="col-md-6 col-12">
+                      <div class="card-body">
+                        <h5 class="card-title roxinho">{{ post.titulo }}</h5>
+                        <p class="card-text">{{ post.descricao }}</p>
+                        <a class="text-end laranja" href="{% url 'post' post.id %}">Ver Post</a>
                       </div>
                     </div>
-                  {% endfor %}
+                  </div>
                 </div>
-              
-                <button class="carousel-control-prev position-absolute top-50 start-0 translate-middle-y" type="button" data-bs-target="#postCarousel" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon position-absolute top-50 start-0 translate-middle-y" aria-hidden="true"></span>
-                  <span class="visually-hidden">Anterior</span>
-                </button>
-
-                <button class="carousel-control-next position-absolute top-50 end-0 translate-middle-y" type="button" data-bs-target="#postCarousel" data-bs-slide="next">
-                  <span class="carousel-control-next-icon position-absolute top-50 end-0 translate-middle-y" aria-hidden="true"></span>
-                  <span class="visually-hidden">Próximo</span>
-                </button>
+              </div>
             </div>
+          {% endfor %}
         </div>
+      
+        <button class="carousel-control-prev position-absolute top-50 start-0 translate-middle-y" type="button" data-bs-target="#postCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon position-absolute top-50 start-0 translate-middle-y" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+
+        <button class="carousel-control-next position-absolute top-50 end-0 translate-middle-y" type="button" data-bs-target="#postCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon position-absolute top-50 end-0 translate-middle-y" aria-hidden="true"></span>
+          <span class="visually-hidden">Próximo</span>
+        </button>
+      </div>
+
     </div>
 </div>
 

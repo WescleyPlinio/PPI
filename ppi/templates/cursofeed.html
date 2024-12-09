@@ -23,20 +23,20 @@
         <div class="d-flex flex-wrap justify-content-evenly">
             {% for x in range%}
                 {% for post in post %}
-                <div class="card my-3 mx-1" style="max-width: 38em;">
+                <div class="card my-3 mx-1" style="max-width: 43%;">
                     <div class="row g-0">
-                        <div class="col d-flex align-items-center">
+                      <div class="col">
                         <img src="{{ post.capa.url }}" class="h-100 img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col">
+                      </div>
+                      <div class="col">
                         <div class="card-body">
-                            <h5 class="card-title roxinho">{{post.titulo}}</h5>
-                            <p class="card-text">{{post.descricao}}</p>
-                            <a class="text-end laranja" href="{% url "post" post.id %}">Ver Post</a>
+                          <h5 class="card-title roxinho">{{ post.titulo }}</h5>
+                          <p class="card-text">{{ post.descricao }}</p>
+                          <a class="text-end laranja" href="{% url 'post' post.id %}">Ver Post</a>
                         </div>
-                        </div>
+                      </div>
                     </div>
-                </div>
+                  </div>
                 {% endfor %}
             {% endfor %}
         </div>

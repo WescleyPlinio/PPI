@@ -4,10 +4,8 @@ from django.core.paginator import Paginator
 
 def index(request):
     posts = Projeto.objects.all()
-    chunk_size = 2  # número de posts por slide no carrossel
-    post_chunks = [posts[i:i + chunk_size] for i in range(0, len(posts), chunk_size)]
     context = {
-        "post_chunks": post_chunks,
+        "posts": posts,
     }
     return render(request, "index.html", context)
 
@@ -61,7 +59,7 @@ def verperfil(request):
     post = Projeto.objects.all
     context = {
         "projetos" : post,
-        "range" : range(3)
+        "range" : range(2)
     }
 
     return render (request, "verperfil.html", context)
