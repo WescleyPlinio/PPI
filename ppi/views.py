@@ -74,16 +74,8 @@ def editarperfil(request):
 
 
 def pesquisar(request):
+    posts = Projeto.objects.all
     context = {
-        'pesquisas': ['Prorização e igualdade', 'Direção de hardware', 'Plantações Angiela', 'Rodeio informático', 'PPI'],
-        'ideias': ['Prorização e igualdade', 'Direção de hardware', 'Plantações Angiela'],
-        'projetos': [
-            {'titulo': 'Prorização e igualdade', 'descricao': 'Projeto focado na igualdade.', 'imagem': 'images/projeto1.jpg'},
-            {'titulo': 'Preservação e Reflorestamento', 'descricao': 'Projeto ambiental.', 'imagem': 'images/projeto2.jpg'},
-            {'titulo': 'Semana Ambiental', 'descricao': 'Evento sobre conscientização.', 'imagem': 'images/projeto3.jpg'},
-            {'titulo': 'Plantações Angiela', 'descricao': 'Sustentabilidade e tecnologia.', 'imagem': 'images/projeto4.jpg'},
-            {'titulo': 'Ecossistema', 'descricao': 'Proteção dos ecossistemas.', 'imagem': 'images/projeto5.jpg'},
-            {'titulo': 'Selo eureciclo', 'descricao': 'Reciclagem e sustentabilidade.', 'imagem': 'images/projeto6.jpg'},
-        ]
+        "projetos" : posts
     }
     return render(request, 'pesquisar.html', context)
