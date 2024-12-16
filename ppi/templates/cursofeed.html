@@ -20,26 +20,29 @@
 <!-- Feed -->
 <div class="container-fluid blueback">
     <div class="container custom-container">
-        <div class="d-flex flex-wrap justify-content-evenly">
+        <div class="row g-2 d-flex align-items-center">
             {% for x in range%}
-                {% for post in post %}
-                <div class="card my-3 mx-1" style="max-width: 43%;">
-                    <div class="row g-0">
-                      <div class="col">
-                        <img src="{{ post.capa.url }}" class="h-100 img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col">
-                        <div class="card-body">
-                          <h5 class="card-title roxinho">{{ post.titulo }}</h5>
-                          <p class="card-text">{{ post.descricao }}</p>
-                          <a class="text-end laranja" href="{% url 'post' post.id %}">Ver Post</a>
+                {% for projeto in projetos %}
+                <div class="col-md-6">
+                  <div class="card">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <img src="{{ projeto.capa.url }}" class="h-100 img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-6">
+                          <div class="card-body">
+                            <h5 class="card-title roxinho">{{ projeto.titulo }}</h5>
+                            <p class="card-text">{{ projeto.descricao }}</p>
+                            <a class="text-end laranja" href="{% url 'post' projeto.id %}">Ver Post</a>
+                          </div>
                         </div>
                       </div>
-                    </div>
                   </div>
+                </div>
                 {% endfor %}
             {% endfor %}
         </div>
+
         <nav class="py-3" aria-label="Page navigation example">
             <ul class="pagination justify-content-end">
               <li class="page-item">
