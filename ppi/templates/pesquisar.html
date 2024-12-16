@@ -7,7 +7,7 @@
     <h2 class="roxinho">Pesquisas recentes:</h2>
     <div class="d-flex flex-wrap gap-2">
         {% for pesquisa in pesquisas %}
-            <span class="badge bg-secondary p-2">{{ pesquisa }}</span>
+            <span class="badge blueback p-2">{{ pesquisa }}</span>
         {% endfor %}
     </div>
 </section>
@@ -18,7 +18,7 @@
     <div class="row">
         {% for ideia in ideias %}
             <div class="col-md-4 mb-3">
-                <div class="card bg-dark text-white text-center p-3">
+                <div class="card blueback text-white text-center p-3">
                     {{ ideia }}
                 </div>
             </div>
@@ -29,14 +29,14 @@
 <!-- Projetos Mais Vistos -->
  <div class="container-fluid blueback">
      <section class="container mt-5 py-3">
-         <h2 class="laranja text-center mb-3">👑 Alguns dos projetos mais vistos:</h2>
+         <h2 class="roxinho text-center mb-3">👑 Alguns dos projetos mais vistos:</h2>
          <div class="row">
              {% for projeto in projetos %}
                  <div class="col-md-4 mb-4">
                      <div class="card bg-dark text-white">
                          <img src="{{ projeto.capa.url }}" alt="{{ projeto.titulo }}" class="card-img-top">
                          <div class="card-body">
-                             <h5 class="card-title roxinho">{{ projeto.titulo }}</h5>
+                             <h5 class="card-title laranja">{{ projeto.titulo }}</h5>
                              <p class="card-text">{{ projeto.descricao }}</p>
                          </div>
                      </div>

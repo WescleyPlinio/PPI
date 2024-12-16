@@ -1,32 +1,47 @@
 .roxinho{
     color: rgb(246, 82, 255);
     text-decoration: none;
-  }
+}
+
+.fundo-roxinho{
+    background-color: rgb(246, 82, 255);
+}
+
 .laranja{
 color: rgb(255, 145, 77);
 text-decoration: none;
 }
+
+.fundo-laranja{
+background-color: rgb(255, 145, 77);
+}
+
 .blueback{
 background-color: rgb(14, 30, 70);
 }
+
 .custom-container {
 max-width: 85vw;
 width: 100%;
 }
+
 .form-container {
     background: rgb(5, 14, 43);
     padding: 20px;
     border-radius: 8px;
     width: 100%;
 }
+
 .form-group {
     margin-bottom: 15px;
 }
+
 .form-group label {
     display: block;
     margin-bottom: 5px;
     color: rgb(246, 82, 255);
 }
+
 .form-group input,
 .form-group textarea,
 .form-group select {
@@ -35,12 +50,15 @@ width: 100%;
     border-radius: 4px;
     font-size: 16px;
 }
+
 .form-group textarea {
     resize: vertical;
 }
+
 .form-group input[type="file"] {
     padding: 5px;
 }
+
 .form-group button {
     background-color: rgb(255, 145, 77);
     color: #ffffff;
@@ -51,9 +69,11 @@ width: 100%;
     border-radius: 4px;
     cursor: pointer;
 }
+
 .form-group button:hover {
     background-color: rgb(246, 82, 255);
 }
+
 input::placeholder,
 textarea::placeholder {
 color: #ffffff;
@@ -84,6 +104,7 @@ filter: invert(50%);
 input, textarea, select {
 border: none;
 }
+
 .profile-photo-container img {
 width: 120px;
 height: 120px;
@@ -92,6 +113,7 @@ object-fit: cover;
 cursor: pointer;
 border: 3px solid #ddd;
 }
+
 .change-photo-label {
     color: #007BFF;
     cursor: pointer;
@@ -101,12 +123,8 @@ border: 3px solid #ddd;
 
 .search-bar {
     transition: all 0.4s ease;
-    width: 300px;
+    width: 150px;
     border-radius: 50px;
 }
 
-.search-bar:focus {
-    width: 600px; /* Expande a barra */
-    outline: none;
-    box-shadow: 0 0 10px rgba(255, 165, 0, 0.8);
-}
+

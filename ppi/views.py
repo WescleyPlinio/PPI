@@ -17,7 +17,7 @@ def info(request, id):
     posts = Projeto.objects.filter( curso = curso )
     context = {
         "curso" : curso,
-        "post" : posts,
+        "projetos" : posts,
         "range" : range(3)
     }
     return render(request, "cursofeed.html", context)
@@ -74,8 +74,11 @@ def editarperfil(request):
 
 
 def pesquisar(request):
-    posts = Projeto.objects.all
+    posts = Projeto.objects.all()
     context = {
-        "projetos" : posts
+        "projetos" : posts,
+        'pesquisas': ['Prorização e igualdade', 'Direção de hardware', 'Plantações Angiela', 'Rodeio informático', 'PPI'],
+        'ideias': ['Prorização e igualdade', 'Direção de hardware', 'Plantações Angiela'],
+        
     }
     return render(request, 'pesquisar.html', context)
