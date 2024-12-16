@@ -37,24 +37,26 @@
     <h1 class="laranja text-center pb-3" style="font-size: 3.5em;">
         Participações
     </h1>
-    <div class= "container custom-container d-flex justify-content-between align-items-center flex-wrap">
+    <div class= "container custom-container">
+      <div class="row g-2 w-100 d-flex justify-content-center">
         {% for x in range %}
         {% for projeto in projetos %}
-        <div class="card m-2" style="background-color: rgb(5, 14, 43);">
-                <div class="card-body">
-                  <h3 class="card-title roxinho">{{projeto.titulo}}</h3>
+          <div class="card col-md-3 mx-2 p-2" style="background-color: rgb(5, 14, 43);">
+              <div class="card-body">
+                  <h3 class="card-title roxinho">{{ projeto.titulo }}</h3>
                   <h6 class="card-subtitle mb-2 laranja">Orientado por Ari</h6>
-                  <p class="card-text text-white">{{projeto.justificativa}}</p>
+                  <p class="card-text text-white">{{ projeto.justificativa }}</p>
                   <a href="{% url "post" 1 %}" style="text-decoration: none;" class="card-link">
-                    <button type= 'button' class= "btn btn-light my-2">Vizualizar</button>
-                  </a>
-                  <a href="#" class="card-link">
-                    <button type= 'button' class= "btn btn-light my-2">Editar</button>
-                  </a>
-                </div>
+                      <button type= 'button' class= "btn btn-light my-2">Vizualizar</button>
+                    </a>
+                    <a href="#" class="card-link">
+                        <button type= 'button' class= "btn btn-light my-2">Editar</button>
+                    </a>
               </div>
+          </div>
         {% endfor %}
         {% endfor %}
+      </div>
     </div>
 </div>
 
