@@ -1,0 +1,100 @@
+.roxinho{
+    color: rgb(246, 82, 255);
+    text-decoration: none;
+  }
+.laranja{
+color: rgb(255, 145, 77);
+text-decoration: none;
+}
+.blueback{
+background-color: rgb(14, 30, 70);
+}
+.custom-container {
+max-width: 85vw;
+width: 100%;
+}
+.form-container {
+    background: rgb(5, 14, 43);
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: rgb(246, 82, 255);
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+.form-group textarea {
+    resize: vertical;
+}
+.form-group input[type="file"] {
+    padding: 5px;
+}
+.form-group button {
+    background-color: rgb(255, 145, 77);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.form-group button:hover {
+    background-color: rgb(246, 82, 255);
+}
+input::placeholder,
+textarea::placeholder {
+color: #ffffff;
+}
+
+input[type="date"] {
+color: white; 
+}
+
+input[type="file"] {
+color: white; 
+}
+
+select{
+color: white;
+background-color: white;
+}
+
+option{
+color: white;
+background-color: white;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+filter: invert(50%);
+}
+
+input, textarea, select {
+border: none;
+}
+.profile-photo-container img {
+width: 120px;
+height: 120px;
+border-radius: 50%;
+object-fit: cover;
+cursor: pointer;
+border: 3px solid #ddd;
+}
+.change-photo-label {
+    color: #007BFF;
+    cursor: pointer;
+    margin-top: 10px;
+    text-align: center;
+}
