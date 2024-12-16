@@ -12,6 +12,9 @@ def index(request):
 def login(request):
     return render(request, "login.html")
 
+def cadastro(request):
+    return render(request, "cadastro.html")
+
 def info(request, id):
     curso = get_object_or_404(Curso, id = id)
     posts = Projeto.objects.filter( curso = curso )
