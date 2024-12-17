@@ -12,5 +12,5 @@
 
 ## Para este sistema, serão usadas as seguintes Ferramentas:
 - HTML, CSS e JavaScript
-- MySql e Python
+- SqLite e Python
 - Bootstrap e Django
