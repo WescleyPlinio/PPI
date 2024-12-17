@@ -27,13 +27,13 @@
           {% for post in posts %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
               <div class="d-flex justify-content-center align-items-center">
-                <div class="card my-3 mx-1" style="max-width: 40em;">
+                <div class="card py-1" style="max-width: 40em;">
                   <div class="row">
                     <div class="col-md-6">
-                      <img src="{{ post.capa.url }}" class="img-fluid rounded-start h-100" style="max-height: 100%;" alt="{{ post.titulo }}">
+                      <img src="{{ post.capa.url }}" class="img-fluid rounded-0 w-100" style="max-height: 100%;" alt="{{ post.titulo }}">
                     </div>
                     <div class="col-md-6 ">
-                      <div class="card-body">
+                      <div class="card-body py-0">
                         <h5 class="card-title roxinho">{{ post.titulo }}</h5>
                         <p class="card-text">{{ post.descricao }}</p>
                         <a class="text-end laranja" href="{% url 'post' post.id %}">Ver Post</a>

@@ -24,13 +24,13 @@
             {% for x in range%}
                 {% for projeto in projetos %}
                 <div class="col-md-6">
-                  <div class="card">
+                  <div class="card py-1">
                       <div class="row">
                         <div class="col-md-6">
-                          <img src="{{ projeto.capa.url }}" class="h-100 img-fluid rounded-start" alt="...">
+                          <img src="{{ projeto.capa.url }}" class="w-100 img-fluid rounded-0" alt="...">
                         </div>
                         <div class="col-md-6">
-                          <div class="card-body">
+                          <div class="card-body py-0">
                             <h5 class="card-title roxinho">{{ projeto.titulo }}</h5>
                             <p class="card-text">{{ projeto.descricao }}</p>
                             <a class="text-end laranja" href="{% url 'post' projeto.id %}">Ver Post</a>
