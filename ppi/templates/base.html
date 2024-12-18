@@ -11,47 +11,63 @@
   <body style="background-color: rgb(5, 14, 43);">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container custom-container">
-          <a class="navbar-brand" href="{% url "index" %}">
-            <img src="{% static 'imgs/logotopo.svg' %}" alt="Logo" style="max-height: 80px;">
-          </a>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mb-2 mb-lg-0 ms-auto d-flex align-items-center">
-              {% comment %} <a href="{% url "login" %}" class="bg-light rounded-circle">
-                <i class="fa-solid fa-magnifying-glass p-2 text-dark"></i>
-                </a> {% endcomment %}
-                <form 
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container custom-container">
+      <a class="navbar-brand" href="{% url 'index' %}">
+          <img src="{% static 'imgs/logotopo.svg' %}" alt="Logo" style="max-height: 80px;">
+      </a>
+      
+      <!-- Navbar toggler button (responsivo) -->
+      <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0 ms-auto d-flex align-items-center">
+              {% comment %} 
+              <a href="{% url 'login' %}" class="bg-light rounded-circle">
+                  <i class="fa-solid fa-magnifying-glass p-2 text-dark"></i>
+              </a> 
+              {% endcomment %}
+              
+              <form 
                   action="{% url 'pesquisar' %}" 
                   method="GET"
                   class="d-flex justify-content-center"
                   onsubmit="return redirectToSearchPage();"
-                  >
+              >
                   <input 
                       type="text"
-                      {% if request.path == "/pesquisar/" %}
-                      style = " width: 350px; outline: none;"
-                      {% endif %} 
+                      {% if request.path == '/pesquisar/' %}
+                      style="width: 350px; outline: none;"
+                      {% endif %}
                       class="form-control search-bar" 
                       placeholder="Pesquisar..." 
                       onclick="window.location.href='{% url 'pesquisar' %}';"
-                      readonly  
+                      readonly
                   >
-                </form>
-                
+              </form>
+              
               {% for curso in cursos %}
               <li class="nav-item mx-3">
-                <a class="{% if request.path == '/projetos/' %} roxinho {% else %} text-white {% endif %} nav-link" href="{% url 'projetos' curso.id %}"><img src="{{ curso.logo.url }}" style="max-width: 1.8rem; margin-right: 5px;" alt="Informática">{{ curso.titulo }}</a>
+                  <a class="{% if request.path == '/projetos/' %} roxinho {% else %} text-white {% endif %} nav-link" href="{% url 'projetos' curso.id %}">
+                      <img src="{{ curso.logo.url }}" style="max-width: 1.8rem; margin-right: 5px;" alt="Informática">
+                      {{ curso.titulo }}
+                  </a>
               </li>
               {% endfor %}
-          
+              
               <li class="nav-item me-3"> 
-                <a class="nav-link" href="{% url 'verperfil' %}"><img style="max-width: 50px;" src="{% static 'imgs/btnlogin.svg' %}" alt="login"></a>
+                  <a class="nav-link" href="{% url 'verperfil' %}">
+                      <img style="max-width: 50px;" src="{% static 'imgs/btnlogin.svg' %}" alt="login">
+                  </a>
               </li>
-            </ul> 
-          </div>
-        </div>
-    </nav>
+          </ul> 
+      </div>
+  </div>
+</nav>
+
 
     {% block conteudo %}
     {% endblock conteudo %}
