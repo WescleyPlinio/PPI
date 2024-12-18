@@ -41,17 +41,13 @@
       <div class="row g-2 w-100 d-flex justify-content-center">
         {% for x in range %}
         {% for projeto in projetos %}
-        <div class="col-md-4">
-            <div class="card" style="background-color: rgb(5, 14, 43); height: 12em">
-                <div class="card-body">
+        <div class="col-md-6 col-sm-12 col-lg-4">
+            <div class="card py-1" style="background-color: rgb(5, 14, 43); height: 12em;">
+                <div class="card-body d-flex flex-column">
                     <h3 class="card-title roxinho">{{ projeto.titulo }}</h3>
-                    <h6 class="card-subtitle mb-2 laranja">Orientado por Ari</h6>
-                    <p class="card-text text-white">{{ projeto.justificativa }}</p>
-                    <a href="{% url "post" 1 %}" style="text-decoration: none;" class="card-link">
-                        <button type= 'button' class= "btn btn-light my-2">Vizualizar</button>
-                    </a>
-                    <a href="#" class="card-link">
-                        <button type= 'button' class= "btn btn-light my-2">Editar</button>
+                    <h6 class="card-subtitle laranja">Orientado por Ari</h6>
+                    <a href="{% url 'post' projeto.id %}" class="card-link mt-auto">
+                        <button type= 'button' class= "btn btn-light">Vizualizar</button>
                     </a>
                 </div>
             </div>

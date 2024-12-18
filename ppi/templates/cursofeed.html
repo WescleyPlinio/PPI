@@ -7,12 +7,12 @@
 <div class="container custom-container mb-5 py-3">
     <div class="row g-0">
         <div class="col-md-8 d-flex justify-content-start align-items-center">
-            <h1 class="text-white text-left" style="font-size: 3.5em;">
-                Projetos do curso de <a class="roxinho">{{curso.titulo}}</a> 
+            <h1 class="text-white text-left">
+                Projetos do curso de <a class="roxinho">{{ curso.titulo }}</a> 
             </h1>
         </div>
         <div class="col-md-4 d-flex justify-content-end align-items-center">
-            <img src="{{curso.logo.url}}" alt="Logo" style="max-height: 20rem;">
+            <img src="{{curso.logo.url}}" alt="{{ curso.titulo }}" style="max-height: 12em; max-width: 100%;">
         </div>
     </div>
 </div>
@@ -20,20 +20,20 @@
 <!-- Feed -->
 <div class="container-fluid blueback">
     <div class="container custom-container">
-        <div class="row g-2 d-flex align-items-center">
+        <div class="row g-4 d-flex justify-content-center align-items-center">
             {% for x in range%}
                 {% for projeto in projetos %}
-                <div class="col-md-6">
-                  <div class="card py-1">
+                <div class="col-md-8 col-lg-6 col-sm-6">
+                  <div class="card">
                       <div class="row">
-                        <div class="col-md-6">
-                          <img src="{{ projeto.capa.url }}" class="w-100 img-fluid rounded-0" alt="...">
+                        <div class="col-md-12 col-lg-6 col-sm-12">
+                          <img src="{{ projeto.capa.url }}" class="h-100 w-100 img-fluid rounded-0" alt="{{ projeto.titulo }}">
                         </div>
-                        <div class="col-md-6">
-                          <div class="card-body py-0">
+                        <div class="col-md-12 col-lg-6 col-sm-12">
+                          <div class="card-body py-4">
                             <h5 class="card-title roxinho">{{ projeto.titulo }}</h5>
                             <p class="card-text">{{ projeto.descricao }}</p>
-                            <a class="text-end laranja" href="{% url 'post' projeto.id %}">Ver Post</a>
+                            <a class="card-link laranja" href="{% url 'post' projeto.id %}">Ver Post</a>
                           </div>
                         </div>
                       </div>
