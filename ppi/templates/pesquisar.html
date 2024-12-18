@@ -17,7 +17,7 @@
     <h2 class="laranja">Ideias para você:</h2>
     <div class="row">
         {% for ideia in ideias %}
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <div class="card blueback text-white text-center p-3">
                     {{ ideia }}
                 </div>
@@ -33,10 +33,10 @@
          <div class="row">
              {% for projeto in projetos %}
                  <div class="col-md-4 mb-4">
-                     <div class="card bg-dark text-white">
+                     <div class="card">
                          <img src="{{ projeto.capa.url }}" alt="{{ projeto.titulo }}" class="card-img-top">
                          <div class="card-body">
-                             <h5 class="card-title laranja">{{ projeto.titulo }}</h5>
+                             <h5 class="card-title roxinho">{{ projeto.titulo }}</h5>
                              <p class="card-text">{{ projeto.descricao }}</p>
                          </div>
                      </div>
