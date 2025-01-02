@@ -1,6 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from .forms import ProjetoForm
 from .models import Projeto, Curso
 from django.core.paginator import Paginator
+
 
 def index(request):
     posts = Projeto.objects.all()
@@ -32,30 +34,23 @@ def post(request, id):
     }
     return render(request, "post.html", context)
 
-def addpost(request):
-
-    context = {
-
-    }
-
-    if request.method == "POST":
-        post = Projeto(titulo = request.POST['titulo'],
-                    descricao = request.POST['descricao'],
-                    capa = request.POST['capa'],
-                    pdf = request.POST['pdf'],
-                    resumo = request.POST['resumo'],
-                    curso = request.POST['curso'],
-                    usuarios1 = request.POST['usuarios1'],
-                    usuarios2 = request.POST['usuarios2'],
-                    )
-        
-        post.save()
-        
-        return render (request, "addpost.html", context)
-
+def adicionar_projetos(request):
+    if request.method == 'POST':
+        form = ProjetoForm(request.POST, request.FILES)
+        if form.is_valid():
+            projeto = form.save(commit=False)
+            form.save()
+            form.save_m2m() 
+            return redirect('projetos')
     else:
-        return render (request, "addpost.html", context)
+        form = ProjetoForm()
+    return render(request, 'addpost.html', {'form': form})
+
     
+def projetos(request):
+    projetos = Projeto.oblects.all()
+
+    return render(request, 'pesquisar.html', {'projetos':projetos})   
 
 def verperfil(request):
 

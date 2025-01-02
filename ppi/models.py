@@ -23,12 +23,17 @@ class Curso(models.Model):
 
 class Projeto(models.Model):
     titulo = models.CharField(max_length=80)
-    descricao = models.TextField(max_length=120)
-    resumo = models.TextField(max_length=2000)
+    resumo = models.TextField(max_length=120)
+    objetivo = models.TextField(max_length=2000)
     capa = models.ImageField()
+    pdf = models.FileField()
+    images = models.ImageField()
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
     usuarios1 = models.ManyToManyField(Usuario1)
     usuarios2 = models.ManyToManyField(Usuario2)
+    curso = models.CharField(max_length=80)
+    palavrasChave = models.CharField(max_length=80)
+
     
     def __str__(self):
         return self.titulo
