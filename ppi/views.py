@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ProjetoForm
-from .models import Projeto, Curso
+from django.http import JsonResponse
+from .models import Projeto, Curso, Aluno, Orientador
 from django.core.paginator import Paginator
-
 
 def index(request):
     posts = Projeto.objects.all()
@@ -38,13 +38,23 @@ def adicionar_projetos(request):
     if request.method == 'POST':
         form = ProjetoForm(request.POST, request.FILES)
         if form.is_valid():
-            projeto = form.save(commit=False)
             form.save()
-            form.save_m2m() 
-            return redirect('projetos')
+            return redirect('pesquisar')  
     else:
         form = ProjetoForm()
     return render(request, 'addpost.html', {'form': form})
+
+def aluno_search(request):
+    query = request.GET.get('q', '')
+    alunos = Aluno.objects.filter(nome__icontains=query, tipo='aluno')[:10]
+    results = [{'id': aluno.id, 'text': f"{aluno.nome} ({aluno.email})"} for aluno in alunos]
+    return JsonResponse({'results': results})
+
+def professor_search(request):
+    query = request.GET.get('q', '')
+    orientadores = Orientador.objects.filter(nome__icontains=query, tipo='professor')[:10]
+    results = [{'id': orientador.id, 'text': f"{orientador.nome} ({orientador.email})"} for orientador in orientadores]
+    return JsonResponse({'results': results})
 
     
 def projetos(request):

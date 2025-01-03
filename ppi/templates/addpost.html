@@ -1,85 +1,142 @@
 {% extends "base.html" %}
 {% load static %}
-{% block tittle %} Adicionar posts {% endblock tittle %}
+{% block title %}Adicionar Projeto{% endblock title %}
 {% block conteudo %}
 
+<!-- Estilos e scripts necessários para django-select2 -->
+<link href="{% static 'django_select2/css/select2.min.css' %}" rel="stylesheet">
+<script src="{% static 'django_select2/js/select2.min.js' %}"></script>
+
 <div class="container custom-container mb-5 py-3">
-          <h1 class="text-white text-center" style="font-size: 3.5em;">
-              Adicione seu <a class="roxinho">projeto aqui!</a> 
-          </h1>
+  <h1 class="text-white text-center" style="font-size: 3.5em;">
+    Adicione seu <a class="roxinho">projeto aqui!</a>
+  </h1>
 </div>
+
 <div class="container-fluid blueback py-5">
   <div class="form-container mx-auto custom-container">
     <form action="" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
+
       <div class="row g-0">
         <div class="col-md-6 p-3">
           <!-- Título -->
           <div class="form-group">
-            <label for="title">Título:</label>
-            <input class="blueback" type="text" id="title" name="title" placeholder="Digite o título do projeto" required>
+            <label for="titulo">Título:</label>
+            <input class="blueback form-control" type="text" id="titulo" name="title" placeholder="Digite o título do projeto" required>
           </div>
+
           <!-- Resumo -->
           <div class="form-group">
             <label for="summary">Resumo:</label>
-              <textarea class="blueback" id="summary" name="summary" placeholder="Digite o resumo do projeto" rows="5" required></textarea>
+            <textarea class="blueback form-control" id="summary" name="summary" placeholder="Digite o resumo do projeto" rows="5" required></textarea>
           </div>
+
           <!-- Objetivo -->
           <div class="form-group">
             <label for="objective">Objetivo:</label>
-            <textarea class="blueback"id="objective" name="objective" placeholder="Descreva o objetivo do projeto" rows="5" required></textarea>
+            <textarea class="blueback form-control" id="objective" name="objective" placeholder="Descreva o objetivo do projeto" rows="5" required></textarea>
           </div>
+
           <!-- PDF -->
           <div class="form-group">
             <label for="pdf">Arquivo PDF:</label>
-            <input class="blueback" type="file" id="pdf" name="pdf" accept=".pdf" required>
+            <input class="blueback form-control" type="file" id="pdf" name="pdf" accept=".pdf" required>
           </div>
         </div>
 
         <div class="col-md-6 p-3">
-          <!-- Imagem de capa -->
+          <!-- Capa do Projeto -->
           <div class="form-group">
             <label for="images">Capa do projeto:</label>
-            <input class="blueback" type="file" id="images" name="images[]" accept="image/*" multiple>
+            <input class="blueback form-control" type="file" id="images" name="images[]" accept="image/*" required>
           </div>
-          <!-- Imagens -->
-          <div class="form-group">
-            <label for="images">Imagens:</label>
-            <input class="blueback" type="file" id="images" name="images[]" accept="image/*" multiple>
-          </div>
+
           <!-- Alunos -->
           <div class="form-group">
-            <label for="Usuario2">Alunos (separados por vírgula):</label>
-            <input class="blueback" type="text" id="students" name="students" placeholder="nomes dos alunos" required>
+            <label for="Usuario1">Alunos:</label>
+            <select class="form-control blueback" id="Usuario1" name="alunos" multiple></select>
           </div>
+
           <!-- Professores -->
           <div class="form-group">
-            <label for="Usuario1">Professores:</label>
-            <input class="blueback" type="text" id="teachers" name="teachers" placeholder="nome do professor orientador" required>
+            <label for="Usuario2">Professores:</label>
+            <select class="form-control blueback" id="Usuario2" name="professores" multiple></select>
           </div>
+
           <!-- Curso -->
           <div class="form-group">
             <label for="course">Curso:</label>
-            <select class="blueback" id="course" name="course" required>
-              <option class="blueback" value="" disabled selected>Selecione o curso</option>
-              <option class="blueback" value="ciencias-da-computacao">Informática</option>
-              <option class="blueback" value="engenharia">Edificações</option>
-              <option class="blueback" value="design">Meio Ambiente</option>
+            <select class="blueback form-control" id="course" name="course" required>
+              <option value="" disabled selected>Selecione o curso</option>
+              <option value="informatica">Informática</option>
+              <option value="edificacoes">Edificações</option>
+              <option value="meio_ambiente">Meio Ambiente</option>
             </select>
           </div>
+
           <!-- Palavras-Chave -->
           <div class="form-group">
             <label for="keywords">Palavras-Chave (separadas por vírgula):</label>
-            <input class="blueback" type="text" id="keywords" name="keywords" placeholder="Ex.: inovação, tecnologia, pesquisa" required>
+            <input class="blueback form-control" type="text" id="keywords" name="keywords" placeholder="Ex.: inovação, tecnologia, pesquisa" required>
           </div>
+
           <!-- Botão de Submissão -->
           <div class="form-group mt-4">
-            <button type="submit">Adicionar Projeto</button>
+            <button class="btn btn-primary" type="submit">Adicionar Projeto</button>
           </div>
         </div>
       </div>
     </form>
   </div>
 </div>
-  {% endblock conteudo %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Inicializa o Select2 para os campos de alunos e professores
+    $('#Usuario1').select2({
+      placeholder: "Digite o nome ou e-mail do aluno",
+      ajax: {
+        url: "{% url 'aluno-search' %}",
+        dataType: 'json',
+        delay: 250,
+        data: function (params) {
+          return {
+            q: params.term
+          };
+        },
+        processResults: function (data) {
+          return {
+            results: data.results
+          };
+        },
+        cache: true
+      },
+      minimumInputLength: 1
+    });
+
+    $('#Usuario2').select2({
+      placeholder: "Digite o nome ou e-mail do professor",
+      ajax: {
+        url: "{% url 'professor-search' %}",
+        dataType: 'json',
+        delay: 250,
+        data: function (params) {
+          return {
+            q: params.term
+          };
+        },
+        processResults: function (data) {
+          return {
+            results: data.results
+          };
+        },
+        cache: true
+      },
+      minimumInputLength: 1
+    });
+  });
+</script>
+
+{% endblock conteudo %}

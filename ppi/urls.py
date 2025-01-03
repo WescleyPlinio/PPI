@@ -11,6 +11,8 @@ urlpatterns = [
     path("perfil/", views.verperfil, name = "verperfil"),
     path("editar_perfil/", views.editarperfil, name = "editarperfil"),
     path("pesquisar/", views.pesquisar, name = "pesquisar"),
+     path('search/alunos/', views.aluno_search, name='aluno-search'),
+    path('search/professores/', views.professor_search, name='professor-search'),
 ]
 
 
