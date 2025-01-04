@@ -25,14 +25,14 @@ class Projeto(models.Model):
     titulo = models.CharField(max_length=80)
     resumo = models.TextField(max_length=120)
     objetivo = models.TextField(max_length=2000)
-    capa = models.ImageField()
+    capa = models.ImageField('media/')
     pdf = models.FileField(blank=True, null=True)
-    images = models.ImageField(blank=True, null=True)
+    imagens = models.ImageField(blank=True, null=True)
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
-    alunos = models.ManyToManyField(Aluno)
-    orientadores = models.ManyToManyField(Orientador)
+    alunos = models.ManyToManyField(Aluno, related_name="projetos")
+    orientadores = models.ManyToManyField(Orientador, related_name="projetos")
     curso = models.CharField(max_length=80)
-    palavrasChave = models.CharField(max_length=2000)
+    palavras_chave = models.CharField(max_length=2000)
 
     
     def __str__(self):

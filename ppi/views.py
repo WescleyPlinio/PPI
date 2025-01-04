@@ -38,11 +38,25 @@ def adicionar_projetos(request):
     if request.method == 'POST':
         form = ProjetoForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            return redirect('pesquisar')  
+            projeto = form.save()
+           
+            alunos_ids = request.POST.getlist('alunos') 
+            orientadores_ids = request.POST.getlist('orientadores')
+            projeto.alunos.set(alunos_ids)
+            projeto.orientadores.set(orientadores_ids)
+
+            return redirect("pesquisar") 
     else:
         form = ProjetoForm()
-    return render(request, 'addpost.html', {'form': form})
+
+    alunos = Aluno.objects.all()
+    orientadores = Orientador.objects.all()
+
+    return render(request, "addpost.html", {
+        "form": form,
+        "alunos": alunos,
+        "orientadores": orientadores,
+    })
 
 def aluno_search(request):
     query = request.GET.get('q', '')

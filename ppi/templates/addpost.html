@@ -17,69 +17,84 @@
   <div class="form-container mx-auto custom-container">
     <form action="" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
-      {{ form.as_p }}
 
       <div class="row g-0">
         <div class="col-md-6 p-3">
           <!-- Título -->
           <div class="form-group">
-            <label for="titulo">Título:</label>
-            <input class="blueback form-control" type="text" id="titulo" name="title" placeholder="Digite o título do projeto" required>
+            <label for="id_titulo">Título:</label>
+            {{ form.titulo}}
           </div>
 
           <!-- Resumo -->
           <div class="form-group">
-            <label for="summary">Resumo:</label>
-            <textarea class="blueback form-control" id="summary" name="summary" placeholder="Digite o resumo do projeto" rows="5" required></textarea>
+            <label for="id_resumo">Resumo:</label>
+            {{ form.resumo }}
           </div>
 
           <!-- Objetivo -->
           <div class="form-group">
-            <label for="objective">Objetivo:</label>
-            <textarea class="blueback form-control" id="objective" name="objective" placeholder="Descreva o objetivo do projeto" rows="5" required></textarea>
+            <label for="id_objetivo">Objetivo:</label>
+            {{ form.objetivo }}
           </div>
 
           <!-- PDF -->
           <div class="form-group">
-            <label for="pdf">Arquivo PDF:</label>
-            <input class="blueback form-control" type="file" id="pdf" name="pdf" accept=".pdf" required>
+            <label for="id_pdf">Arquivo PDF:</label>
+            {{ form.pdf }}
           </div>
         </div>
 
         <div class="col-md-6 p-3">
           <!-- Capa do Projeto -->
           <div class="form-group">
-            <label for="images">Capa do projeto:</label>
-            <input class="blueback form-control" type="file" id="images" name="images[]" accept="image/*" required>
+            <label for="id_capa">Capa do projeto:</label>
+            {{ form.capa }}
+          </div>
+
+          <!-- Fotos do Projeto -->
+          <div class="form-group">
+            <label for="images">Imagens do projeto:</label>
+            {{ form.imagens }}
           </div>
 
           <!-- Alunos -->
           <div class="form-group">
-            <label for="Usuario1">Alunos:</label>
-            <select class="form-control blueback" id="Usuario1" name="alunos" multiple></select>
+            <label for="id_alunos">Alunos:</label>
+            <select class="form-control blueback" id="alunos" name="alunos" multiple class="form-control select2">
+              {% for aluno in alunos %}
+            <option value="{{ aluno.id }}">{{ aluno.nome }}</option>
+        {% endfor %}
+            </select>
           </div>
 
-          <!-- Professores -->
+          <!-- Orientadores -->
           <div class="form-group">
-            <label for="Usuario2">Professores:</label>
-            <select class="form-control blueback" id="Usuario2" name="professores" multiple></select>
+            <label for="id_orientadores">Orientador(es):</label>
+            <select class="form-control blueback" id="orientadores" name="orientadores" multiple class="form-control">
+              {% for orientador in orientadores %}
+            <option value="{{ orientador.id }}">{{ orientador.nome }}</option>
+        {% endfor %}
+            </select>
           </div>
+
+          <script src="{% static 'django_select2/js/select2.min.js' %}"></script>
+<script>
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+</script>
 
           <!-- Curso -->
           <div class="form-group">
             <label for="course">Curso:</label>
-            <select class="blueback form-control" id="course" name="course" required>
-              <option value="" disabled selected>Selecione o curso</option>
-              <option value="informatica">Informática</option>
-              <option value="edificacoes">Edificações</option>
-              <option value="meio_ambiente">Meio Ambiente</option>
-            </select>
+            {{ form.curso }}
           </div>
 
           <!-- Palavras-Chave -->
           <div class="form-group">
             <label for="keywords">Palavras-Chave (separadas por vírgula):</label>
-            <input class="blueback form-control" type="text" id="keywords" name="keywords" placeholder="Ex.: inovação, tecnologia, pesquisa" required>
+            {{ form.palavras_chave }}
           </div>
 
           <!-- Botão de Submissão -->
