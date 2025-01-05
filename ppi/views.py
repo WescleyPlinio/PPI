@@ -19,7 +19,7 @@ def cadastro(request):
 
 def info(request, id):
     curso = get_object_or_404(Curso, id = id)
-    posts = Projeto.objects.filter( curso = curso )
+    posts = Projeto.objects.filter( curso = id )
     context = {
         "curso" : curso,
         "projetos" : posts,
