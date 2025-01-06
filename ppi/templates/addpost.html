@@ -9,7 +9,7 @@
 
 <div class="container custom-container mb-5 py-3">
   <h1 class="text-white text-center" style="font-size: 3.5em;">
-    Adicione seu <a class="roxinho">projeto aqui!</a>
+    {% if projeto %}Edite seu {% else %}Adicione seu {% endif %}<a class="roxinho">projeto aqui!</a>
   </h1>
 </div>
 
@@ -99,7 +99,10 @@
 
           <!-- Botão de Submissão -->
           <div class="form-group mt-4">
-            <button class="btn btn-primary" type="submit">Adicionar Projeto</button>
+            <button class="btn btn-primary" type="submit">{% if projeto %}Salvar Alterações{% else %}Adicionar{% endif %}</button></button>
+            {% if projeto %}
+                <a href="{% url 'verperfil' %}" class="btn btn-secondary">Cancelar</a>
+            {% endif %}
           </div>
         </div>
       </div>

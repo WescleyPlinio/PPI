@@ -34,9 +34,14 @@ def post(request, id):
     }
     return render(request, "post.html", context)
 
-def adicionar_projetos(request):
+def adicionar_projetos(request, pk=None):
+    if pk:
+        projeto = get_object_or_404(Projeto, pk=pk)
+    else:
+        projeto = None
+
     if request.method == 'POST':
-        form = ProjetoForm(request.POST, request.FILES)
+        form = ProjetoForm(request.POST, request.FILES,  instance=projeto)
         if form.is_valid():
             projeto = form.save()
            
@@ -45,9 +50,9 @@ def adicionar_projetos(request):
             projeto.alunos.set(alunos_ids)
             projeto.orientadores.set(orientadores_ids)
 
-            return redirect("pesquisar") 
+            return redirect("perfil") 
     else:
-        form = ProjetoForm()
+        form = ProjetoForm(instance=projeto)
 
     alunos = Aluno.objects.all()
     orientadores = Orientador.objects.all()
@@ -56,6 +61,7 @@ def adicionar_projetos(request):
         "form": form,
         "alunos": alunos,
         "orientadores": orientadores,
+        "projeto": projeto,
     })
 
 def aluno_search(request):
