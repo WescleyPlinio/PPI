@@ -12,8 +12,10 @@ urlpatterns = [
     path("pesquisar/", views.pesquisar, name = "pesquisar"),
     path('search/alunos/', views.aluno_search, name='aluno-search'),
     path('search/professores/', views.professor_search, name='professor-search'),
-    path("novos_projetos/", views.adicionar_projetos, name = "form_post"),
-    path('projeto/<int:pk>/', views.adicionar_projetos, name='editar_projeto'), 
+    path("formprojeto/", views.formprojeto, name = "form_post"),
+    path('projeto/<int:pk>/', views.formprojeto, name='editar_projeto'), 
+    path('projeto/excluir/<int:pk>/', views.excluir_projeto, name='excluir_projeto'),
 ]
+
 
 

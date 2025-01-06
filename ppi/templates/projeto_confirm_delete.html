@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Exclusão</title>
+</head>
+<body>
+    <h1>Tem certeza de que deseja excluir este projeto?</h1>
+    <p><strong>{{ projeto.titulo }}</strong></p>
+
+    <form method="GET" action="{% url 'excluir_projeto' projeto.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sim, excluir</button>
+        <a href="{% url 'verperfil' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</body>
+</html>

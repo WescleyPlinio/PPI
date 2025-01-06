@@ -34,7 +34,7 @@ def post(request, id):
     }
     return render(request, "post.html", context)
 
-def adicionar_projetos(request, pk=None):
+def formprojeto(request, pk=None):
     if pk:
         projeto = get_object_or_404(Projeto, pk=pk)
     else:
@@ -50,19 +50,29 @@ def adicionar_projetos(request, pk=None):
             projeto.alunos.set(alunos_ids)
             projeto.orientadores.set(orientadores_ids)
 
-            return redirect("perfil") 
+            return redirect("verperfil") 
     else:
         form = ProjetoForm(instance=projeto)
 
     alunos = Aluno.objects.all()
     orientadores = Orientador.objects.all()
 
-    return render(request, "addpost.html", {
+    return render(request, "formprojeto.html", {
         "form": form,
         "alunos": alunos,
         "orientadores": orientadores,
         "projeto": projeto,
     })
+
+def excluir_projeto(request, pk):
+    projeto = get_object_or_404(Projeto, pk=pk)
+
+    if request.method == 'GET':
+        projeto.delete()
+        return redirect('verperfil')
+        
+    return render(request, 'projeto_confirm_delete.html', {'projeto': projeto}) 
+
 
 def aluno_search(request):
     query = request.GET.get('q', '')
@@ -78,13 +88,13 @@ def professor_search(request):
 
     
 def projetos(request):
-    projetos = Projeto.oblects.all()
+    projetos = Projeto.objects.all()
 
     return render(request, 'pesquisar.html', {'projetos':projetos})   
 
 def verperfil(request):
 
-    post = Projeto.objects.all
+    post = Projeto.objects.all()
     context = {
         "projetos" : post,
         "range" : range(2)

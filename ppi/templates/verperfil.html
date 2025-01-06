@@ -50,6 +50,10 @@
                         <button type= 'button' class= "btn btn-light">Vizualizar</button>
                     </a>
                     <a href="{% url 'editar_projeto' projeto.id %}" class="btn btn-primary">Editar</a>
+                    <form action="{% url 'excluir_projeto' projeto.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Excluir</button>
+                    </form>
                 </div>
             </div>
         </div>
