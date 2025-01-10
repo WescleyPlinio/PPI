@@ -3,6 +3,9 @@ from .forms import ProjetoForm
 from django.http import JsonResponse
 from .models import Projeto, Curso, Aluno, Orientador
 from django.core.paginator import Paginator
+from .models import Comentario
+from .forms import ComentarioForm
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     posts = Projeto.objects.all()
@@ -11,11 +14,14 @@ def index(request):
     }
     return render(request, "index.html", context)
 
+
 def login(request):
     return render(request, "login.html")
 
+
 def cadastro(request):
     return render(request, "cadastro.html")
+
 
 def info(request, id):
     curso = get_object_or_404(Curso, id = id)
@@ -27,13 +33,31 @@ def info(request, id):
     }
     return render(request, "cursofeed.html", context)
 
+
 def post(request, id):
     post = Projeto.objects.get(id=id)
+    projeto = get_object_or_404(Projeto, id=id)
+    comentarios = projeto.comentarios.all() 
+    if request.method == "POST":
+        form = ComentarioForm(request.POST)
+        if form.is_valid():
+            comentario = form.save(commit=False)
+            comentario.usuario = request.user
+            comentario.projeto = projeto
+            comentario.save()
+            return redirect('post', projeto_id=projeto.id)
+    else:
+        form = ComentarioForm()
+
     context = {
         "post" : post,
+        'comentarios': comentarios,
+        'form': form
     }
     return render(request, "post.html", context)
 
+
+@login_required
 def formprojeto(request, pk=None):
     if pk:
         projeto = get_object_or_404(Projeto, pk=pk)
@@ -64,6 +88,29 @@ def formprojeto(request, pk=None):
         "projeto": projeto,
     })
 
+
+@login_required
+def criar_comentario(request):
+    if request.method == "POST":
+        form = ComentarioForm(request.POST)
+        if form.is_valid():
+            comentario = form.save(commit=False) 
+            comentario.usuario = request.user 
+            comentario.save() 
+            print(comentario)
+            return redirect('post')
+    else:
+        form = ComentarioForm()
+
+    return render(request, 'criar_comentario.html', {'form': form})
+
+
+def listar_comentarios(request):
+    comentarios = Comentario.objects.all().order_by('-criado_em')
+    return render(request, 'post.html', {'comentarios': comentarios})
+
+
+@login_required
 def excluir_projeto(request, pk):
     projeto = get_object_or_404(Projeto, pk=pk)
 

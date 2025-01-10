@@ -114,18 +114,24 @@
 <div>
     <h1 class="laranja text-left">Comentários</h1>
     <div class="form-group col-md-12 col-lg-7 col-sm-12 d-flex justify-content-start align-items-center">
-            <form action="processar_comentarios.php" method="post">
+            <form method="post">
+                {% csrf_token %}
                 <label for="comentario">Comentário:</label>
                 <textarea id="comentario" name="comentario" placeholder="Digite seu comentário" rows="5" required></textarea>
                 <button type="submit" class="btn btn-primary">Enviar Comentário</button>
             </form>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-            <h5 class="card-title">Título especial</h5>
-            <p class="card-text">Com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional.</p>
-            <a href="#" class="btn btn-primary">Visitar</a>
-            </div>
-        </div>
+            <p class="roxinho">Comentários</p>
+            <ul>
+                {% for comentario in comentarios %}
+                    <li>
+                        <strong>{{ comentario.usuario.username }}</strong> comentou:
+                        <p>{{ comentario.texto }}</p>
+                        <small>Em {{ comentario.criado_em|date:"d/m/Y H:i" }}</small>
+                    </li>
+                {% empty %}
+                    <p>Sem comentários ainda.</p>
+                {% endfor %}
+            </ul> 
     </div>
 </div>
 
