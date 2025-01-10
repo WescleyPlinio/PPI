@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Aluno(models.Model):
     nome = models.CharField(max_length=50)
@@ -37,6 +38,14 @@ class Projeto(models.Model):
     
     def __str__(self):
         return self.titulo
+
+class Comentario(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    comentario =  models.TextField(max_length=1000)
+    criado_em = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Comentário de {self.usuario.username} em {self.criado_em.strftime('%d/%m/%Y %H:%M')}"
     
 class FotoProjeto(models.Model):
     projeto = models.ForeignKey(Projeto, on_delete=models.CASCADE, related_name='photos')

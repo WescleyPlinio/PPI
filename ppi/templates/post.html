@@ -101,14 +101,41 @@
             {% for prof in post.usuarios2.all %}
             <a href="{% url 'verperfil' %}" style="text-decoration: none;">
                 <div>
-                    <img src="{% if prof.foto %} {{prof.foto.url}} {% else %} {% static 'imgs/usericn.jpg' %}{% endif %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
-                    <h5 class="text-center roxinho mt-1">{{prof.nome}}</h5>
+                    <img src="{% if prof.foto %} {{prof.foto.url}} {% else %} {% static 'imgs/usericn.jpg' %}{% endif %}" style="max-width: 10rem;" class="rounded-circle" alt="...""">
+                    <h5 class="text-center roxinho mt-1">{{orientador.nome}}</h5>
                 </div>
             </a>
             {% endfor %}
         </div>
-
     </div>
 </div>
+
+<!-- Comentarios -->
+<div>
+    <h1 class="laranja text-left">Comentários</h1>
+    <div class="form-group col-md-12 col-lg-7 col-sm-12 d-flex justify-content-start align-items-center">
+            <form action="processar_comentarios.php" method="post">
+                <label for="comentario">Comentário:</label>
+                <textarea id="comentario" name="comentario" placeholder="Digite seu comentário" rows="5" required></textarea>
+                <button type="submit" class="btn btn-primary">Enviar Comentário</button>
+            </form>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title">Título especial</h5>
+            <p class="card-text">Com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional.</p>
+            <a href="#" class="btn btn-primary">Visitar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
 
 {% endblock conteudo %}
