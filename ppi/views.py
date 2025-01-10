@@ -1,10 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .forms import ProjetoForm
+from .forms import ProjetoForm, ComentarioForm
 from django.http import JsonResponse
-from .models import Projeto, Curso, Aluno, Orientador
+from .models import Projeto, Curso, Aluno, Orientador, Comentario
 from django.core.paginator import Paginator
-from .models import Comentario
-from .forms import ComentarioForm
 from django.contrib.auth.decorators import login_required
 
 def index(request):
@@ -35,9 +33,9 @@ def info(request, id):
 
 
 def post(request, id):
-    post = Projeto.objects.get(id=id)
     projeto = get_object_or_404(Projeto, id=id)
     comentarios = projeto.comentarios.all() 
+
     if request.method == "POST":
         form = ComentarioForm(request.POST)
         if form.is_valid():
@@ -45,15 +43,16 @@ def post(request, id):
             comentario.usuario = request.user
             comentario.projeto = projeto
             comentario.save()
-            return redirect('post', projeto_id=projeto.id)
+            return redirect('post', id=projeto.id)
     else:
         form = ComentarioForm()
 
     context = {
-        "post" : post,
+        'projeto': projeto,
         'comentarios': comentarios,
         'form': form
     }
+
     return render(request, "post.html", context)
 
 
@@ -89,8 +88,8 @@ def formprojeto(request, pk=None):
     })
 
 
-@login_required
-def criar_comentario(request):
+def criar_comentario(request,projeto_id):
+    projeto = get_object_or_404(Projeto, id=projeto_id)
     if request.method == "POST":
         form = ComentarioForm(request.POST)
         if form.is_valid():
