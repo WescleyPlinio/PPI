@@ -14,16 +14,96 @@
   <div class="form-container mx-auto custom-container">
     <form action="" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
-      {{ form|crispy }}
-        <div class="form-group mt-4">
-          <button class="btn btn-primary" type="submit">{% if projeto %}Salvar Alterações{% else %}Adicionar{% endif %}</button></button>
-          {% if projeto %}
-              <a href="{% url 'verperfil' %}" class="btn btn-secondary">Cancelar</a>
-          {% endif %}
+      <div class="row g-0">
+        <div class="col-md-6 p-3">
+          <!-- Título -->
+          <div class="form-group">
+            <label for="id_titulo">Título:</label>
+            {{ form.titulo}}
+          </div>
+
+
+          <!-- Resumo -->
+          <div class="form-group">
+            <label for="id_resumo">Resumo:</label>
+            {{ form.resumo }}
+          </div>
+
+
+          <!-- Objetivo -->
+          <div class="form-group">
+            <label for="id_objetivo">Objetivo:</label>
+            {{ form.objetivo }}
+          </div>
+
+
+          <!-- PDF -->
+          <div class="form-group">
+            <label for="id_pdf">Arquivo PDF:</label>
+            {{ form.pdf }}
+          </div>
+        </div>
+
+
+        <div class="col-md-6 p-3">
+          <!-- Capa do Projeto -->
+          <div class="form-group">
+            <label for="id_capa">Capa do projeto:</label>
+            {{ form.capa }}
+          </div>
+
+
+          <!-- Fotos do Projeto -->
+          <div class="form-group">
+            <label for="images">Imagens do projeto:</label>
+            {{ form.imagens }}
+          </div>
+
+
+          <!-- Alunos -->
+          <div class="form-group">
+            <label for="alunos">Alunos:</label>
+            <input list="id_alunos" name="aluno" id="alunos" class="form-control" autocomplete="off">
+            <datalist id="id_alunos">
+                {% for aluno in alunos %}
+                    <option value="{{ aluno.nome }}" data-id="{{ aluno.id }}"></option>
+                {% endfor %}
+            </datalist>
+        </div>
+        
+
+          <!-- Orientadores -->
+          <div class="form-group">
+            <label for="orientado">Orientadores:</label>
+              <input list="id_orientadores" name="orientadores" id="orientadores" class="form-control" autocomplete="off">
+              <datalist id="id_orientadores">
+                  {% for orientador in orientadores %}
+                      <option value="{{ orientador.nome }}" data-id="{{ orientador.id }}"></option>
+                  {% endfor %}
+          </div>
+
+
+          <!-- Curso -->
+          <div class="form-group">
+            <label for="course">Curso:</label>
+            {{ form.curso }}
+          </div>
+
+
+          <!-- Palavras-Chave -->
+          <div class="form-group">
+            <label for="keywords">Palavras-Chave (separadas por vírgula):</label>
+            {{ form.palavras_chave }}
+          </div>
+
+
+          <!-- Botão de Submissão -->
+          <div class="form-group mt-4">
+            <button class="btn btn-primary" type="submit">{% if projeto %}Salvar Alterações{% else %}Adicionar{% endif %}</button></button>
+            {% if projeto %}
+                <a href="{% url 'verperfil' %}" class="btn btn-secondary">Cancelar</a>
+            {% endif %}
+          </div>
         </div>
       </div>
-    </div>
-    </form>
-  </div>
-</div>
 {% endblock conteudo %}

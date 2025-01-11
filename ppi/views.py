@@ -68,26 +68,26 @@ def formprojeto(request, pk=None):
         if form.is_valid():
             projeto = form.save()
            
-            alunos_ids = request.POST.getlist('alunos') 
+            alunos_ids = request.POST.getlist('alunos')
             orientadores_ids = request.POST.getlist('orientadores')
             projeto.alunos.set(alunos_ids)
             projeto.orientadores.set(orientadores_ids)
-
-            return redirect("verperfil") 
+            return redirect("verperfil")
     else:
         form = ProjetoForm(instance=projeto)
 
-    alunos = Aluno.objects.all()
-    orientadores = Orientador.objects.all()
+    alunos = list(Aluno.objects.values('id', 'nome'))
+    orientadores = list(Orientador.objects.values('id', 'nome'))
 
-    return render(request, "formprojeto.html", {
+    context = {
         "form": form,
         "alunos": alunos,
         "orientadores": orientadores,
         "projeto": projeto,
-    })
+    }
+    return render(request, "formprojeto.html", context)
 
-
+    
 def criar_comentario(request,projeto_id):
     projeto = get_object_or_404(Projeto, id=projeto_id)
     if request.method == "POST":
@@ -120,19 +120,6 @@ def excluir_projeto(request, pk):
     return render(request, 'projeto_confirm_delete.html', {'projeto': projeto}) 
 
 
-def aluno_search(request):
-    query = request.GET.get('q', '')
-    alunos = Aluno.objects.filter(nome__icontains=query, tipo='aluno')[:10]
-    results = [{'id': aluno.id, 'text': f"{aluno.nome} ({aluno.email})"} for aluno in alunos]
-    return JsonResponse({'results': results})
-
-def professor_search(request):
-    query = request.GET.get('q', '')
-    orientadores = Orientador.objects.filter(nome__icontains=query, tipo='professor')[:10]
-    results = [{'id': orientador.id, 'text': f"{orientador.nome} ({orientador.email})"} for orientador in orientadores]
-    return JsonResponse({'results': results})
-
-    
 def projetos(request):
     projetos = Projeto.objects.all()
 

@@ -13,6 +13,7 @@ class ProjetoForm(forms.ModelForm):
             "objetivo": forms.Textarea(),
         }
 
+
 class ComentarioForm(forms.ModelForm):
     class Meta:
         model = Comentario
