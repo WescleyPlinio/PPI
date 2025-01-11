@@ -6,14 +6,21 @@
 <!-- Menu -->
 <div class="container custom-container mb-5 py-3 x">
     <div class="row g-0">
+
         <div class="col-md-8 ms-auto my-auto">
+
             <h1 class="text-white">
                 Projetos do curso de <a class="roxinho">{{ curso.titulo }}</a> 
             </h1>
+
         </div>
+
         <div class="col-md-4 d-flex my-auto">
+          
             <img src="{{curso.logo.url}}" class="ms-auto" alt="{{ curso.titulo }}" style="max-height: 12em; max-width: 100%;">
+
         </div>
+
     </div>
 </div>
 
@@ -24,20 +31,29 @@
             {% for x in range%}
                 {% for projeto in projetos %}
                 <div class="col-md-12 col-lg-6 col-sm-12">
+
                   <div class="card">
                       <div class="row">
+
                         <div class="col-md-12 col-lg-6 col-sm-12">
+
                           <img src="{{ projeto.capa.url }}" class="h-100 w-100 img-fluid rounded-0" alt="{{ projeto.titulo }}">
+                          
                         </div>
+
                         <div class="col-md-12 col-lg-6 col-sm-12">
                           <div class="card-body py-4">
+
                             <h5 class="card-title roxinho">{{ projeto.titulo }}</h5>
                             <p class="card-text">{{ projeto.descricao }}</p>
                             <a class="card-link laranja" href="{% url 'post' projeto.id %}">Ver Post</a>
+
                           </div>
                         </div>
+
                       </div>
                   </div>
+
                 </div>
                 {% endfor %}
             {% endfor %}

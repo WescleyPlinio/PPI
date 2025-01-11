@@ -6,41 +6,59 @@
 <!-- Menu -->
 <div class="container custom-container mb-3 py-3">
     <div class="row g-0">
-        <div class="col-md-7 d-flex justify-content-start align-items-center">
-            <h1 class="text-white text-left" style="font-size: 3.5em;">
-                Plataforma dos <a style="color: rgb(255, 128, 0);">Projetos</a> <a style="color: rgb(228, 12, 228);">Integradores</a>
-            </h1>
-        </div>
-        <div class="col-md-5 d-flex justify-content-end align-items-center">
-            <img src="{% static 'imgs/LogoPPI.svg' %}" alt="Logo" style="max-height: 20rem;">
-        </div>
+
+      <div class="col-md-7 d-flex justify-content-start align-items-center">
+          
+        <h1 class="text-white text-left" style="font-size: 3.5em;">
+              Plataforma dos <a style="color: rgb(255, 128, 0);">Projetos</a> <a style="color: rgb(228, 12, 228);">Integradores</a>
+        </h1>
+
+      </div>
+      
+      <div class="col-md-5 d-flex justify-content-end align-items-center">
+
+        <img src="{% static 'imgs/LogoPPI.svg' %}" alt="Logo" style="max-height: 20rem;">
+
+      </div>
+
     </div>
 </div>
 
 <!-- Destaques -->
 <div class="container-fluid py-3 blueback">   
     <div class="container custom-container d-flex flex-column">
+
       <h1 class="laranja text-center">Destaques:</h1>
+      
       <div id="postCarousel" class="carousel slide" data-bs-ride="carousel">
         <!-- Slides -->
         <div class="carousel-inner">
           {% for post in posts %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
               <div class="d-flex justify-content-center align-items-center">
+                
                 <div class="card" style="max-width: 40em;">
                   <div class="row">
+
                     <div class="col-md-6">
+                    
                       <img src="{{ post.capa.url }}" class="img-fluid rounded-0 w-100 h-100" style="max-height: 100%;" alt="{{ post.titulo }}">
+                    
                     </div>
+                    
                     <div class="col-md-6 ">
+                      
                       <div class="card-body py-2">
                         <h5 class="card-title roxinho">{{ post.titulo }}</h5>
                         <p class="card-text">{{ post.descricao }}</p>
                         <a class="text-end laranja" href="{% url 'post' post.id %}">Ver Post</a>
                       </div>
+
                     </div>
+
                   </div>
                 </div>
+
               </div>
             </div>
           {% endfor %}
@@ -63,24 +81,30 @@
  <!-- Texto explicativo -->
 <div class="container-fluid">
     <div class="container custom-container mt-4 py-4">
+
         <h1 class="roxinho">
             O que são projetos integradores?
         </h1>
+
         <p class="text-white">
           Os projetos integradores são iniciativas que conectam diferentes disciplinas e áreas do conhecimento do ensino médio integrado (entre outros). Esses projetos têm como objetivo principal consolidar a aprendizagem ao permitir que os estudantes apliquem na prática os conceitos teóricos aprendidos em sala de aula, muitas vezes atendendo demandas reais da comunidade, empresas ou setores públicos.
         </p>
+
     </div>
 </div>
 
  <!-- Texto explicativo -->
 <div class="container-fluid blueback">
     <div class="container custom-container mt-4 py-4">
+
         <h1 class="roxinho">
             O que é este site?
         </h1>
+        
         <p class="text-white">
             A Plataforma dos Projetos Integradores é um sistema que trás em suas mãos todos os projetos integradores do campus SPP já criados, permitindo que você possa visualizá-los.
         </p>
+
     </div>
 </div>
 {% endblock conteudo %}
