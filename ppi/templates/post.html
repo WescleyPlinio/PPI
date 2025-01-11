@@ -67,7 +67,7 @@
                         {{post.resumo}}
                     </p>
                     <div class="d-flex justify-content-end align-items-center py-2">
-                        <a class="text-white text-left nav-link">Data de publicação: {{post.data_publi}}</a>
+                        <a class="text-white text-left nav-link">Data de publicação: {{post.criado_em|date:"d/m/Y H:i"}}</a>
                         <a class="text-left ms-2" style="color: rgb(255, 145, 77);"> baixar PDF </a>
                     </div> 
                 </div>
@@ -111,27 +111,47 @@
 </div>
 
 <!-- Comentarios -->
-<div>
-    <h1 class="laranja text-left">Comentários</h1>
-    <div class="form-group col-md-12 col-lg-7 col-sm-12 d-flex justify-content-start align-items-center">
+<div class="container-fluid blueback py-5">
+    <div class="container custom-container">
+
+        <h1 class="laranja text-left">Comentários</h1>
+
+        <div class="py-2">
+
             <form method="post">
                 {% csrf_token %}
-                <label for="comentario">Comentário:</label>
-                <textarea id="comentario" name="comentario" placeholder="Digite seu comentário" rows="5" required></textarea>
-                <button type="submit" class="btn btn-primary">Enviar Comentário</button>
+
+                <div class="w-100 bab">
+
+                    <textarea id="comentario" name="comentario" class="form-control mb-2 bg-transparent border-0 rounded-0 border-bottom text-white" placeholder="Digite seu comentário" rows="1" required></textarea>
+                    
+                    <div class="d-flex justify-content-end">
+                        <button type="reset" class="btn rounded-0  btn-light me-1">Cancelar</button>
+                        <button type="submit" class="btn rounded-0  fundo-roxinho">Enviar</button>
+                    </div>
+
+                </div>
+
             </form>
-            <p class="roxinho">Comentários</p>
-            <ul>
+
+            <div class="w-100 pt-5">
                 {% for comentario in comentarios %}
-                    <li>
-                        <strong>{{ comentario.usuario.username }}</strong> comentou:
-                        <p>{{ comentario.texto }}</p>
-                        <small>Em {{ comentario.criado_em|date:"d/m/Y H:i" }}</small>
-                    </li>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="roxinho">
+                        {{ comentario.usuario.username }}
+                    </h5>
+                    <small class="text-light">
+                        {{ comentario.criado_em|date:"d/m/Y H:i" }}
+                    </small>
+                </div>
+                <p class="mb-2 text-white">{{ comentario.texto }}</p>
                 {% empty %}
                     <p>Sem comentários ainda.</p>
                 {% endfor %}
-            </ul> 
+            </div>
+
+        </div>
+
     </div>
 </div>
 

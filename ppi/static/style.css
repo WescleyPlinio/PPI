@@ -120,3 +120,7 @@ border: 3px solid #ddd;
     margin-top: 10px;
     text-align: center;
 }
+
+.bab textarea::placeholder {
+    color: rgb(219, 219, 219) !important;
+}
