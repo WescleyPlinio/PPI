@@ -108,23 +108,20 @@ def listar_comentarios(request):
     comentarios = Comentario.objects.all().order_by('-criado_em')
     return render(request, 'post.html', {'comentarios': comentarios})
 
-
-@login_required
 def excluir_projeto(request, pk):
-    projeto = get_object_or_404(Projeto, pk=pk)
-
-    if request.method == 'GET':
+    if request.method == 'POST':
+        projeto = get_object_or_404(Projeto, pk=pk)
         projeto.delete()
-        return redirect('verperfil')
+        return JsonResponse({"Sucesso!":True})
         
-    return render(request, 'projeto_confirm_delete.html', {'projeto': projeto}) 
-
+    return JsonResponse({"Erro":"Método de requisição inválido"}, status = 400)
 
 def projetos(request):
     projetos = Projeto.objects.all()
 
     return render(request, 'pesquisar.html', {'projetos':projetos})   
 
+@login_required
 def verperfil(request):
 
     post = Projeto.objects.all()

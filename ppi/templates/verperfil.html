@@ -87,11 +87,11 @@
                             
                             <div class="col-md-4 col-lg-4 col-sm-4">
                                 
-                                <form action="{% url 'excluir_projeto' projeto.id %}" method="post" style="display:inline;">
+                                <form class="delete-form" data-id={{ projeto.id }} action="{% url 'excluir_projeto' projeto.id %}" method="POST">
 
                                     {% csrf_token %}
 
-                                    <button type="submit" class="w-75 btn btn-danger">
+                                    <button type="button" class="w-75 btn btn-danger delete-btn">
                                         Excluir
                                     </button>
 
