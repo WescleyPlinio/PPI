@@ -124,3 +124,12 @@ border: 3px solid #ddd;
 .bab textarea::placeholder {
     color: rgb(219, 219, 219) !important;
 }
+
+#pesquisar {
+    width: 100px;
+    transition: width 0.5s;
+}
+
+#pesquisar.mudarTamanho {
+    width: 300px;
+}
