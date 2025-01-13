@@ -78,33 +78,37 @@
     </div>
 </div>
 
- <!-- Texto explicativo -->
-<div class="container-fluid">
-    <div class="container custom-container mt-4 py-4">
+<div class="container-fluid bandeira d-flex position-relative overflow-hidden" style="height: 500px;">
+  <div class="row w-100 position-relative m-auto z-2 d-flex justify-content-evenly align-items-center">
+    
+      <div class="col-md-5 col-lg-5 col-sm-10 bandeira-content p-3 bg-white bg-opacity-25 rounded shadow">
+        
+        <h3 class="laranja text-left">
+          O que são projetos integradores?
+        </h3>
 
-        <h1 class="roxinho">
-            O que são projetos integradores?
-        </h1>
-
-        <p class="text-white">
-          Os projetos integradores são iniciativas que conectam diferentes disciplinas e áreas do conhecimento do ensino médio integrado (entre outros). Esses projetos têm como objetivo principal consolidar a aprendizagem ao permitir que os estudantes apliquem na prática os conceitos teóricos aprendidos em sala de aula, muitas vezes atendendo demandas reais da comunidade, empresas ou setores públicos.
+        <p class="text-dark text-left">
+            Os projetos integradores são iniciativas que conectam diferentes disciplinas e áreas do conhecimento do ensino médio integrado (entre outros). Esses projetos têm como objetivo principal consolidar a aprendizagem ao permitir que os estudantes apliquem na prática os conceitos teóricos aprendidos em sala de aula, muitas vezes atendendo demandas reais da comunidade, empresas ou setores públicos.
         </p>
 
-    </div>
-</div>
-
- <!-- Texto explicativo -->
-<div class="container-fluid blueback">
-    <div class="container custom-container mt-4 py-4">
-
-        <h1 class="roxinho">
-            O que é este site?
-        </h1>
+      </div>
+      
+      <div class="col-md-5 col-lg-5 col-sm-10 bandeira-content p-3 bg-white bg-opacity-25 rounded shadow">
         
-        <p class="text-white">
+        <h3 class="laranja text-left">
+            O que é este site?
+        </h3>
+        
+        <p class="text-dark">
             A Plataforma dos Projetos Integradores é um sistema que trás em suas mãos todos os projetos integradores do campus SPP já criados, permitindo que você possa visualizá-los.
         </p>
+      
+      </div>
 
-    </div>
+  </div>
+
+  <div class="position-absolute top-0 start-0 w-100 h-100 bg-image z-1" 
+  style="background-image: url('{% static 'imgs/pessoas.jpg' %}'); filter: blur(8px);"></div>
 </div>
+
 {% endblock conteudo %}

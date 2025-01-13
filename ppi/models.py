@@ -24,7 +24,7 @@ class Curso(models.Model):
 
 class Projeto(models.Model):
     titulo = models.CharField(max_length=80)
-    resumo = models.TextField(max_length=1000)
+    resumo = models.TextField(max_length=150)
     objetivo = models.TextField(max_length=2000)
     capa = models.ImageField('media/')
     pdf = models.FileField(blank=True, null=True)

@@ -133,3 +133,8 @@ border: 3px solid #ddd;
 #pesquisar.mudarTamanho {
     width: 300px;
 }
+
+.bg-image {
+    background-size: cover;
+    background-position: center;
+}

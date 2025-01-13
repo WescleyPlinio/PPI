@@ -1,21 +1,28 @@
 {% extends "base.html" %}
 {% load static %}
-{% block tittle %} Ver{{ post.titulo }} {% endblock tittle %}
+{% block tittle %} Ver{{ projeto.titulo }} {% endblock tittle %}
 {% block conteudo %}
 
 <!-- Menu -->
 <div class="container mb-3 py-5">
     <div class="row g-0">
+
         <div class="col-md-8 me-auto my-auto">
+
             <h1 class="roxinho text-left" style="font-size: 3.5em;">
-                {{post.titulo}}
+                {{ projeto.titulo }}
             </h1>
+
         </div>
+
         <div class="col-md-4 d-flex justify-content-end my-auto">
-            {% if post.curso.logo %}
-                <img src="{{ post.curso.logo.url }}" alt="Logo" style="max-height: 12rem;">
+
+            {% if projeto.curso.logo %}
+                <img src="{{ projeto.curso.logo.url }}" alt="Logo" style="max-height: 12rem;">
             {% endif %}
+
         </div>
+
     </div>
 </div>
 
@@ -23,55 +30,79 @@
 <div class="container-fluid blueback">   
     <div class="container py-5">
         <div class="row g-3 py-2">
+
             <div class="col-md-12 col-lg-5 col-sm-12 d-flex justify-content-start align-items-center">
                 
                 <div id="carouselExample" class="carousel slide w-100 pe-3" data-bs-ride="carousel">
                     <!-- Indicadores -->
                     <div class="carousel-indicators">
+
                         {% for photo in post.photos.all %}
                         <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="{{ forloop.counter0 }}" 
                                 class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% endif %}" 
-                                aria-label="Slide {{ forloop.counter }}"></button>
+                                aria-label="Slide {{ forloop.counter }}">
+                        </button>
                         {% endfor %}
+
                     </div>
                 
                     <!-- Slides -->
                     <div class="carousel-inner">
+
                         {% for photo in post.photos.all %}
+
                         <div class="carousel-item {% if forloop.first %}active{% endif %}">
+
                             <img src="{{ photo.photo.url }}" class="d-block w-100" alt="Image {{ forloop.counter }}">
+                            
                             {% if photo.caption %}
+
                             <div class="carousel-caption d-none d-md-block">
                                 <p>{{ photo.caption }}</p>
                             </div>
+
                             {% endif %}
+
                         </div>
+
                         {% endfor %}
+
                     </div>
                 
                     <!-- Controles -->
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        
                         <span class="carousel-control-prev-icon fundo-laranja rounded-circle" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
+
                     </button>
+
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        
                         <span class="carousel-control-next-icon fundo-laranja rounded-circle" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
+
                     </button>
+
                 </div>
 
             </div>    
+
             <div class="col-md-12 col-lg-7 col-sm-12 d-flex justify-content-start align-items-center">
                 <div class="w-100">
+
                     <p class="text-white text-left">
-                        {{post.resumo}}
+                        {{ projeto.resumo }}
                     </p>
+
                     <div class="d-flex justify-content-end align-items-center py-2">
-                        <a class="text-white text-left nav-link">Data de publicação: {{post.criado_em|date:"d/m/Y H:i"}}</a>
+                        <a class="text-white text-left nav-link">Data de publicação: {{projeto.criado_em|date:"d/m/Y H:i"}}</a>
                         <a class="text-left ms-2" style="color: rgb(255, 145, 77);"> baixar PDF </a>
                     </div> 
+
                 </div>
             </div>    
+
         </div>
     </div>
 </div>
@@ -84,28 +115,36 @@
         
         <!-- Div alunos -->
         <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
-            {% for aluno in post.usuarios1.all %}
+
+            {% for aluno in projeto.alunos.all %}
+
             <a href="{% url 'verperfil' %}" style="text-decoration: none;">
                 <div>
                     <img src="{% if aluno.foto %} {{aluno.foto.url}} {% else %} {% static 'imgs/usericn.jpg' %}{% endif %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
                     <h5 class="text-center roxinho mt-1">{{aluno.nome}}</h5>
                 </div>
             </a>
+
             {% endfor %}
+
         </div>
         
         <h1 class="text-center laranja">Orientadores:</h1>
 
         <!-- Div orientadores -->
         <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
-            {% for prof in post.usuarios2.all %}
+
+            {% for prof in projeto.orientadores.all %}
+
             <a href="{% url 'verperfil' %}" style="text-decoration: none;">
                 <div>
                     <img src="{% if prof.foto %} {{prof.foto.url}} {% else %} {% static 'imgs/usericn.jpg' %}{% endif %}" style="max-width: 10rem;" class="rounded-circle" alt="...""">
-                    <h5 class="text-center roxinho mt-1">{{orientador.nome}}</h5>
+                    <h5 class="text-center roxinho mt-1">{{ prof.nome }}</h5>
                 </div>
             </a>
+
             {% endfor %}
+
         </div>
     </div>
 </div>
@@ -135,19 +174,27 @@
             </form>
 
             <div class="w-100 pt-5">
+
                 {% for comentario in comentarios %}
+
                 <div class="d-flex justify-content-between align-items-center">
+
                     <h5 class="roxinho">
                         {{ comentario.usuario.username }}
                     </h5>
+
                     <small class="text-light">
                         {{ comentario.criado_em|date:"d/m/Y H:i" }}
                     </small>
+
                 </div>
+
                 <p class="mb-2 text-white">{{ comentario.texto }}</p>
+
                 {% empty %}
                     <p>Sem comentários ainda.</p>
                 {% endfor %}
+                
             </div>
 
         </div>

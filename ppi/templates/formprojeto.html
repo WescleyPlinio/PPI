@@ -21,20 +21,18 @@
             {{ form.titulo}}
           </div>
 
-
-          <!-- Resumo -->
-          <div class="form-group">
-            <label for="id_resumo">Resumo:</label>
-            {{ form.resumo }}
-          </div>
-
-
+          
           <!-- Objetivo -->
           <div class="form-group">
             <label for="id_objetivo">Objetivo:</label>
             {{ form.objetivo }}
           </div>
-
+          
+          <!-- Resumo -->
+          <div class="form-group">
+            <label for="id_resumo">Resumo:</label>
+            {{ form.resumo }}
+          </div>
 
           <!-- PDF -->
           <div class="form-group">
@@ -95,20 +93,10 @@
           </div>
 
 
+        
           <!-- Botão de Submissão -->
           <div class="form-group mt-4">
-            <button class="btn btn-primary" type="submit">{% if projeto %}Salvar Alterações{% else %}Adicionar{% endif %}</button></button>
-            {% if projeto %}
-                <a href="{% url 'verperfil' %}" class="btn btn-secondary">Cancelar</a>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-
-
-          <!-- Botão de Submissão -->
-          <div class="form-group mt-4">
-            <button class="btn btn-primary" type="submit">{% if projeto %}Salvar Alterações{% else %}Adicionar{% endif %}</button></button>
+            <button class="btn btn-primary" type="submit">{% if projeto %}Salvar Alterações{% else %}Adicionar{% endif %}</button>
             {% if projeto %}
                 <a href="{% url 'verperfil' %}" class="btn btn-secondary">Cancelar</a>
             {% endif %}
