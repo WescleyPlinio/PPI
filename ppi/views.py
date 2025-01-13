@@ -58,13 +58,20 @@ def post(request, id):
 
 @login_required
 def formprojeto(request, pk=None):
+
+    alunos = list(Aluno.objects.values('id', 'nome'))
+    orientadores = list(Orientador.objects.values('id', 'nome'))
+    cursos = list(Curso.objects.values('id', 'titulo'))
+
     if pk:
         projeto = get_object_or_404(Projeto, pk=pk)
     else:
         projeto = None
 
     if request.method == 'POST':
+
         form = ProjetoForm(request.POST, request.FILES,  instance=projeto)
+
         if form.is_valid():
             projeto = form.save()
            
@@ -74,21 +81,18 @@ def formprojeto(request, pk=None):
             projeto.alunos.set(alunos_ids)
             projeto.orientadores.set(orientadores_ids)
             projeto.cursos.set(cursos_ids)
+
             return redirect("verperfil")
     else:
         form = ProjetoForm(instance=projeto)
-
-    alunos = list(Aluno.objects.values('id', 'nome'))
-    orientadores = list(Orientador.objects.values('id', 'nome'))
-    cursos = list(Curso.objects.values('id', 'titulo'))
 
     context = {
         "form": form,
         "alunos": alunos,
         "orientadores": orientadores,
-        "cursos": cursos,
         "projeto": projeto,
     }
+
     return render(request, "formprojeto.html", context)
 
     

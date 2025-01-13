@@ -60,9 +60,9 @@
           <!-- Alunos -->
           <div class="form-group">
             <label for="id_alunos">Alunos:</label>
-            <select class="form-control blueback" id="alunos" name="alunos" multiple class="form-control select2">
+            <select class="form-control bg-white" id="alunos" name="alunos" multiple class="form-control select2">
               {% for aluno in alunos %}
-                <option value="{{ aluno.id }}">{{ aluno.nome }}</option>
+                <option class="text-dark" value="{{ aluno.id }}">{{ aluno.nome }}</option>
               {% endfor %}
             </select>
           </div>
@@ -71,9 +71,9 @@
           <!-- Orientadores -->
           <div class="form-group">
             <label for="id_orientadores">Orientador(es):</label>
-            <select class="form-control blueback" id="orientadores" name="orientadores" multiple class="form-control">
+            <select class="form-control bg-white" id="orientadores" name="orientadores" multiple class="form-control">
               {% for orientador in orientadores %}
-                <option value="{{ orientador.id }}">{{ orientador.nome }}</option>
+                <option class="text-dark" value="{{ orientador.id }}">{{ orientador.nome }}</option>
               {% endfor %}
             </select>
           </div>
@@ -83,13 +83,13 @@
           <div class="form-group">
             <label for="course">Curso:</label>
             <select class="form-select" aria-label="Default select example">
-              {% for curso in cursos %}
+              {% for opcao in cursos %}
 
               {% if forloop.isfirst %}
-              <option class="text-dark" selected value="{{ curso.id }}">{{ curso.titulo }}</option>
+              <option class="text-dark" selected value="{{ opcao.id }}">{{ opcao.titulo }}</option>
               
               {% endif %}
-                <option class="text-dark" value="{{ curso.id }}">{{ curso.titulo }}</option>
+                <option class="text-dark" value="{{ opcao.id }}">{{ opcao.titulo }}</option>
               
               {% endfor %}
             </select>
