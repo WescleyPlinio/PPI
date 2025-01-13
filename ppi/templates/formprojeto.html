@@ -62,8 +62,8 @@
             <label for="id_alunos">Alunos:</label>
             <select class="form-control blueback" id="alunos" name="alunos" multiple class="form-control select2">
               {% for aluno in alunos %}
-            <option value="{{ aluno.id }}">{{ aluno.nome }}</option>
-        {% endfor %}
+                <option value="{{ aluno.id }}">{{ aluno.nome }}</option>
+              {% endfor %}
             </select>
           </div>
 
@@ -73,8 +73,8 @@
             <label for="id_orientadores">Orientador(es):</label>
             <select class="form-control blueback" id="orientadores" name="orientadores" multiple class="form-control">
               {% for orientador in orientadores %}
-            <option value="{{ orientador.id }}">{{ orientador.nome }}</option>
-        {% endfor %}
+                <option value="{{ orientador.id }}">{{ orientador.nome }}</option>
+              {% endfor %}
             </select>
           </div>
 
@@ -82,9 +82,18 @@
           <!-- Curso -->
           <div class="form-group">
             <label for="course">Curso:</label>
-            {{ form.curso }}
-          </div>
+            <select class="form-select" aria-label="Default select example">
+              {% for curso in cursos %}
 
+              {% if forloop.isfirst %}
+              <option class="text-dark" selected value="{{ curso.id }}">{{ curso.titulo }}</option>
+              
+              {% endif %}
+                <option class="text-dark" value="{{ curso.id }}">{{ curso.titulo }}</option>
+              
+              {% endfor %}
+            </select>
+          </div>
 
           <!-- Palavras-Chave -->
           <div class="form-group">

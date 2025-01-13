@@ -70,19 +70,23 @@ def formprojeto(request, pk=None):
            
             alunos_ids = request.POST.getlist('alunos')
             orientadores_ids = request.POST.getlist('orientadores')
+            cursos_ids = request.POST.getlist('cursos')
             projeto.alunos.set(alunos_ids)
             projeto.orientadores.set(orientadores_ids)
+            projeto.cursos.set(cursos_ids)
             return redirect("verperfil")
     else:
         form = ProjetoForm(instance=projeto)
 
     alunos = list(Aluno.objects.values('id', 'nome'))
     orientadores = list(Orientador.objects.values('id', 'nome'))
+    cursos = list(Curso.objects.values('id', 'titulo'))
 
     context = {
         "form": form,
         "alunos": alunos,
         "orientadores": orientadores,
+        "cursos": cursos,
         "projeto": projeto,
     }
     return render(request, "formprojeto.html", context)
