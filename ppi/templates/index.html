@@ -4,28 +4,32 @@
 {% block conteudo %}
 
 <!-- Menu -->
-<div class="container custom-container mb-3 py-3">
-    <div class="row g-0">
+<div class="container-fluid">
+  <div class="container custom-container mb-3 py-3">
 
-      <div class="col-md-7 d-flex justify-content-start align-items-center">
-          
-        <h1 class="text-white text-left" style="font-size: 3.5em;">
-              Plataforma dos <a style="color: rgb(255, 128, 0);">Projetos</a> <a style="color: rgb(228, 12, 228);">Integradores</a>
-        </h1>
-
+      <div class="row g-0">
+  
+        <div class="col-md-7 d-flex justify-content-start align-items-center">
+            
+          <h1 class="text-white text-left" style="font-size: 3.5em;">
+                Plataforma dos <a style="color: rgb(255, 128, 0);">Projetos</a> <a style="color: rgb(228, 12, 228);">Integradores</a>
+          </h1>
+  
+        </div>
+        
+        <div class="col-md-5 d-flex justify-content-end align-items-center">
+  
+          <img src="{% static 'imgs/LogoPPI.svg' %}" alt="Logo" style="max-height: 20rem;">
+  
+        </div>
+  
       </div>
-      
-      <div class="col-md-5 d-flex justify-content-end align-items-center">
 
-        <img src="{% static 'imgs/LogoPPI.svg' %}" alt="Logo" style="max-height: 20rem;">
-
-      </div>
-
-    </div>
+  </div>
 </div>
 
 <!-- Destaques -->
-<div class="container-fluid py-5 blueback">   
+<div class="container-fluid py-5 blueback shadow-lg">   
     <div class="container custom-container d-flex flex-column">
 
       <h1 class="laranja text-center">Destaques:</h1>
@@ -38,7 +42,7 @@
               <div class="d-flex justify-content-center align-items-center">
 
                 <a class="text-decoration-none" href="{% url 'post' post.id %}">
-                  <div class="card" style="max-width: 40em;">
+                  <div class="card shadow-lg" style="max-width: 40em;">
                     <div class="row">
   
                       <div class="col-md-6">
@@ -89,7 +93,7 @@
 <div class="container-fluid bandeira py-5 d-flex position-relative overflow-hidden" style="height: 500px;">
   <div class="row g-3 w-100 position-relative m-auto z-2 d-flex justify-content-evenly align-items-center">
     
-      <div class="col-md-5 col-lg-5 col-sm-10 bandeira-content p-3 bg-white rounded shadow">
+      <div class="col-md-5 col-lg-5 col-sm-10 bandeira-content p-3 bg-white rounded shadow-lg">
         
         <h3 class="laranja text-left">
           O que são projetos integradores?
@@ -101,7 +105,7 @@
 
       </div>
       
-      <div class="col-md-5 col-lg-5 col-sm-10 bandeira-content p-3 bg-white rounded shadow">
+      <div class="col-md-5 col-lg-5 col-sm-10 bandeira-content p-3 bg-white rounded shadow-lg">
         
         <h3 class="laranja text-left">
             O que é este site?

@@ -92,7 +92,7 @@
                 <div class="w-100">
 
                     <p class="text-white text-left">
-                        {{ projeto.resumo }}
+                        {{ projeto.objetivo }}
                     </p>
 
                     <div class="d-flex justify-content-end align-items-center py-2">
@@ -103,12 +103,18 @@
                 </div>
             </div>    
 
+            <div class="col-12 pt-5">
+                <p class="text-white text-left">
+                    {{ projeto.resumo }}
+                </p>
+            </div>
+
         </div>
     </div>
 </div>
 
 <!-- Componentes -->
-<div class="container-fluid py-2">
+<div class="container-fluid py-5">
     <div class="container container">
 
         <h1 class="text-center laranja">Alunos:</h1>
@@ -153,21 +159,18 @@
 <div class="container-fluid blueback py-5">
     <div class="container custom-container">
 
-        <h1 class="laranja text-left">Comentários</h1>
+        <h1 class="laranja text-center">Comentários</h1>
 
         <div class="py-2">
 
             <form method="post">
                 {% csrf_token %}
 
-                <div class="w-100 bab">
+                <div class="w-100 d-flex bab">
 
                     <textarea id="comentario" name="comentario" class="form-control mb-2 bg-transparent border-0 rounded-0 border-bottom text-white" placeholder="Digite seu comentário" rows="1" required></textarea>
                     
-                    <div class="d-flex justify-content-end">
-                        <button type="reset" class="btn rounded-0  btn-light me-1">Cancelar</button>
-                        <button type="submit" class="btn rounded-0  fundo-roxinho">Enviar</button>
-                    </div>
+                    <button type="submit" class="btn px-3 ms-2 flex-shrink-1 fundo-roxinho">Enviar</button>
 
                 </div>
 
@@ -189,10 +192,14 @@
 
                 </div>
 
-                <p class="mb-2 text-white">{{ comentario.texto }}</p>
+                <p class="mb-2 text-white">
+                    {{ comentario.texto }}
+                </p>
 
                 {% empty %}
-                    <p>Sem comentários ainda.</p>
+                    <p class="text-white">
+                        Sem comentários ainda.
+                    </p>
                 {% endfor %}
                 
             </div>
