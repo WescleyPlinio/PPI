@@ -2,7 +2,6 @@
 {% load static %}
 {% block title %}Formulario{% endblock title %}
 {% block conteudo %}
-{% load crispy_forms_tags %}
 
 <div class="container custom-container mb-5 py-3">
   <h1 class="text-white text-center" style="font-size: 3.5em;">
@@ -62,24 +61,23 @@
 
           <!-- Alunos -->
           <div class="form-group">
-            <label for="alunos">Alunos:</label>
-            <input list="id_alunos" name="aluno" id="alunos" class="form-control" autocomplete="off">
-            <datalist id="id_alunos">
-                {% for aluno in alunos %}
-                    <option value="{{ aluno.nome }}" data-id="{{ aluno.id }}"></option>
-                {% endfor %}
-            </datalist>
-        </div>
-        
+            <label for="id_alunos">Alunos:</label>
+            <select class="form-control blueback" id="alunos" name="alunos" multiple class="form-control select2">
+              {% for aluno in alunos %}
+            <option value="{{ aluno.id }}">{{ aluno.nome }}</option>
+        {% endfor %}
+            </select>
+          </div>
+
 
           <!-- Orientadores -->
           <div class="form-group">
-            <label for="orientado">Orientadores:</label>
-              <input list="id_orientadores" name="orientadores" id="orientadores" class="form-control" autocomplete="off">
-              <datalist id="id_orientadores">
-                  {% for orientador in orientadores %}
-                      <option value="{{ orientador.nome }}" data-id="{{ orientador.id }}"></option>
-                  {% endfor %}
+            <label for="id_orientadores">Orientador(es):</label>
+            <select class="form-control blueback" id="orientadores" name="orientadores" multiple class="form-control">
+              {% for orientador in orientadores %}
+            <option value="{{ orientador.id }}">{{ orientador.nome }}</option>
+        {% endfor %}
+            </select>
           </div>
 
 
@@ -95,6 +93,17 @@
             <label for="keywords">Palavras-Chave (separadas por vírgula):</label>
             {{ form.palavras_chave }}
           </div>
+
+
+          <!-- Botão de Submissão -->
+          <div class="form-group mt-4">
+            <button class="btn btn-primary" type="submit">{% if projeto %}Salvar Alterações{% else %}Adicionar{% endif %}</button></button>
+            {% if projeto %}
+                <a href="{% url 'verperfil' %}" class="btn btn-secondary">Cancelar</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
 
 
           <!-- Botão de Submissão -->
