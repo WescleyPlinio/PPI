@@ -32,27 +32,30 @@
                 {% for projeto in projetos %}
                 <div class="col-md-12 col-lg-6 col-sm-12">
 
-                  <div class="card">
-                      <div class="row">
+                  <a class="text-decoration-none" href="{% url 'post' projeto.id %}">
 
-                        <div class="col-md-12 col-lg-6 col-sm-12">
-
-                          <img src="{{ projeto.capa.url }}" class="h-100 w-100 img-fluid rounded-0" alt="{{ projeto.titulo }}">
-                          
-                        </div>
-
-                        <div class="col-md-12 col-lg-6 col-sm-12">
-                          <div class="card-body py-4">
-
-                            <h5 class="card-title roxinho">{{ projeto.titulo }}</h5>
-                            <p class="card-text">{{ projeto.objetivo }}</p>
-                            <a class="card-link laranja" href="{% url 'post' projeto.id %}">Ver Post</a>
-
+                    <div class="card">
+                        <div class="row">
+  
+                          <div class="col-md-12 col-lg-6 col-sm-12">
+  
+                            <img src="{{ projeto.capa.url }}" class="h-100 w-100 img-fluid rounded-0" alt="{{ projeto.titulo }}">
+                            
                           </div>
+  
+                          <div class="col-md-12 col-lg-6 col-sm-12">
+                            <div class="card-body py-4">
+  
+                              <h5 class="card-title roxinho">{{ projeto.titulo }}</h5>
+                              <p class="card-text">{{ projeto.objetivo }}</p>
+  
+                            </div>
+                          </div>
+  
                         </div>
-
-                      </div>
-                  </div>
+                    </div>
+                  
+                  </a>
 
                 </div>
                 {% endfor %}
