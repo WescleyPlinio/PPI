@@ -36,28 +36,36 @@
           {% for post in posts %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
               <div class="d-flex justify-content-center align-items-center">
-                
-                <div class="card" style="max-width: 40em;">
-                  <div class="row">
 
-                    <div class="col-md-6">
-                    
-                      <img src="{{ post.capa.url }}" class="img-fluid rounded-0 w-100 h-100" style="max-height: 100%;" alt="{{ post.titulo }}">
-                    
-                    </div>
-                    
-                    <div class="col-md-6 ">
+                <a class="text-decoration-none" href="{% url 'post' post.id %}">
+                  <div class="card" style="max-width: 40em;">
+                    <div class="row">
+  
+                      <div class="col-md-6">
                       
-                      <div class="card-body py-2">
-                        <h5 class="card-title roxinho">{{ post.titulo }}</h5>
-                        <p class="card-text">{{ post.descricao }}</p>
-                        <a class="text-end laranja" href="{% url 'post' post.id %}">Ver Post</a>
+                        <img src="{{ post.capa.url }}" class="img-fluid rounded-0 w-100 h-100" style="max-height: 100%;" alt="{{ post.titulo }}">
+                      
                       </div>
+                      
+                      <div class="col-md-6 ">
+                        
+                        <div class="card-body py-2">
 
+                          <h5 class="card-title roxinho">
+                            {{ post.titulo }}
+                          </h5>
+
+                          <p class="card-text">
+                            {{ post.objetivo }}
+                          </p>
+
+                        </div>
+  
+                      </div>
+  
                     </div>
-
                   </div>
-                </div>
+                </a>
 
               </div>
             </div>
@@ -81,7 +89,7 @@
 <div class="container-fluid bandeira d-flex position-relative overflow-hidden" style="height: 500px;">
   <div class="row w-100 position-relative m-auto z-2 d-flex justify-content-evenly align-items-center">
     
-      <div class="col-md-5 col-lg-5 col-sm-10 bandeira-content p-3 bg-white bg-opacity-25 rounded shadow">
+      <div class="col-md-5 col-lg-5 col-sm-10 bandeira-content p-3 bg-white rounded shadow">
         
         <h3 class="laranja text-left">
           O que são projetos integradores?
@@ -93,7 +101,7 @@
 
       </div>
       
-      <div class="col-md-5 col-lg-5 col-sm-10 bandeira-content p-3 bg-white bg-opacity-25 rounded shadow">
+      <div class="col-md-5 col-lg-5 col-sm-10 bandeira-content p-3 bg-white rounded shadow">
         
         <h3 class="laranja text-left">
             O que é este site?
@@ -108,7 +116,7 @@
   </div>
 
   <div class="position-absolute top-0 start-0 w-100 h-100 bg-image z-1" 
-  style="background-image: url('{% static 'imgs/pessoas.jpg' %}'); filter: blur(8px);"></div>
+  style="background-image: url('{% static 'imgs/Tec.jfif' %}'); filter: blur(1px);"></div>
 </div>
 
 {% endblock conteudo %}
