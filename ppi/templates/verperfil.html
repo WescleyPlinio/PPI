@@ -32,11 +32,15 @@
             <ul class="w-100">
 
                 <a href="{% url 'editarperfil' %}">
-                    <button type= 'button' class= "btn w-100 btn-light my-1">editar perfil</button>
+                    <button class= "btn w-100 btn-light my-1">
+                        editar perfil
+                    </button>
                 </a>
 
                 <a href="{% url 'form_post' %}">
-                    <button type= 'button' class= "btn w-100 blueback laranja my-1">Adicionar projeto</button>
+                    <button class= "btn w-100 btn-dark fundo-laranja my-1">
+                        Adicionar projeto
+                    </button>
                 </a>
                 
             </ul>
@@ -60,49 +64,45 @@
         {% for projeto in projetos %}
         
             <div class="col-md-6 col-sm-12 col-lg-4">
-                <div class="card py-1" style="background-color: rgb(5, 14, 43); height: 12em;">
-                    <div class="card-body d-flex flex-column">
-
-                        <h3 class="card-title roxinho">{{ projeto.titulo }}</h3>
-                        
-                        <h6 class="card-subtitle laranja">Orientado por Ari</h6>
-
-                        <div class="row g-0 mt-auto">
-
-                            <div class="col-md-4 col-lg-4 col-sm-4">
+                
+                <a href="{% url 'post' projeto.id %}" class="text-decoration-none">
+                    <div class="card py-1" style="background-color: rgb(5, 14, 43); height: 12em;">
+                        <div class="card-body d-flex flex-column">
+    
+                            <h3 class="card-title roxinho">{{ projeto.titulo }}</h3>
+                            
+                            <h6 class="card-subtitle laranja">Orientado por Ari</h6>
+    
+                            <div class="row g-0 mt-auto d-flex justify-ocntent-start">
                                 
-                                <a href="{% url 'post' projeto.id %}" class="w-75 btn btn-light">
-                                    Visualizar
-                                </a>
+                                <div class="col-md-4 col-lg-4 col-sm-4">
+                                    
+                                    <a href="{% url 'editar_projeto' projeto.id %}" class="w-75 btn btn-light">
+                                        Editar
+                                    </a>  
+                                    
+                                </div>
                                 
+                                <div class="col-md-4 col-lg-4 col-sm-4">
+                                    
+                                    <form class="delete-form" data-id={{ projeto.id }} action="{% url 'excluir_projeto' projeto.id %}" method="POST">
+    
+                                        {% csrf_token %}
+    
+                                        <button type="button" class="w-75 btn btn-light delete-btn">
+                                            Excluir
+                                        </button>
+    
+                                    </form>
+                                    
+                                </div>
+            
                             </div>
                             
-                            <div class="col-md-4 col-lg-4 col-sm-4">
-                                
-                                <a href="{% url 'editar_projeto' projeto.id %}" class="w-75 btn btn-light">
-                                    Editar
-                                </a>  
-                                
-                            </div>
-                            
-                            <div class="col-md-4 col-lg-4 col-sm-4">
-                                
-                                <form class="delete-form" data-id={{ projeto.id }} action="{% url 'excluir_projeto' projeto.id %}" method="POST">
-
-                                    {% csrf_token %}
-
-                                    <button type="button" class="w-75 btn btn-light delete-btn">
-                                        Excluir
-                                    </button>
-
-                                </form>
-                                
-                            </div>
-        
                         </div>
-                        
                     </div>
-                </div>
+                </a>
+                
             </div>
 
         {% endfor %}
