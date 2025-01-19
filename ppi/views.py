@@ -61,7 +61,7 @@ def formprojeto(request, pk=None):
 
     alunos = list(Aluno.objects.values('id', 'nome'))
     orientadores = list(Orientador.objects.values('id', 'nome'))
-    cursos = list(Curso.objects.values('id', 'titulo'))
+    
 
     if pk:
         projeto = get_object_or_404(Projeto, pk=pk)
@@ -77,10 +77,8 @@ def formprojeto(request, pk=None):
            
             alunos_ids = request.POST.getlist('alunos')
             orientadores_ids = request.POST.getlist('orientadores')
-            cursos_ids = request.POST.getlist('cursos')
             projeto.alunos.set(alunos_ids)
             projeto.orientadores.set(orientadores_ids)
-            projeto.cursos.set(cursos_ids)
 
             return redirect("verperfil")
     else:

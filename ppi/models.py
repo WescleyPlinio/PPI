@@ -30,7 +30,7 @@ class Projeto(models.Model):
     pdf = models.FileField(blank=True, null=True)
     imagens = models.ImageField(blank=True, null=True)
     palavras_chave = models.CharField(max_length=200, blank=True, null=True)
-    curso = models.ForeignKey(Curso,on_delete=models.CASCADE)
+    curso = models.ForeignKey(Curso,on_delete=models.CASCADE, related_name="projetos")
     alunos = models.ManyToManyField(Aluno, related_name="projetos")
     orientadores = models.ManyToManyField(Orientador, related_name="projetos")
     criado_em = models.DateTimeField(auto_now_add=True,null=True)

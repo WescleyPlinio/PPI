@@ -1,7 +1,5 @@
 from django import forms
 from .models import Projeto, Aluno, Orientador
-from crispy_forms.layout import Layout, Field, Submit, Row, Column
-from crispy_forms.helper import FormHelper
 from .models import Comentario
 
 class ProjetoForm(forms.ModelForm):
@@ -18,4 +16,9 @@ class ComentarioForm(forms.ModelForm):
     class Meta:
         model = Comentario
         fields = ['texto'] 
+        widgets = {
+            "resumo": forms.Textarea(attrs={"rows": 3, "class": "form-control"}),
+            "objetivo": forms.Textarea(attrs={"rows": 3, "class": "form-control"}),
+            "curso": forms.Select(attrs={"class": "form-select"}),  # Define como um select
+        }
     
