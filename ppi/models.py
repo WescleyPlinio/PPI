@@ -53,3 +53,22 @@ class FotoProjeto(models.Model):
 
     def __str__(self):
         return f"Foto do projeto {self.projeto.titulo}"
+    
+    
+# class Vinculos(models.Model):
+#     servidor = "Servidor IF-SPP"
+#     aluno = "Aluno IF-SPP"
+
+# class User(AbstractUser):
+#     username = models.CharField(max_length=150, blank=True, null=True, unique=False)
+#     email = models.EmailField(max_length=255, unique=True) 
+#     nome_completo = models.CharField(max_length=100)
+#     vinculo = models.ForeignKey(Vinculos, on_delete=models.CASCADE)
+#     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
+    
+#     USERNAME_FIELD = "email"
+#     REQUIRED_FIELDS = ['username', 'password']
+
+#     class Meta:
+#         verbose_name = 'Usuário'
+#         verbose_name_plural = 'Usuários'
