@@ -19,6 +19,7 @@ class ComentarioForm(forms.ModelForm):
         widgets = {
             "resumo": forms.Textarea(attrs={"rows": 3, "class": "form-control"}),
             "objetivo": forms.Textarea(attrs={"rows": 3, "class": "form-control"}),
-            "curso": forms.Select(attrs={"class": "form-select"}),  # Define como um select
+            "curso": forms.Select(attrs={"class": "form-select"}),
+            "aluno": forms.Select(attrs={"class": "form-select"}),
         }
     
