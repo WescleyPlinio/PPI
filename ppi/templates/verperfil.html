@@ -52,61 +52,63 @@
 
 <!-- participações -->
 <div class="container-fluid blueback py-5">
-
-    <h1 class="laranja text-center pb-4">
-        Participações
-    </h1>
-    
     <div class= "container custom-container">
+
+        <h1 class="laranja text-left pb-4">
+            Participações:
+        </h1>
+    
         <div class="row g-2 w-100 d-flex justify-content-center">
         
         {% for x in range %}
         {% for projeto in projetos %}
-        
-            <div class="col-md-6 col-sm-12 col-lg-6">
-                
-                <a href="{% url 'post' projeto.id %}" class="text-decoration-none">
+
+            <div class="col-md-6 col-sm-12">
+                <div class="card h-100" style="background-color: rgb(5, 14, 43); min-height: 12em;">
+                    <div class="row h-100">
+                        <div class="col-10">
+
+                            <a href="{% url 'post' projeto.id %}" class="text-decoration-none">
                     
-                    <div class="card py-1" style="background-color: rgb(5, 14, 43); height: 12em;">
-                        <div class="card-body d-flex flex-column">
-    
-                            <h2 class="card-title roxinho">{{ projeto.titulo }}</h2>
-                            
-                            <h5 class="card-subtitle laranja">Orientado por Ari</h5>
-    
-                            <div class="row g-0 mt-auto d-flex justify-ocntent-start">
-                                
-                                <div class="col-md-4 col-lg-4 col-sm-4">
+                                <div class="card-body d-flex flex-column h-100">
+            
+                                    <h3 class="card-title roxinho">{{ projeto.titulo }}</h3>
                                     
-                                    <a href="{% url 'editar_projeto' projeto.id %}" class="w-75 btn btn-light">
-                                        Editar
-                                    </a>  
+                                    <h6 class="card-subtitle laranja">Orientado por Ari</h6>
                                     
-                                </div>
-                                
-                                <div class="col-md-4 col-lg-4 col-sm-4">
-                                    
-                                    <form class="delete-form" data-id={{ projeto.id }} action="{% url 'excluir_projeto' projeto.id %}" method="POST">
-    
-                                        {% csrf_token %}
-    
-                                        <button type="button" class="w-75 btn btn-light delete-btn">
-                                            Excluir
-                                        </button>
-    
-                                    </form>
+                                    <p class="card-title text-white mb-3">{{ projeto.objetivo }}</p>
+
+                                    <ul class="mt-auto d-flex align-items-center mt-auto ms-auto">
+
+                                        <a href="{% url 'editar_projeto' projeto.id %}" class="text-decoration-none m-0">
+                                            <i class="fa-solid fa-pen-to-square text-white fa-xl"></i>
+                                        </a>
+
+                                        <form class="delete-form" data-id={{ projeto.id }} action="{% url 'excluir_projeto' projeto.id %}" method="POST">
+            
+                                            {% csrf_token %}
+        
+                                            <button type="button" class="btn delete-btn">
+                                                <i class="fa-solid fa-trash text-white fa-xl"></i>
+                                            </button>
+        
+                                        </form>
+
+                                    </ul>
                                     
                                 </div>
 
-            
-                            </div>
-                            
+                            </a>
+
+                        </div>
+
+                        <div class="card-body col-2 d-flex align-items-end">
+                            <img src="{{ projeto.curso.logo.url }}" alt="projeto.curso.titulo" class="mw-100">
                         </div>
                     </div>
-                </a>
-                
+                </div>
             </div>
-
+        
         {% endfor %}
         {% endfor %}
       
