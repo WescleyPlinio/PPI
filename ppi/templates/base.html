@@ -76,16 +76,28 @@
                   {% endfor %}
                   
                   {% if user.is_authenticated %}
-                  <li class="nav-item me-3"> 
+                  <li class="nav-item ms-3"> 
 
                       <a class="nav-link" href="{% url 'verperfil' %}">
                         <i class="fa-solid fa-user fa-2xl laranja"></i>
                       </a>
 
                   </li>
+                  
+                  <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <li class="nav-item">
+
+                      <button type="submit" class="nav-link text-white">
+                        <i class="fa-solid fa-2xl fa-right-from-bracket"></i>
+                      </button>
+                      
+                    </li>
+                  </form>
+                  
 
                   {% else %}
-                  <li class="nav-item me-3"> 
+                  <li class="nav-item ms-3"> 
 
                       <a class="nav-link" href="{% url 'login' %}">
                         <i class="fa-solid fa-user fa-2xl laranja"></i>

@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from users.models import User, Curso, Vinculo
 
 class Aluno(models.Model):
     nome = models.CharField(max_length=50)
@@ -14,13 +14,6 @@ class Orientador(models.Model):
 
     def __str__(self):
         return self.nome
-    
-class Curso(models.Model):
-    titulo = models.CharField(max_length=50)
-    logo = models.FileField(blank=True)
-    
-    def __str__(self):
-        return self.titulo
 
 class Projeto(models.Model):
     titulo = models.CharField(max_length=80)
@@ -33,11 +26,19 @@ class Projeto(models.Model):
     curso = models.ForeignKey(Curso,on_delete=models.CASCADE, related_name="projetos")
     alunos = models.ManyToManyField(Aluno, related_name="projetos")
     orientadores = models.ManyToManyField(Orientador, related_name="projetos")
+    componentes = models.ManyToManyField(User, related_name="projetos", blank=True)
     criado_em = models.DateTimeField(auto_now_add=True,null=True)
     
     def __str__(self):
         return self.titulo
+    
+class FotoProjeto(models.Model):
+    projeto = models.ForeignKey(Projeto, on_delete=models.CASCADE, related_name='photos')
+    photo = models.ImageField()
 
+    def __str__(self):
+        return f"Foto do projeto {self.projeto.titulo}"
+    
 class Comentario(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     projeto = models.ForeignKey(Projeto, on_delete=models.CASCADE, related_name="comentarios",null=True)
@@ -47,28 +48,4 @@ class Comentario(models.Model):
     def __str__(self):
         return f"Comentário de {self.usuario.username} em {self.criado_em.strftime('%d/%m/%Y %H:%M'),{self.projeto.titulo}}"
     
-class FotoProjeto(models.Model):
-    projeto = models.ForeignKey(Projeto, on_delete=models.CASCADE, related_name='photos')
-    photo = models.ImageField()
 
-    def __str__(self):
-        return f"Foto do projeto {self.projeto.titulo}"
-    
-    
-# class Vinculos(models.Model):
-#     servidor = "Servidor IF-SPP"
-#     aluno = "Aluno IF-SPP"
-
-# class User(AbstractUser):
-#     username = models.CharField(max_length=150, blank=True, null=True, unique=False)
-#     email = models.EmailField(max_length=255, unique=True) 
-#     nome_completo = models.CharField(max_length=100)
-#     vinculo = models.ForeignKey(Vinculos, on_delete=models.CASCADE)
-#     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
-    
-#     USERNAME_FIELD = "email"
-#     REQUIRED_FIELDS = ['username', 'password']
-
-#     class Meta:
-#         verbose_name = 'Usuário'
-#         verbose_name_plural = 'Usuários'
