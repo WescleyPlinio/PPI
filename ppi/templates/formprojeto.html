@@ -15,10 +15,13 @@
 
 <div class="container-fluid blueback py-5">
   <div class="form-container mx-auto custom-container">
-    <form action="{% if projeto %}{% url 'editar_projeto' projeto.id %}{% else %}{% url 'form_post' %}{% endif %}" method="POST" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
+    <form action="{% if projeto %}
+    {% url 'editar_projeto' projeto.id %}{% else %}{% url 'form_post' %}
+    {% endif %}" method="POST" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="row g-0">
-        <div class="col-md-6 p-3">
+        <div class="col-md-6 px-3">
+
           <!-- Título -->
           <div class="form-group">
             <label for="id_titulo">Título:</label>
@@ -38,15 +41,16 @@
             {{ form.resumo }}
           </div>
 
+        </div>
+
+        <div class="col-md-6 px-3">
+
           <!-- PDF -->
           <div class="form-group">
             <label for="id_pdf">Arquivo PDF:</label>
             {{ form.pdf }}
           </div>
-        </div>
 
-
-        <div class="col-md-6 p-3">
           <!-- Capa do Projeto -->
           <div class="form-group">
             <label for="id_capa">Capa do projeto:</label>
@@ -70,28 +74,6 @@
               {% endfor %}
             </select>
           </div>
-
-          <!-- Alunos -->
-          <div class="form-group">
-            <label for="id_alunos">Alunos:</label>
-            <select class="form-control bg-white select2" id="alunos" name="alunos" multiple>
-              {% for aluno in alunos %}
-                <option class="text-dark" value="{{ aluno.id }}">{{ aluno.nome }}</option>
-              {% endfor %}
-            </select>
-          </div>
-
-
-          <!-- Orientadores -->
-          <div class="form-group">
-            <label for="id_orientadores">Orientador(es):</label>
-            <select class="form-control bg-white" id="orientadores" name="orientadores" multiple>
-              {% for orientador in orientadores %}
-                <option class="text-dark" value="{{ orientador.id }}">{{ orientador.nome }}</option>
-              {% endfor %}
-            </select>
-          </div>
-
 
           <!-- Curso -->
           <div class="form-group">

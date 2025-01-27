@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ProjetoForm, ComentarioForm
 from django.http import JsonResponse
-from .models import Projeto, Curso, Aluno, Orientador, Comentario
+from .models import Projeto, Curso, Comentario
 from users.models import Profile
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
@@ -55,8 +55,6 @@ def post(request, id):
 @login_required
 def formprojeto(request, pk=None):
 
-    alunos = list(Aluno.objects.values('id', 'nome'))
-    orientadores = list(Orientador.objects.values('id', 'nome'))
     componentes = list(Profile.objects.all().values('id', 'user__username'))    
 
     if pk:
@@ -65,27 +63,24 @@ def formprojeto(request, pk=None):
         projeto = None
 
     if request.method == 'POST':
-
         form = ProjetoForm(request.POST, request.FILES,  instance=projeto)
 
         if form.is_valid():
             projeto = form.save()
            
-            alunos_ids = request.POST.getlist('alunos')
-            orientadores_ids = request.POST.getlist('orientadores')
             componentes_ids = request.POST.getlist('componentes')
-            projeto.alunos.set(alunos_ids)
-            projeto.orientadores.set(orientadores_ids)
             projeto.componentes.set(componentes_ids)
 
             return redirect("verperfil")
+        else:
+            context = {
+                'form': ProjetoForm(),
+            }
     else:
         form = ProjetoForm(instance=projeto)
 
     context = {
         "form": form,
-        "alunos": alunos,
-        "orientadores": orientadores,
         "componentes": componentes,
         "projeto": projeto,
     }

@@ -37,7 +37,7 @@
                     <!-- Indicadores -->
                     <div class="carousel-indicators">
 
-                        {% for photo in post.photos.all %}
+                        {% for foto in projeto.imagens.all %}
                         <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="{{ forloop.counter0 }}" 
                                 class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% endif %}" 
                                 aria-label="Slide {{ forloop.counter }}">
@@ -49,16 +49,16 @@
                     <!-- Slides -->
                     <div class="carousel-inner">
 
-                        {% for photo in post.photos.all %}
+                        {% for foto in projeto.imagens.all %}
 
                         <div class="carousel-item {% if forloop.first %}active{% endif %}">
 
-                            <img src="{{ photo.photo.url }}" class="d-block w-100" alt="Image {{ forloop.counter }}">
+                            <img src="{{ foto.photo.url }}" class="d-block w-100" alt="Image {{ forloop.counter }}">
                             
-                            {% if photo.caption %}
+                            {% if foto.caption %}
 
                             <div class="carousel-caption d-none d-md-block">
-                                <p>{{ photo.caption }}</p>
+                                <p>{{ foto.caption }}</p>
                             </div>
 
                             {% endif %}
@@ -122,12 +122,12 @@
         <!-- Div alunos -->
         <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
 
-            {% for aluno in projeto.alunos.all %}
+            {% for aluno in projeto.componentes.all %}
 
             <a href="{% url 'verperfil' %}" style="text-decoration: none;">
                 <div>
                     <img src="{% if aluno.foto %} {{aluno.foto.url}} {% else %} {% static 'imgs/usericn.jpg' %}{% endif %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
-                    <h5 class="text-center roxinho mt-1">{{aluno.nome}}</h5>
+                    <h5 class="text-center roxinho mt-1">{{aluno.user.username}}</h5>
                 </div>
             </a>
 
