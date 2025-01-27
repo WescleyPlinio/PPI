@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from PIL import Image
 
 class Curso(models.Model):
     titulo = models.CharField(max_length=50)
@@ -25,6 +26,26 @@ class User(AbstractUser):
     
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
+    avatar = models.ImageField(upload_to='avatars/', blank=True, null=True, default='static/imgs/ari.jpg')
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.avatar:
+
+            img = Image.open(self.avatar.path)            
+            width, height = img.size
+            
+            if width != height:
+                min_side = min(width, height)
+                left = (width - min_side) / 2
+                top = (height - min_side) / 2
+                right = (width + min_side) / 2
+                bottom = (height + min_side) / 2
+                img = img.crop((left, top, right, bottom))
+
+            img = img.resize((300, 300), Image.ANTIALIAS)
+
+            img.save(self.avatar.path)
 
     def __str__(self):
         return self.user.username
