@@ -96,12 +96,11 @@ def criar_comentario(request,projeto_id):
             comentario = form.save(commit=False) 
             comentario.usuario = request.user 
             comentario.save() 
-            print(comentario)
             return redirect('post')
     else:
         form = ComentarioForm()
 
-    return render(request, 'criar_comentario.html', {'form': form})
+    return render(request, 'criar_comentario.html', { 'form': form, 'projeto': projeto })
 
 
 def listar_comentarios(request):

@@ -170,23 +170,25 @@
             <form method="post">
                 {% csrf_token %}
 
-                <div class="w-100 d-flex bab">
-
-                    <textarea id="comentario" name="comentario" class="form-control mb-2 bg-transparent border-0 rounded-0 border-bottom text-white" placeholder="Digite seu comentário" rows="1" required></textarea>
+                <div class="w-100">
+                    <div class="col-md-10">
+                        {{form.as_p}}
+                    </div>
                     
-                    <button type="submit" class="btn px-3 ms-2 flex-shrink-1 fundo-roxinho">Enviar</button>
-
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-light flex-shrink-1 fundo-roxinho">Enviar</button>
+                    </div>
                 </div>
 
             </form>
 
             <div class="w-100 pt-5">
 
-                {% for comentario in comentarios %}
+                {% for comentario in projeto.comentarios.all %}
 
                 <div class="d-flex justify-content-between align-items-center">
 
-                    <h5 class="roxinho">
+                    <h5 class="laranja">
                         {{ comentario.usuario.username }}
                     </h5>
 

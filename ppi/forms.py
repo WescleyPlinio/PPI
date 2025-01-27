@@ -10,10 +10,12 @@ class ComentarioForm(forms.ModelForm):
     class Meta:
         model = Comentario
         fields = ['texto'] 
-        widgets = {
-            "resumo": forms.Textarea(attrs={"rows": 3, "class": "form-control"}),
-            "objetivo": forms.Textarea(attrs={"rows": 3, "class": "form-control"}),
-            "curso": forms.Select(attrs={"class": "form-select"}),
-            "componentes": forms.Select(attrs={"class": "form-select"}),
-        }
-    
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['texto'].widget.attrs.update({
+            'class': 'form-control mb-2 bg-transparent border-0 rounded-0 border-bottom text-white',
+            'placeholder': 'Digite seu comentário',
+            'rows': '1',
+            'required': 'true'
+        })
