@@ -61,10 +61,20 @@
           </div>
 
 
+          <!-- Componentes -->
+          <div class="form-group">
+            <label for="id_componentes">Componentes:</label>
+            <select class="form-control bg-white" id="componentes" name="componentes" multiple>
+              {% for componente in componentes %}
+                <option class="text-dark" value="{{ componente.id }}">{{ componente.user__username }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
           <!-- Alunos -->
           <div class="form-group">
             <label for="id_alunos">Alunos:</label>
-            <select class="form-control bg-white select2" id="alunos" name="alunos" multiple data-max="3">
+            <select class="form-control bg-white select2" id="alunos" name="alunos" multiple>
               {% for aluno in alunos %}
                 <option class="text-dark" value="{{ aluno.id }}">{{ aluno.nome }}</option>
               {% endfor %}
@@ -75,7 +85,7 @@
           <!-- Orientadores -->
           <div class="form-group">
             <label for="id_orientadores">Orientador(es):</label>
-            <select class="form-control bg-white" id="orientadores" name="orientadores" multiple class="form-control">
+            <select class="form-control bg-white" id="orientadores" name="orientadores" multiple>
               {% for orientador in orientadores %}
                 <option class="text-dark" value="{{ orientador.id }}">{{ orientador.nome }}</option>
               {% endfor %}
@@ -112,6 +122,12 @@
           // Inicializar Select2 com limites
           $('#alunos').select2({
             maximumSelectionLength: 3,
+            placeholder: "Selecione até 3 alunos",
+            allowClear: true
+          });
+      
+          $('#componentes').select2({
+            maximumSelectionLength: 5,
             placeholder: "Selecione até 3 alunos",
             allowClear: true
           });

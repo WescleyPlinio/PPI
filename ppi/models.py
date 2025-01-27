@@ -24,8 +24,8 @@ class Projeto(models.Model):
     imagens = models.ImageField(blank=True, null=True)
     palavras_chave = models.CharField(max_length=200, blank=True, null=True)
     curso = models.ForeignKey(Curso,on_delete=models.CASCADE, related_name="projetos")
-    alunos = models.ManyToManyField(Aluno, related_name="projetos")
-    orientadores = models.ManyToManyField(Orientador, related_name="projetos")
+    alunos = models.ManyToManyField(Aluno, related_name="projetos", blank=True)
+    orientadores = models.ManyToManyField(Orientador, related_name="projetos", blank=True)
     componentes = models.ManyToManyField(User, related_name="projetos", blank=True)
     criado_em = models.DateTimeField(auto_now_add=True,null=True)
     

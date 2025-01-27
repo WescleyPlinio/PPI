@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import BaseUserCreationForm
-from .models import User, Profile
+from .models import User
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Row, Column, Submit
 
@@ -22,6 +22,6 @@ class CadastroForm(BaseUserCreationForm):
                 Column('vinculo', css_class='col-md-6'),
                 Column('password1', css_class='col-md-6'),
                 Column('password2', css_class='col-md-6'),
-                Submit('submit', 'Cadastrar', css_class='col-md-12 btn btn-primary text-uppercase'),
+                Submit('submit', 'Cadastrar', css_class='col-md-12 btn btn-dark fundo-roxinho text-uppercase'),
             )
         )
