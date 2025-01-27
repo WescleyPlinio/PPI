@@ -117,38 +117,42 @@
 <div class="container-fluid py-5">
     <div class="container container">
 
-        <h1 class="text-center laranja">Alunos:</h1>
+        <h1 class="text-left laranja">Alunos:</h1>
         
         <!-- Div alunos -->
         <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
 
             {% for aluno in projeto.componentes.all %}
-
+            {% if aluno.profile.user.vinculo_id == 1 %}
+            
             <a href="{% url 'verperfil' %}" style="text-decoration: none;">
                 <div>
-                    <img src="{% if aluno.foto %} {{aluno.foto.url}} {% else %} {% static 'imgs/usericn.jpg' %}{% endif %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
-                    <h5 class="text-center roxinho mt-1">{{aluno.user.username}}</h5>
+                    <img src="{% if aluno.profile.foto.url %} {{aluno.profile.foto.url}} {% else %} {% static 'imgs/usericn.jpg' %}{% endif %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
+                    <h5 class="text-center roxinho mt-1">{{aluno.profile.user.username}}</h5>
                 </div>
             </a>
-
+            
+            {% endif %}
             {% endfor %}
 
         </div>
         
-        <h1 class="text-center laranja">Orientadores:</h1>
+        <h1 class="text-left laranja">Orientadores:</h1>
 
         <!-- Div orientadores -->
         <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
 
-            {% for prof in projeto.orientadores.all %}
-
+            {% for orientador in projeto.componentes.all %}
+            {% if orientador.profile.user.vinculo_id == 2 %}
+            
             <a href="{% url 'verperfil' %}" style="text-decoration: none;">
                 <div>
-                    <img src="{% if prof.foto %} {{prof.foto.url}} {% else %} {% static 'imgs/usericn.jpg' %}{% endif %}" style="max-width: 10rem;" class="rounded-circle" alt="...""">
-                    <h5 class="text-center roxinho mt-1">{{ prof.nome }}</h5>
+                    <img src="{% if orientador.profile.foto.url %} {{orientador.profile.foto.url}} {% else %} {% static 'imgs/usericn.jpg' %}{% endif %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
+                    <h5 class="text-center roxinho mt-1">{{orientador.profile.user.username}}</h5>
                 </div>
             </a>
-
+            
+            {% endif %}
             {% endfor %}
 
         </div>
@@ -161,7 +165,7 @@
 
         <h1 class="laranja text-center">Comentários</h1>
 
-        <div class="py-2">
+        <div class="py-2 mt-4">
 
             <form method="post">
                 {% csrf_token %}
