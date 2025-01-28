@@ -5,6 +5,7 @@ from .models import Projeto, Curso, Comentario
 from users.models import Profile
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from django.http import Http404
 
 def index(request):
     posts = Projeto.objects.all()
@@ -36,7 +37,7 @@ def post(request, id):
         form = ComentarioForm(request.POST)
         if form.is_valid():
             comentario = form.save(commit=False)
-            comentario.usuario = request.user
+            comentario.usuario = request.user.profile
             comentario.projeto = projeto
             comentario.save()
             return redirect('post', id=projeto.id)
@@ -90,11 +91,17 @@ def formprojeto(request, pk=None):
     
 def criar_comentario(request,projeto_id):
     projeto = get_object_or_404(Projeto, id=projeto_id)
+
+    # Verifica se o usuário tem um perfil associado
+    if not hasattr(request.user, 'profile'):
+        raise Http404("Perfil de usuário não encontrado.")
+    
     if request.method == "POST":
         form = ComentarioForm(request.POST)
         if form.is_valid():
             comentario = form.save(commit=False) 
-            comentario.usuario = request.user 
+            comentario.usuario = request.user.profile
+            comentario.projeto = projeto
             comentario.save() 
             return redirect('post')
     else:

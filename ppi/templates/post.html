@@ -123,12 +123,12 @@
         <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
 
             {% for aluno in projeto.componentes.all %}
-            {% if aluno.profile.user.vinculo_id == 1 %}
+            {% if aluno.user.vinculo_id == 1 %}
             
             <a href="{% url 'verperfil' %}" style="text-decoration: none;">
                 <div>
-                    <img src="{% if aluno.profile.foto.url %} {{aluno.profile.foto.url}} {% else %} {% static 'imgs/usericn.jpg' %}{% endif %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
-                    <h5 class="text-center roxinho mt-1">{{aluno.profile.user.username}}</h5>
+                    <img src="{% if aluno.avatar %} {{aluno.avatar.url}} {% else %} {% static 'imgs/usericn.jpg' %}{% endif %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
+                    <h5 class="text-center roxinho mt-1">{{aluno.user.username}}</h5>
                 </div>
             </a>
             
@@ -143,12 +143,12 @@
         <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
 
             {% for orientador in projeto.componentes.all %}
-            {% if orientador.profile.user.vinculo_id == 2 %}
+            {% if orientador.user.vinculo_id == 2 %}
             
             <a href="{% url 'verperfil' %}" style="text-decoration: none;">
                 <div>
-                    <img src="{% if orientador.profile.foto.url %} {{orientador.profile.foto.url}} {% else %} {% static 'imgs/usericn.jpg' %}{% endif %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
-                    <h5 class="text-center roxinho mt-1">{{orientador.profile.user.username}}</h5>
+                    <img src="{% if orientador.avatar %} {{orientador.avatar.url}} {% else %} {% static 'imgs/usericn.jpg' %}{% endif %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
+                    <h5 class="text-center roxinho mt-1">{{orientador.user.username}}</h5>
                 </div>
             </a>
             
@@ -171,7 +171,7 @@
                 {% csrf_token %}
 
                 <div class="w-100">
-                    <div class="col-md-10">
+                    <div class="col-md-10 ">
                         {{form.as_p}}
                     </div>
                     
@@ -187,10 +187,17 @@
                 {% for comentario in projeto.comentarios.all %}
 
                 <div class="d-flex justify-content-between align-items-center">
-
-                    <h5 class="laranja">
-                        {{ comentario.usuario.username }}
-                    </h5>
+                    <div class="d-flex align-items-center">
+                        <img src="
+                        {% if comentario.usuario.avatar %} 
+                            {{comentario.usuario.avatar.url}} {% else %} {% static 'imgs/usericn.jpg' %}
+                        {% endif %}" class="rounded-circle"
+                        style="max-width: 2rem;" alt="{{comentario.usuario.user.username}}">
+                        
+                        <h5 class="laranja">
+                            {{ comentario.usuario.user.username }}
+                        </h5>
+                    </div>
 
                     <small class="text-light">
                         {{ comentario.criado_em|date:"d/m/Y H:i" }}

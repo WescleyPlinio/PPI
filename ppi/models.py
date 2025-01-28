@@ -1,5 +1,5 @@
 from django.db import models
-from users.models import User, Curso, Vinculo
+from users.models import Profile, Curso, Vinculo
 
 class Projeto(models.Model):
     titulo = models.CharField(max_length=80)
@@ -10,7 +10,7 @@ class Projeto(models.Model):
     imagens = models.ImageField(blank=True, null=True,)
     palavras_chave = models.CharField(max_length=200, blank=True, null=True)
     curso = models.ForeignKey(Curso,on_delete=models.CASCADE, related_name="projetos")
-    componentes = models.ManyToManyField(User, related_name="projetos", blank=True)
+    componentes = models.ManyToManyField(Profile, related_name="projetos", blank=True)
     criado_em = models.DateTimeField(auto_now_add=True,null=True)
     
     def __str__(self):
@@ -24,7 +24,7 @@ class FotoProjeto(models.Model):
         return f"Foto do projeto {self.projeto.titulo}"
     
 class Comentario(models.Model):
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(Profile, on_delete=models.CASCADE)
     projeto = models.ForeignKey(Projeto, on_delete=models.CASCADE, related_name="comentarios",null=True)
     texto =  models.TextField(max_length=1000)
     criado_em = models.DateTimeField(auto_now_add=True)
