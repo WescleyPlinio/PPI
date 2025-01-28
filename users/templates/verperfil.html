@@ -12,14 +12,16 @@
             <div class = "row g-0">
 
                 <div class= "col-sm-4 col-md-2 col-lg-2 my-auto">
-                    <img src="{% static 'imgs/ari.jpg' %}" class="rounded-circle w-100" alt="imgperfil">
+                    {% if profile.avatar %} 
+                    <img src="{{ profile.avatar.url }}" class="rounded-circle w-100" alt="{{ profile.user.username }}">
+                    {% endif %}
                 </div>
 
                 <div class= "col-sm-8 col-md-10 col-lg-10 my-auto">
                     <ul>
-                        <h6 class="text-left text-white">{{ profile.user.vinculo }}</h6>
-                        <h1 class="text-left roxinho">{{ profile.user.username }}</h1>
-                        <h5 class="text-left text-white">{{ profile.user.curso }}</h5>
+                        <h6 class="text-left text-white fw-bold">Vínculo: <b class="fw-normal">{{ profile.user.vinculo }}</b></h6>
+                        <h1 class="text-left roxinho">{{ profile.primeiro_nome }} {{ profile.ultimo_sobrenome }}</h1>
+                        <h6 class="text-left text-white fw-bold">Curso: <b class="text-white fw-normal">{{ profile.user.curso }}</b></h6>
                     </ul>
                 </div>
 

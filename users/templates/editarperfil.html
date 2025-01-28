@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static crispy_forms_tags %}
+{% block tittle %} Editar perfil {% endblock tittle %}
+{% block conteudo %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card p-4 blueback">
+                <form {% url 'editarperfil' %} method="POST" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+                    {% crispy form %}
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock conteudo %}

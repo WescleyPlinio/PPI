@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .forms import CadastroForm
-from .models import Profile, User
+from .forms import CadastroForm, ProfileForm
+from .models import Profile
 from ppi.models import Projeto
 
 def cadastro(request):
@@ -15,7 +15,7 @@ def cadastro(request):
             return render(request, 'registration/cadastro.html', {'form': form})
     else:
         context = {
-            'form': CadastroForm(),
+            'form': form,
         }
     return render(request, 'registration/cadastro.html', context)
 
@@ -33,9 +33,19 @@ def verperfil(request):
     return render (request, "verperfil.html", context)
 
 def editarperfil(request):
-
-    context = {
-        
-    }
+    profile = request.user.profile
+    context = {}
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+            return redirect('verperfil')
+        else:
+            return render(request, 'editarperfil.html', {'form': form})
+    else:
+        form = ProfileForm(instance=profile)
+        context = {
+            'form': form,
+        }
 
     return render(request, "editarperfil.html", context)
