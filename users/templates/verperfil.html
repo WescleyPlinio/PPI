@@ -39,7 +39,7 @@
                     </button>
                 </a>
 
-                {% if perms.ppi.add_post %}
+                {% if perms.ppi.add_projeto %}
                 <a href="{% url 'form_post' %}">
                     <button class= "btn w-100 btn-dark fundo-laranja my-1">
                         Adicionar projeto
@@ -88,7 +88,7 @@
 
                                     <p class="card-title text-white mb-3">{{ projeto.objetivo }}</p>
 
-                                    {% if perms.ppi.add_post %}
+                                    {% if perms.ppi.add_projeto %}
                                     <ul class="mt-auto d-flex align-items-center mt-auto ms-auto">
 
                                         <a href="{% url 'editar_projeto' projeto.id %}" class="text-decoration-none m-0">
