@@ -5,6 +5,7 @@ class ProjetoForm(forms.ModelForm):
     class Meta:
         model = Projeto
         fields = "__all__"
+        exclude = ['criado_em']
 
 class ComentarioForm(forms.ModelForm):
     class Meta:

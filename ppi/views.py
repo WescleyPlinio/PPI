@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from .models import Projeto, Curso, Comentario
 from users.models import Profile
 from django.core.paginator import Paginator
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.http import Http404
 
 def index(request):
@@ -54,6 +54,7 @@ def post(request, id):
 
 
 @login_required
+@permission_required('ppi.add_projeto', raise_exception=True)
 def formprojeto(request, pk=None):
 
     componentes = list(Profile.objects.all().values('id', 'user__username'))    

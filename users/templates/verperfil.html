@@ -39,11 +39,13 @@
                     </button>
                 </a>
 
+                {% if perms.ppi.add_post %}
                 <a href="{% url 'form_post' %}">
                     <button class= "btn w-100 btn-dark fundo-laranja my-1">
                         Adicionar projeto
                     </button>
                 </a>
+                {% endif %}
                 
             </ul>
 
@@ -76,10 +78,17 @@
             
                                     <h3 class="card-title roxinho">{{ projeto.titulo }}</h3>
                                     
-                                    <h6 class="card-subtitle laranja">Orientado por Ari</h6>
-                                    
+                                    <h6 class="card-subtitle laranja">Orientado por:</h6>
+
+                                    {% for componente in projeto.componentes.all %}
+                                        {% if componente.user.vinculo_id == 2 %}
+                                    <h6 class="card-subtitle text-white">{{ componente.primeiro_nome }}</h6>
+                                        {% endif %}
+                                    {% endfor %}
+
                                     <p class="card-title text-white mb-3">{{ projeto.objetivo }}</p>
 
+                                    {% if perms.ppi.add_post %}
                                     <ul class="mt-auto d-flex align-items-center mt-auto ms-auto">
 
                                         <a href="{% url 'editar_projeto' projeto.id %}" class="text-decoration-none m-0">
@@ -97,6 +106,7 @@
                                         </form>
 
                                     </ul>
+                                    {% endif %}
                                     
                                 </div>
 
