@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% block tittle %} Informáticos {% endblock tittle %} 
+{% block tittle %} {{ curso.titulo }} {% endblock tittle %} 
 {% block conteudo %}
 
 <!-- Menu -->
@@ -10,7 +10,7 @@
         <div class="col-md-8 ms-auto my-auto">
 
             <h1 class="text-white">
-                Projetos do curso de <a class="roxinho">{{ curso.titulo }}</a> 
+                Projetos do curso de <a class="roxinho text-decoration-none">{{ curso.titulo }}</a> 
             </h1>
 
         </div>
