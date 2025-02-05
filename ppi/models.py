@@ -7,7 +7,6 @@ class Projeto(models.Model):
     objetivo = models.TextField(max_length=2000)
     capa = models.ImageField('media/')
     pdf = models.FileField(blank=True, null=True)
-    imagens = models.ImageField(blank=True, null=True,)
     palavras_chave = models.CharField(max_length=200, blank=True, null=True)
     curso = models.ForeignKey(Curso,on_delete=models.CASCADE, related_name="projetos")
     componentes = models.ManyToManyField(Profile, related_name="projetos", blank=True)

@@ -1,11 +1,15 @@
 from django import forms
-from .models import Projeto, Comentario
+from .models import Projeto, Comentario, FotoProjeto
 
 class ProjetoForm(forms.ModelForm):
     class Meta:
         model = Projeto
-        fields = "__all__"
-        exclude = ['criado_em']
+        fields = ['titulo', 'resumo', 'objetivo', 'capa', 'pdf', 'palavras_chave', 'curso']
+
+class FotoProjetoForm(forms.ModelForm):
+    class Meta:
+        model = FotoProjeto
+        fields = ['photo']
 
 class ComentarioForm(forms.ModelForm):
     class Meta:
