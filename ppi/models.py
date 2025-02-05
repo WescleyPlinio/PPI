@@ -1,9 +1,10 @@
 from django.db import models
 from users.models import Profile, Curso, Vinculo
+from PIL import Image
 
 class Projeto(models.Model):
     titulo = models.CharField(max_length=80)
-    resumo = models.TextField(max_length=150)
+    resumo = models.TextField(max_length=2000)
     objetivo = models.TextField(max_length=2000)
     capa = models.ImageField('media/')
     pdf = models.FileField(blank=True, null=True)
@@ -14,6 +15,14 @@ class Projeto(models.Model):
     
     def __str__(self):
         return self.titulo
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        if self.capa:
+            img = Image.open(self.capa.path)
+            img = img.resize((563, 375), Image.LANCZOS)
+            img.save(self.capa.path)
     
 class FotoProjeto(models.Model):
     projeto = models.ForeignKey(Projeto, on_delete=models.CASCADE, related_name='photos')
