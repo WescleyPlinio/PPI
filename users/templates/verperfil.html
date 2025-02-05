@@ -9,11 +9,11 @@
 
         <div class= "col-md-9 col-lg-9 col-sm-8">
 
-            <div class = "row g-0">
+            <div class = "row g-3">
 
                 <div class= "col-sm-4 col-md-2 col-lg-2 my-auto">
                     {% if profile.avatar %} 
-                    <img src="{{ profile.avatar.url }}" class="rounded-circle w-100" alt="{{ profile.user.username }}">
+                    <img src="{{ profile.avatar.url }}" class="rounded-circle mw-100" alt="{{ profile.user.username }}">
                     {% endif %}
                 </div>
 
@@ -78,11 +78,11 @@
             
                                     <h3 class="card-title roxinho">{{ projeto.titulo }}</h3>
                                     
-                                    <h6 class="card-subtitle laranja">Orientado por:</h6>
+                                    <h6 class="card-subtitle laranja mb-2">Orientado por:</h6>
 
                                     {% for componente in projeto.componentes.all %}
                                         {% if componente.user.vinculo_id == 2 %}
-                                    <h6 class="card-subtitle text-white">{{ componente.primeiro_nome }}</h6>
+                                    <h6 class="card-subtitle fw-bold text-white">{{ componente.user.username }}</h6>
                                         {% endif %}
                                     {% endfor %}
 

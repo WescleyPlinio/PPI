@@ -34,10 +34,11 @@
             <div class="col-md-12 col-lg-5 col-sm-12 d-flex justify-content-start align-items-center">
                 
                 <div id="carouselExample" class="carousel slide w-100 pe-3" data-bs-ride="carousel">
+
                     <!-- Indicadores -->
                     <div class="carousel-indicators">
 
-                        {% for foto in projeto.imagens.all %}
+                        {% for foto in projeto.photos.all %}
                         <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="{{ forloop.counter0 }}" 
                                 class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% endif %}" 
                                 aria-label="Slide {{ forloop.counter }}">
@@ -49,7 +50,7 @@
                     <!-- Slides -->
                     <div class="carousel-inner">
 
-                        {% for foto in projeto.imagens.all %}
+                        {% for foto in projeto.photos.all %}
 
                         <div class="carousel-item {% if forloop.first %}active{% endif %}">
 
@@ -96,8 +97,10 @@
                     </p>
 
                     <div class="d-flex justify-content-end align-items-center py-2">
-                        <a class="text-white text-left nav-link">Data de publicação: {{projeto.criado_em|date:"d/m/Y H:i"}}</a>
-                        <a class="text-left ms-2" style="color: rgb(255, 145, 77);"> baixar PDF </a>
+                        <a class="fw-light text-white text-left nav-link">Data de publicação: {{projeto.criado_em|date:"d/m/Y H:i"}}</a>
+                        {% if projeto.pdf %}
+                        <a class="fw-light text-left laranja ms-2" href="{{ projeto.pdf.url }}" target="_blank"> baixar PDF </a>
+                        {% endif %}
                     </div> 
 
                 </div>

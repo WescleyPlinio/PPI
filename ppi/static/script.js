@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(data => {
                     if (data["Sucesso!"]) {
                         alert("Projeto deletado com sucesso!");
-                        form.closest(".card").remove();
                     } else {
                         alert(`Erro: ${data["Erro"]}`);
                     }

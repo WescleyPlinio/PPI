@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .forms import ProjetoForm, ComentarioForm
+from .forms import ProjetoForm, ComentarioForm, FotoProjetoForm
 from django.http import JsonResponse
-from .models import Projeto, Curso, Comentario
+from .models import Projeto, Curso, Comentario, FotoProjeto
 from users.models import Profile
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required, permission_required
@@ -56,28 +56,24 @@ def post(request, id):
 @login_required
 @permission_required('ppi.add_projeto', raise_exception=True)
 def formprojeto(request, pk=None):
-
     componentes = list(Profile.objects.all().values('id', 'user__username'))    
-
-    if pk:
-        projeto = get_object_or_404(Projeto, pk=pk)
-    else:
-        projeto = None
+    projeto = get_object_or_404(Projeto, pk=pk) if pk else None
 
     if request.method == 'POST':
-        form = ProjetoForm(request.POST, request.FILES,  instance=projeto)
+        form = ProjetoForm(request.POST, request.FILES, instance=projeto)
 
         if form.is_valid():
             projeto = form.save()
-           
+
             componentes_ids = request.POST.getlist('componentes')
             projeto.componentes.set(componentes_ids)
 
+            imagens = request.FILES.getlist('imagens')
+            for imagem in imagens:
+                FotoProjeto.objects.create(projeto=projeto, photo=imagem)
+
             return redirect("verperfil")
-        else:
-            context = {
-                'form': ProjetoForm(),
-            }
+
     else:
         form = ProjetoForm(instance=projeto)
 
