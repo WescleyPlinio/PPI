@@ -14,20 +14,21 @@ def index(request):
     }
     return render(request, "index.html", context)
 
-
 def login(request):
     return render(request, "login.html")
 
 def info(request, id):
     curso = get_object_or_404(Curso, id = id)
-    posts = Projeto.objects.filter( curso = id )
+    projetos_all = Projeto.objects.filter( curso = id )
+    paginator = Paginator(projetos_all, 2)
+    numero_pagina = request.GET.get('pagina')
+    projetos = paginator.get_page(numero_pagina)
     context = {
         "curso" : curso,
-        "projetos" : posts,
+        "projetos" : projetos,
         "range" : range(3)
     }
     return render(request, "cursofeed.html", context)
-
 
 def post(request, id):
     projeto = get_object_or_404(Projeto, id=id)
@@ -89,7 +90,6 @@ def formprojeto(request, pk=None):
 def criar_comentario(request,projeto_id):
     projeto = get_object_or_404(Projeto, id=projeto_id)
 
-    # Verifica se o usuário tem um perfil associado
     if not hasattr(request.user, 'profile'):
         raise Http404("Perfil de usuário não encontrado.")
     
