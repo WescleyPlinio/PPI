@@ -6,6 +6,7 @@ from users.models import Profile
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required, permission_required
 from django.http import Http404
+from django.contrib import messages
 
 def index(request):
     posts = Projeto.objects.all()
@@ -73,7 +74,9 @@ def formprojeto(request, pk=None):
             for imagem in imagens:
                 FotoProjeto.objects.create(projeto=projeto, photo=imagem)
 
-            return redirect("verperfil")
+            messages.success(request, 'Projeto salvo com sucesso!')
+
+            return redirect("post", projeto.pk)
 
     else:
         form = ProjetoForm(instance=projeto)
@@ -99,7 +102,9 @@ def criar_comentario(request,projeto_id):
             comentario = form.save(commit=False) 
             comentario.usuario = request.user.profile
             comentario.projeto = projeto
-            comentario.save() 
+            comentario.save()
+
+            messages.success(request, 'Comentário salvo com sucesso!')
             return redirect('post')
     else:
         form = ComentarioForm()
