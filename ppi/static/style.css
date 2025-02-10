@@ -144,3 +144,12 @@ border: 3px solid #ddd;
 form label {
     color: white;
 }
+
+/* Optional: Extra styles */
+.card img {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+.card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
