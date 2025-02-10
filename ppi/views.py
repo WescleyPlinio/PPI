@@ -139,3 +139,10 @@ def pesquisar(request):
         
     }
     return render(request, 'pesquisar.html', context)
+
+def sobre(request):
+    context = {
+
+    }
+
+    return render(request, 'about.html', context)

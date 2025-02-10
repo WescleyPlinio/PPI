@@ -79,6 +79,14 @@
                   </li>
 
                   {% endfor %}
+
+                  <li class="nav-item ms-3"> 
+
+                    <a class="nav-link text-white" href="{% url 'sobre' %}">
+                      Sobre nós
+                    </a>
+
+                  </li>
                   
                   {% if user.is_authenticated %}
                   <li class="nav-item ms-3"> 
@@ -103,14 +111,15 @@
 
                   {% else %}
                   <li class="nav-item ms-3"> 
-
-                      <a class="nav-link" href="{% url 'login' %}">
-                        <i class="fa-solid fa-user fa-2xl laranja"></i>
-                      </a>
-
+                    
+                    <a class="nav-link" href="{% url 'login' %}">
+                      <i class="fa-solid fa-user fa-2xl laranja"></i>
+                    </a>
+                    
                   </li>
-
+                  
                   {% endif %}
+
               </ul> 
           </div>
       </div>
