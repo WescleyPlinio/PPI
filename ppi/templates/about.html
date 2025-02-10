@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Sobre Nós
+{% endblock %}
+{% block conteudo %}
+  <!-- Cabeçalho -->
+  <div class="container-fluid">
+    <div class="container custom-container mb-3 py-3">
+      <div class="row g-0">
+        <div class="col-md-7 d-flex justify-content-start align-items-center">
+          <h1 class="text-white text-left" style="font-size: 3.5em;">Sobre nós</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Missão e Visão -->
+  <div class="container-fluid py-5 blueback shadow-lg">
+    <div class="container custom-container d-flex flex-column">
+      <h1 class="laranja text-center">Nossa Missão e Visão</h1>
+      <div class="row g-3 mt-4 d-flex justify-content-evenly align-items-center">
+        <div class="col-md-5 col-lg-5 col-sm-10 p-3 bg-white rounded shadow-lg">
+          <h3 class="roxinho text-left">Nossa Missão</h3>
+          <p class="text-dark">Facilitar o acesso e a disseminação dos projetos integradores, promovendo a colaboração entre estudantes e professores, conectando ideias inovadoras às necessidades do mundo real.</p>
+        </div>
+        <div class="col-md-5 col-lg-5 col-sm-10 p-3 bg-white rounded shadow-lg">
+          <h3 class="roxinho text-left">Nossa Visão</h3>
+          <p class="text-dark">Ser a principal plataforma de referência para projetos integradores, inspirando inovação e aprendizado prático em diversas áreas do conhecimento.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Equipe -->
+  <div class="container-fluid bandeira py-5 d-flex position-relative overflow-hidden" style="height: 500px;">
+    <div class="row g-3 w-100 position-relative m-auto z-2 d-flex justify-content-evenly align-items-center">
+      <div class="col-md-10 col-lg-10 col-sm-10 bandeira-content p-3 bg-white rounded shadow-lg">
+        <h3 class="laranja text-center">Nossa Equipe</h3>
+        <p class="text-dark text-center">Somos um grupo de educadores, estudantes e desenvolvedores comprometidos em tornar o aprendizado mais acessível e colaborativo. Acreditamos que a troca de conhecimentos pode transformar a educação e a sociedade.</p>
+      </div>
+    </div>
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-image z-1" style="background-image: url('{% static 'imgs/Equipe.jpg' %}'); filter: blur(1px);"></div>
+  </div>
+
+  <div class="d-flex justify-content-end align-items-center">
+    <img src="{% static 'imgs/LogoPPI.svg' %}" alt="Logo" style="max-height: 20rem;" />
+  </div>
+
+{% endblock %}

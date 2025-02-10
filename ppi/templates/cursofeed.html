@@ -1,109 +1,81 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
-{% block tittle %} {{ curso.titulo }} {% endblock tittle %} 
+{% block tittle %}
+  {{ curso.titulo }}
+{% endblock %}
 {% block conteudo %}
 
-<!-- Menu -->
-<div class="container custom-container mb-5 py-3 x">
+  <!-- Menu -->
+  <div class="container custom-container mb-5 py-3 x">
     <div class="row g-0">
+      <div class="col-md-8 ms-auto my-auto">
+        <h1 class="text-white">Projetos do curso de <a class="roxinho text-decoration-none">{{ curso.titulo }}</a></h1>
+      </div>
 
-        <div class="col-md-8 ms-auto my-auto">
-
-            <h1 class="text-white">
-                Projetos do curso de <a class="roxinho text-decoration-none">{{ curso.titulo }}</a> 
-            </h1>
-
-        </div>
-
-        <div class="col-md-4 d-flex my-auto">
-          
-            <img src="{{curso.logo.url}}" class="ms-auto" alt="{{ curso.titulo }}" style="max-height: 12em; max-width: 100%;">
-
-        </div>
-
+      <div class="col-md-4 d-flex my-auto">
+        <img src="{{ curso.logo.url }}" class="ms-auto" alt="{{ curso.titulo }}" style="max-height: 12em; max-width: 100%;" />
+      </div>
     </div>
-</div>
+  </div>
 
-<!-- Feed -->
-<div class="container-fluid blueback">
+  <!-- Feed -->
+  <div class="container-fluid blueback">
     <div class="container custom-container">
-        <div class="row g-4 d-flex justify-content-center align-items-center">
-            {% for x in range%}
-                {% for projeto in projetos %}
-                <div class="col-md-12 col-lg-6 col-sm-12">
+      <div class="row g-4 d-flex justify-content-center align-items-center">
 
-                  <a class="text-decoration-none" href="{% url 'post' projeto.id %}">
+        {% for projeto in projetos %}
+          <div class="col-md-12 col-lg-6 col-sm-12">
+            <a class="text-decoration-none" href="{% url 'post' projeto.id %}">
+              <div class="card">
+                <div class="row">
 
-                    <div class="card">
-                        <div class="row">
-  
-                          <div class="col-md-12 col-lg-6 col-sm-12 d-flex">
-  
-                            <img src="{{ projeto.capa.url }}" class="mh-100 mw-100 m-auto img-fluid rounded-0" alt="{{ projeto.titulo }}">
-                            
-                          </div>
-  
-                          <div class="col-md-12 col-lg-6 col-sm-12">
-                            <div class="card-body py-4">
-  
-                              <h5 class="card-title roxinho">{{ projeto.titulo }}</h5>
-                              <p class="card-text">{{ projeto.objetivo }}</p>
-  
-                            </div>
-                          </div>
-  
-                        </div>
+                  <div class="col-md-12 col-lg-6 col-sm-12 d-flex">
+                    <img src="{{ projeto.capa.url }}" class="mh-100 mw-100 m-auto img-fluid rounded-0" alt="{{ projeto.titulo }}" />
+                  </div>
+
+                  <div class="col-md-12 col-lg-6 col-sm-12">
+                    <div class="card-body py-4">
+                      <h5 class="card-title roxinho">{{ projeto.titulo }}</h5>
+                      <p class="card-text">{{ projeto.objetivo }}</p>
                     </div>
+                  </div>
                   
-                  </a>
-
                 </div>
-                {% endfor %}
-            {% endfor %}
-        </div>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
 
-        <div class="py-3">
-          <ul class="pagination d-flex justify-content-end">
-              {% if projetos.has_previous %}
+      </div>
 
-              <li class="page-item">
-                <a class="page-link laranja" href="?pagina=1">
-                  Início
-                </a>
-              </li>
-              
-              <li class="page-item">
-                <a class="page-link roxinho" href="?pagina={{ projetos.previous_page_number }}">
-                  Anterior
-                </a>
-              </li>
+      <div class="py-3">
+        <ul class="pagination d-flex justify-content-end">
+          {% if projetos.has_previous %}
+            <li class="page-item">
+              <a class="page-link laranja" href="?pagina=1">Início</a>
+            </li>
 
-              {% endif %}
-      
-              <li class="page-item">
-                <a class="page-link text-dark">
-                  Página {{ projetos.number }} de {{ projetos.paginator.num_pages }}.
-                </a>
-              </li>
-      
-              {% if projetos.has_next %}
-              <li class="page-item">
-                <a class="page-link roxinho" href="?pagina={{ projetos.next_page_number }}">
-                  Próximo
-                </a>
-              </li>
+            <li class="page-item">
+              <a class="page-link roxinho" href="?pagina={{ projetos.previous_page_number }}">Anterior</a>
+            </li>
+          {% endif %}
 
-              <li class="page-item">
-                <a class="page-link laranja" href="?pagina={{ projetos.paginator.num_pages }}">
-                  Fim
-                </a>
-              </li>
+          <li class="page-item">
+            <a class="page-link text-dark">Página {{ projetos.number }} de {{ projetos.paginator.num_pages }}.</a>
+          </li>
 
-              {% endif %}
-          </ul>
-        </div>
+          {% if projetos.has_next %}
+            <li class="page-item">
+              <a class="page-link roxinho" href="?pagina={{ projetos.next_page_number }}">Próximo</a>
+            </li>
 
+            <li class="page-item">
+              <a class="page-link laranja" href="?pagina={{ projetos.paginator.num_pages }}">Fim</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
 
     </div>
-</div>
-{% endblock conteudo %}
+  </div>
+{% endblock %}
