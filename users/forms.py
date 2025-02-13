@@ -22,7 +22,6 @@ class CadastroForm(BaseUserCreationForm):
                 Column('vinculo', css_class='col-md-6'),
                 Column('password1', css_class='col-md-6'),
                 Column('password2', css_class='col-md-6'),
-                Submit('submit', 'Cadastrar', css_class='col-md-12 btn btn-dark fundo-roxinho text-uppercase'),
             )
         )
 
