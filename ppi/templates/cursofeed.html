@@ -4,7 +4,6 @@
   {{ curso.titulo }}
 {% endblock %}
 {% block conteudo %}
-
   <!-- Menu -->
   <div class="container custom-container mb-5 py-3 x">
     <div class="row g-0">
@@ -22,13 +21,11 @@
   <div class="container-fluid blueback">
     <div class="container custom-container">
       <div class="row g-4 d-flex justify-content-center align-items-center">
-
         {% for projeto in projetos %}
           <div class="col-md-12 col-lg-6 col-sm-12">
             <a class="text-decoration-none" href="{% url 'post' projeto.id %}">
               <div class="card">
                 <div class="row">
-
                   <div class="col-md-12 col-lg-6 col-sm-12 d-flex">
                     <img src="{{ projeto.capa.url }}" class="mh-100 mw-100 m-auto img-fluid rounded-0" alt="{{ projeto.titulo }}" />
                   </div>
@@ -39,13 +36,11 @@
                       <p class="card-text">{{ projeto.objetivo }}</p>
                     </div>
                   </div>
-                  
                 </div>
               </div>
             </a>
           </div>
         {% endfor %}
-
       </div>
 
       <div class="py-3">
@@ -75,7 +70,6 @@
           {% endif %}
         </ul>
       </div>
-
     </div>
   </div>
 {% endblock %}
