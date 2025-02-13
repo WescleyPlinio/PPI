@@ -38,19 +38,21 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mb-2 mb-lg-0 ms-auto d-flex align-items-center">
 
-                {% if request.path == "/pesquisar/" %}
+                {% if True  %}
                 
                 <form 
                     method="GET"
+                    action="{% url 'pesquisar' %}"
                     class="d-flex justify-content-center"
-                    onsubmit="return redirectToSearchPage();"
+                    
                 >
+                <!-- onsubmit="return redirectToSearchPage();"-->
                   
                 <div class="input-group">
                   <span class="input-group-text" id="basic-addon1">
                     <i class="fa-solid fa-magnifying-glass text-dark"></i>
                   </span>
-                  <input type="text" id="pesquisar" class="form-control search-bar" placeholder="Pesquisar" aria-describedby="basic-addon1">
+                  <input type="text" id="pesquisar" name="pesquisar" class="form-control search-bar" placeholder="Pesquisar" aria-describedby="basic-addon1" onkeyup="submit();">
                 </div>
 
                 </form>
