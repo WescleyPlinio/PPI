@@ -13,7 +13,7 @@
       </div>
     {% endif %}
 
-    <form style="width: 800px;" class="blueback rounded-4 m-auto p-5" method="post">
+    <form style="width: 1000px;" class="blueback rounded-4 m-auto p-5" method="post">
       {% csrf_token %}
 
       <h2 class="text-center roxinho">Cadastre-se</h2>
@@ -23,11 +23,9 @@
             <label class="laranja" for="username">Usuário:</label>
             {{ form.username }}
             {% if form.username.errors %}
-              <ul class="error-list">
-                {% for error in form.username.errors %}
-                  <li class="text-danger">{{ error }}</li>
-                {% endfor %}
-              </ul>
+              {% for error in form.username.errors %}
+                <p class="text-danger fw-bold text-left ms-0">{{ error }}</p>
+              {% endfor %}
             {% endif %}
           </div>
         </div>
@@ -36,11 +34,9 @@
             <label class="laranja" for="email">Email:</label>
             {{ form.email }}
             {% if form.email.errors %}
-              <ul class="error-list">
-                {% for error in form.email.errors %}
-                  <li class="text-danger">{{ error }}</li>
-                {% endfor %}
-              </ul>
+              {% for error in form.email.errors %}
+                <p class="text-danger fw-bold text-left ms-0">{{ error }}</p>
+              {% endfor %}
             {% endif %}
           </div>
         </div>
@@ -49,11 +45,9 @@
             <label class="laranja" for="curso">Curso:</label>
             {{ form.curso }}
             {% if form.curso.errors %}
-              <ul class="error-list">
-                {% for error in form.curso.errors %}
-                  <li class="text-danger">{{ error }}</li>
-                {% endfor %}
-              </ul>
+              {% for error in form.curso.errors %}
+                <p class="text-danger fw-bold text-left ms-0">{{ error }}</p>
+              {% endfor %}
             {% endif %}
           </div>
         </div>
@@ -62,11 +56,9 @@
             <label class="laranja" for="vinculo">Vínculo:</label>
             {{ form.vinculo }}
             {% if form.vinculo.errors %}
-              <ul class="error-list">
-                {% for error in form.vinculo.errors %}
-                  <li class="text-danger">{{ error }}</li>
-                {% endfor %}
-              </ul>
+              {% for error in form.vinculo.errors %}
+                <p class="text-danger fw-bold text-left ms-0">{{ error }}</p>
+              {% endfor %}
             {% endif %}
           </div>
         </div>
@@ -75,11 +67,9 @@
             <label class="laranja" for="password1">Senha:</label>
             {{ form.password1 }}
             {% if form.password1.errors %}
-              <ul class="error-list">
-                {% for error in form.password1.errors %}
-                  <li class="text-danger">{{ error }}</li>
-                {% endfor %}
-              </ul>
+              {% for error in form.password1.errors %}
+                <p class="text-danger fw-bold text-left ms-0">{{ error }}</p>
+              {% endfor %}
             {% endif %}
           </div>
         </div>
@@ -88,11 +78,9 @@
             <label class="laranja" for="password2">Confirmar senha:</label>
             {{ form.password2 }}
             {% if form.password2.errors %}
-              <ul class="error-list">
-                {% for error in form.password2.errors %}
-                  <li class="text-danger">{{ error }}</li>
-                {% endfor %}
-              </ul>
+              {% for error in form.password2.errors %}
+              <p class="text-danger fw-bold text-left ms-0">{{ error }}</p>
+              {% endfor %}
             {% endif %}
           </div>
         </div>
