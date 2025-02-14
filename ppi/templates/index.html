@@ -5,18 +5,18 @@
 {% endblock %}
 {% block conteudo %}
   <!-- Menu -->
-  <div class="container-fluid" style="height: 500px;">
+  <div class="container-fluid" style="min-height: 500px;">
     <div class="container custom-container mb-3">
       <div class="row g-2">
-        <div class="col-md-10 d-flex">
+        <div class="col-md-9 d-flex">
           <ul class="my-auto me-auto">
             <h1 class="text-white text-left">Plataforma dos <a class="laranja text-decoration-none">Projetos</a> <a class="roxinho text-decoration-none">Integradores</a></h1>
             <h3 class="text-white text-left">O repositório para todos os projetos do campus SPP.</h3>
           </ul>
         </div>
 
-        <div class="col-md-2 d-flex justify-content-center align-items-center">
-          <img src="{% static 'imgs/LogoPPI.svg' %}" alt="Logo" style="max-height: 20rem;" />
+        <div class="col-md-3 d-flex justify-content-center align-items-center">
+          <img src="{% static 'imgs/LogoPPI.svg' %}" alt="Logo" style="max-width: 100%;" />
         </div>
       </div>
     </div>
@@ -68,17 +68,15 @@
     </div>
   </div>
 
-  <div class="container-fluid bandeira py-5 d-flex position-relative overflow-hidden" style="height: 500px;">
+  <div class="container-fluid bandeira py-5 d-flex position-relative overflow-hidden" style="min-height: 500px;">
     <div class="row g-3 w-100 position-relative m-auto z-2 d-flex justify-content-evenly align-items-center">
       <div class="col-md-5 col-lg-5 col-sm-10 bandeira-content p-3 bg-white rounded shadow-lg">
         <h3 class="laranja text-left">O que são projetos integradores?</h3>
-
         <p class="text-dark text-left">Os projetos integradores são iniciativas que conectam diferentes disciplinas e áreas do conhecimento do ensino médio integrado (entre outros). Esses projetos têm como objetivo principal consolidar a aprendizagem ao permitir que os estudantes apliquem na prática os conceitos teóricos aprendidos em sala de aula, muitas vezes atendendo demandas reais da comunidade, empresas ou setores públicos.</p>
       </div>
 
       <div class="col-md-5 col-lg-5 col-sm-10 bandeira-content p-3 bg-white rounded shadow-lg">
         <h3 class="laranja text-left">O que é este site?</h3>
-
         <p class="text-dark">A Plataforma dos Projetos Integradores é um sistema que trás em suas mãos todos os projetos integradores do campus SPP já criados, permitindo que você possa visualizá-los.</p>
       </div>
     </div>
