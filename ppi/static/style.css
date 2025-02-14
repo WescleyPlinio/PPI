@@ -148,6 +148,7 @@ form label {
 }
 
 .card:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
+    transform: scale(1.02);
+    transition: transform 0.2s ease;
+    box-shadow: white 0.5px 0.5px 0.5px 0.5px;
 }
