@@ -20,7 +20,7 @@
       <div class="row g-2">
         <div class="col-md-6">
           <div class="form-group {% if form.username.errors %}has-error{% endif %}">
-            <label for="username">Usuário:</label>
+            <label class="laranja" for="username">Usuário:</label>
             {{ form.username }}
             {% if form.username.errors %}
               <ul class="error-list">
@@ -33,7 +33,7 @@
         </div>
         <div class="col-md-6">
           <div class="form-group {% if form.email.errors %}has-error{% endif %}">
-            <label for="email">Email:</label>
+            <label class="laranja" for="email">Email:</label>
             {{ form.email }}
             {% if form.email.errors %}
               <ul class="error-list">
@@ -46,7 +46,7 @@
         </div>
         <div class="col-md-6">
           <div class="form-group {% if form.curso.errors %}has-error{% endif %}">
-            <label for="curso">Curso:</label>
+            <label class="laranja" for="curso">Curso:</label>
             {{ form.curso }}
             {% if form.curso.errors %}
               <ul class="error-list">
@@ -59,7 +59,7 @@
         </div>
         <div class="col-md-6">
           <div class="form-group {% if form.vinculo.errors %}has-error{% endif %}">
-            <label for="vinculo">Vínculo:</label>
+            <label class="laranja" for="vinculo">Vínculo:</label>
             {{ form.vinculo }}
             {% if form.vinculo.errors %}
               <ul class="error-list">
@@ -72,7 +72,7 @@
         </div>
         <div class="col-md-6">
           <div class="form-group {% if form.password1.errors %}has-error{% endif %}">
-            <label for="password1">Senha:</label>
+            <label class="laranja" for="password1">Senha:</label>
             {{ form.password1 }}
             {% if form.password1.errors %}
               <ul class="error-list">
@@ -85,7 +85,7 @@
         </div>
         <div class="col-md-6">
           <div class="form-group {% if form.password2.errors %}has-error{% endif %}">
-            <label for="password2">Confirmar senha:</label>
+            <label class="laranja" for="password2">Confirmar senha:</label>
             {{ form.password2 }}
             {% if form.password2.errors %}
               <ul class="error-list">
@@ -100,10 +100,6 @@
 
       <div class="form-group">
         <button type="submit" class="btn">Cadastrar</button>
-      </div>
-
-      <div class="form-group">
-        <a href="{% url 'cadastro' %}" class="laranja">Primeira vez aqui? Cadastre-se!</a>
       </div>
     </form>
   </div>

@@ -37,7 +37,6 @@
 .form-group label {
     display: block;
     margin-bottom: 5px;
-    color: rgb(246, 82, 255);
 }
 
 .form-group input,
@@ -151,4 +150,8 @@ form label {
     transform: scale(1.02);
     transition: transform 0.2s ease;
     box-shadow: white 0.5px 0.5px 0.5px 0.5px;
+}
+
+select option {
+    color: black;
 }

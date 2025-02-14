@@ -15,10 +15,10 @@
   <form style="width: 500px;" class="blueback rounded-4 m-auto p-5" method="post">
     {% csrf_token %}
     
-    <h2 class="text-center roxinho">Login PPI</h2>
+    <h2 class="text-center roxinho">Login <a class="roxinho" href="{% url 'index' %}">PPI</a></h2>
 
     <div class="form-group {% if form.username.errors %}has-error{% endif %}">
-        <label for="username">Usuário</label>
+        <label class="laranja" for="username">Usuário</label>
         {{ form.username }}
         {% if form.username.errors %}
             <ul class="error-list">
@@ -30,7 +30,7 @@
     </div>
     
     <div class="form-group {% if form.password.errors %}has-error{% endif %}">
-        <label for="password">Senha</label>
+        <label class="laranja" for="password">Senha</label>
         {{ form.password }}
         {% if form.password.errors %}
             <ul class="error-list">
@@ -46,7 +46,7 @@
     </div>
 
     <div class="form-group">
-        <a href="{% url 'cadastro' %}" class="laranja">Primeira vez aqui? Cadastre-se!</a>
+        <a href="{% url 'cadastro' %}" class="text-white">Primeira vez aqui? Cadastre-se!</a>
     </div>
 
   </form>
