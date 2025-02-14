@@ -1,250 +1,193 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
-{% block tittle %} Ver{{ projeto.titulo }} {% endblock tittle %}
+{% block tittle %}
+  Ver{{ projeto.titulo }}
+{% endblock %}
 {% block conteudo %}
-
-{% if messages %}
-<div>
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-    {{  message }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  {% if messages %}
+    <div>
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
     </div>
-    {% endfor %}
-</div>
-{% endif %}
+  {% endif %}
 
-<!-- Menu -->
-<div class="container mb-3 py-5">
+  <!-- Menu -->
+  <div class="container mb-3 py-5">
     <div class="row g-0">
+      <div class="col-md-8 me-auto my-auto">
+        <h1 class="roxinho text-left" style="font-size: 3.5em;">{{ projeto.titulo }}</h1>
+      </div>
 
-        <div class="col-md-8 me-auto my-auto">
-
-            <h1 class="roxinho text-left" style="font-size: 3.5em;">
-                {{ projeto.titulo }}
-            </h1>
-
-        </div>
-
-        <div class="col-md-4 d-flex justify-content-end my-auto">
-
-            {% if projeto.curso.logo %}
-                <img src="{{ projeto.curso.logo.url }}" alt="Logo" style="max-height: 12rem;">
-            {% endif %}
-
-        </div>
-
+      <div class="col-md-4 d-flex justify-content-end my-auto">
+        {% if projeto.curso.logo %}
+          <img src="{{ projeto.curso.logo.url }}" alt="Logo" style="max-height: 12rem;" />
+        {% endif %}
+        <p class="text-white">{{ curso.nome }}</p>
+      </div>
     </div>
-</div>
+  </div>
 
-<!-- Sobre o projeto -->
-<div class="container-fluid blueback">   
+  <!-- Sobre o projeto -->
+  <div class="container-fluid blueback">
     <div class="container py-5">
-        <div class="row g-3 py-2">
-
-            <div class="col-md-12 col-lg-5 col-sm-12 d-flex justify-content-start align-items-center">
-                
-                <div id="carouselExample" class="carousel slide w-100 pe-3" data-bs-ride="carousel">
-
-                    <!-- Indicadores -->
-                    <div class="carousel-indicators">
-
-                        {% for foto in projeto.photos.all %}
-                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="{{ forloop.counter0 }}" 
-                                class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% endif %}" 
-                                aria-label="Slide {{ forloop.counter }}">
-                        </button>
-                        {% endfor %}
-
-                    </div>
-                
-                    <!-- Slides -->
-                    <div class="carousel-inner">
-
-                        {% for foto in projeto.photos.all %}
-
-                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-
-                            <img src="{{ foto.photo.url }}" class="d-block w-100" alt="Image {{ forloop.counter }}">
-                            
-                            {% if foto.caption %}
-
-                            <div class="carousel-caption d-none d-md-block">
-                                <p>{{ foto.caption }}</p>
-                            </div>
-
-                            {% endif %}
-
-                        </div>
-
-                        {% endfor %}
-
-                    </div>
-                
-                    <!-- Controles -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                        
-                        <span class="carousel-control-prev-icon fundo-laranja rounded-circle" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-
-                    </button>
-
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                        
-                        <span class="carousel-control-next-icon fundo-laranja rounded-circle" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-
-                    </button>
-
-                </div>
-
-            </div>    
-
-            <div class="col-md-12 col-lg-7 col-sm-12 d-flex justify-content-start align-items-center">
-                <div class="w-100">
-
-                    <p class="text-white text-left">
-                        {{ projeto.objetivo }}
-                    </p>
-
-                    <div class="d-flex justify-content-end align-items-center py-2">
-                        <a class="fw-light text-white text-left nav-link">Data de publicação: {{projeto.criado_em|date:"d/m/Y H:i"}}</a>
-                        {% if projeto.pdf %}
-                        <a class="fw-light text-left laranja ms-2" href="{{ projeto.pdf.url }}" target="_blank"> baixar PDF </a>
-                        {% endif %}
-                    </div> 
-
-                </div>
-            </div>    
-
-            <div class="col-12 pt-5">
-                <p class="text-white text-left">
-                    {{ projeto.resumo }}
-                </p>
+      <div class="row g-3 py-2">
+        <div class="col-md-12 col-lg-5 col-sm-12 d-flex justify-content-start align-items-center">
+          <div id="carouselExample" class="carousel slide w-100 pe-3" data-bs-ride="carousel">
+            <!-- Indicadores -->
+            <div class="carousel-indicators">
+              {% for foto in projeto.photos.all %}
+                <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% endif %}" aria-label="Slide {{ forloop.counter }}"></button>
+              {% endfor %}
             </div>
 
-        </div>
-    </div>
-</div>
+            <!-- Slides -->
+            <div class="carousel-inner">
+              {% for foto in projeto.photos.all %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                  <img src="{{ foto.photo.url }}" class="d-block w-100" alt="Image {{ forloop.counter }}" />
 
-<!-- Componentes -->
-<div class="container-fluid py-5">
-    <div class="container container">
-
-        <h1 class="text-left laranja">Alunos:</h1>
-        
-        <!-- Div alunos -->
-        <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
-
-            {% for aluno in projeto.componentes.all %}
-            {% if aluno.user.vinculo_id == 1 %}
-            
-            <a href="{% url 'verperfil' %}" style="text-decoration: none;">
-                <div>
-                    <img src="{% if aluno.avatar %} {{aluno.avatar.url}} {% else %} {% static 'imgs/usericn.jpg' %}{% endif %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
-                    <h5 class="text-center roxinho mt-1">{{aluno.user.username}}</h5>
-                </div>
-            </a>
-            
-            {% endif %}
-            {% endfor %}
-
-        </div>
-        
-        <h1 class="text-left laranja">Orientadores:</h1>
-
-        <!-- Div orientadores -->
-        <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
-
-            {% for orientador in projeto.componentes.all %}
-            {% if orientador.user.vinculo_id == 2 %}
-            
-            <a href="{% url 'verperfil' %}" style="text-decoration: none;">
-                <div>
-                    <img src="{% if orientador.avatar %} {{orientador.avatar.url}} {% else %} {% static 'imgs/usericn.jpg' %}{% endif %}" style="max-width: 10rem;" class="rounded-circle" alt="...">
-                    <h5 class="text-center roxinho mt-1">{{orientador.user.username}}</h5>
-                </div>
-            </a>
-            
-            {% endif %}
-            {% endfor %}
-
-        </div>
-    </div>
-</div>
-
-<!-- Comentarios -->
-<div class="container-fluid blueback py-5">
-    <div class="container custom-container">
-
-        <h1 class="laranja text-center">Comentários</h1>
-
-        <div class="py-2 mt-4">
-
-            <form method="post">
-                {% csrf_token %}
-
-                <div class="row">
-
-                    <div class="col-11">
-                        {{form.as_p}}
+                  {% if foto.caption %}
+                    <div class="carousel-caption d-none d-md-block">
+                      <p>{{ foto.caption }}</p>
                     </div>
-                    
-                    <div class="col-1 p-0 m-0 d-flex">
-                        <button type="submit" class="btn btn-light me-auto my-auto fundo-roxinho">Enviar</button>
-                    </div>
+                  {% endif %}
                 </div>
+              {% endfor %}
+            </div>
 
-            </form>
+            <!-- Controles -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon fundo-laranja rounded-circle" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
 
-            <div class="w-100 pt-5">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <span class="carousel-control-next-icon fundo-laranja rounded-circle" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
 
-                {% for comentario in projeto.comentarios.all %}
+        <div class="col-md-12 col-lg-7 col-sm-12 d-flex justify-content-start align-items-center">
+          <div class="w-100">
+            <p class="text-white text-left">{{ projeto.objetivo }}</p>
 
+            <div class="d-flex justify-content-end align-items-center py-2">
+              <a class="fw-light text-white text-left nav-link">Data de publicação: {{ projeto.criado_em|date:'d/m/Y H:i' }}</a>
+              {% if projeto.pdf %}
+                <a class="fw-light text-left laranja ms-2" href="{{ projeto.pdf.url }}" target="_blank">baixar PDF</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 pt-5">
+          <p class="text-white text-left">{{ projeto.resumo }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Componentes -->
+  <div class="container-fluid py-5">
+    <div class="container">
+      <h1 class="text-left laranja">Alunos:</h1>
+
+      <!-- Div alunos -->
+      <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
+        {% for aluno in projeto.componentes.all %}
+          {% if aluno.user.vinculo_id == 1 %}
+            <a href="{% url 'verperfil' %}" style="text-decoration: none;">
+              <div>
+                <img src="{% if aluno.avatar %}
+                    {{ aluno.avatar.url }}
+                  {% else %}
+                    {% static 'imgs/usericn.jpg' %}
+                  {% endif %}"
+                  style="max-width: 10rem;"
+                  class="rounded-circle"
+                  alt="..." />
+                <h5 class="text-center roxinho mt-1">{{ aluno.user.username }}</h5>
+              </div>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <h1 class="text-left laranja">Orientadores:</h1>
+
+      <!-- Div orientadores -->
+      <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
+        {% for orientador in projeto.componentes.all %}
+          {% if orientador.user.vinculo_id == 2 %}
+            <a href="{% url 'verperfil' %}" style="text-decoration: none;">
+              <div>
+                <img src="{% if orientador.avatar %}
+                    {{ orientador.avatar.url }}
+                  {% else %}
+                    {% static 'imgs/usericn.jpg' %}
+                  {% endif %}"
+                  style="max-width: 10rem;"
+                  class="rounded-circle"
+                  alt="..." />
+                <h5 class="text-center roxinho mt-1">{{ orientador.user.username }}</h5>
+              </div>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Comentarios -->
+  <div class="container-fluid blueback py-5">
+    <div class="container">
+      <h1 class="laranja text-center">Comentários</h1>
+
+      <div class="py-2 mt-4">
+        <form method="post">
+          {% csrf_token %}
+
+          <div class="row">
+            <div class="col-11">{{ form.as_p }}</div>
+
+            <div class="col-1 p-0">
+              <button type="submit" class="btn btn-light me-auto my-auto fundo-roxinho">Enviar</button>
+            </div>
+          </div>
+        </form>
+
+        <div class="w-100">
+          {% for comentario in projeto.comentarios.all %}
+            <div class="mt-2 mb-4">
+              <div class="d-flex align-items-center">
                 <div class="d-flex align-items-center">
-                    <div class="d-flex align-items-center">
-                        <img src="
-                        {% if comentario.usuario.avatar %} 
-                            {{comentario.usuario.avatar.url}} {% else %} {% static 'imgs/usericn.jpg' %}
-                        {% endif %}" class="rounded-circle"
-                        style="max-width: 2rem;" alt="{{comentario.usuario.user.username}}">
-                        
-                        <h4 class="laranja ms-2">
-                            {{ comentario.usuario.user.username }}
-                        </h4>
-                    </div>
+                  <img src="
+                        {% if comentario.usuario.avatar %}
+                      {{ comentario.usuario.avatar.url }}
+                    {% else %}
+                      {% static 'imgs/usericn.jpg' %}
+                    {% endif %}"
+                    class="rounded-circle"
+                    style="max-width: 2rem;"
+                    alt="{{ comentario.usuario.user.username }}" />
 
-                    <small class="text-light ms-4 fw-light">
-                        {{ comentario.criado_em|date:"d/m/Y H:i" }}
-                    </small>
-
+                  <h4 class="laranja ms-2">{{ comentario.usuario.user.username }}</h4>
                 </div>
 
-                <p class="mt-2 mb-3 text-white">
-                    {{ comentario.texto }}
-                </p>
-
-                {% empty %}
-                    <p class="text-white">
-                        Sem comentários ainda.
-                    </p>
-                    
-                {% endfor %}
-                
+                <small class="text-light ms-4 fw-light">{{ comentario.criado_em|date:'d/m/Y H:i' }}</small>
+              </div>
+              <p class="mt-2 mb-3 text-white">{{ comentario.texto }}</p>
             </div>
-
+          {% empty %}
+            <p class="text-white">Sem comentários ainda.</p>
+          {% endfor %}
         </div>
-
+      </div>
     </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-{% endblock conteudo %}
+  </div>
+{% endblock %}
