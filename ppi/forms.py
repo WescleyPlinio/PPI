@@ -16,13 +16,14 @@ class ComentarioForm(forms.ModelForm):
         model = Comentario
         fields = ['texto']
         labels = {
-            'texto': 'Digite seu comentário'
+            'texto': ''
         }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['texto'].widget.attrs.update({
-            'class': 'form-control mb-2 text-white bg-transparent border-0 rounded-0 border-bottom text-white',
+            'class': 'form-control mb-2 bg-light rounded',
             'rows': '1',
             'required': 'true',
+            'placeholder': 'Digite seu comentário',
         })
