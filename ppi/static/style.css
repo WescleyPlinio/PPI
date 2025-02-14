@@ -152,6 +152,6 @@ form label {
     box-shadow: white 0.5px 0.5px 0.5px 0.5px;
 }
 
-select option {
+select option, select{
     color: black;
 }

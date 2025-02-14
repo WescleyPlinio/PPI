@@ -31,20 +31,20 @@
 
           <!-- Título -->
           <div class="form-group">
-            <label for="id_titulo">Título:</label>
+            <label class="roxinho" for="id_titulo">Título:</label>
             {{ form.titulo}}
           </div>
 
           
           <!-- Objetivo -->
           <div class="form-group">
-            <label for="id_objetivo">Objetivo:</label>
+            <label class="roxinho" for="id_objetivo">Objetivo:</label>
             {{ form.objetivo }}
           </div>
           
           <!-- Resumo -->
           <div class="form-group">
-            <label for="id_resumo">Resumo:</label>
+            <label class="roxinho" for="id_resumo">Resumo:</label>
             {{ form.resumo }}
           </div>
 
@@ -54,27 +54,27 @@
 
           <!-- PDF -->
           <div class="form-group">
-            <label for="id_pdf">Arquivo PDF:</label>
+            <label class="roxinho" for="id_pdf">Arquivo PDF:</label>
             {{ form.pdf }}
           </div>
 
           <!-- Capa do Projeto -->
           <div class="form-group">
-            <label for="id_capa">Capa do projeto:</label>
+            <label class="roxinho" for="id_capa">Capa do projeto:</label>
             {{ form.capa }}
           </div>
 
 
           <!-- Fotos do Projeto -->
           <div class="form-group">
-            <label for="id_imagens">Imagens do projeto:</label>
+            <label class="roxinho" for="id_imagens">Imagens do projeto:</label>
             <input type="file" name="imagens" id="id_imagens" multiple>
           </div>
 
 
           <!-- Componentes -->
           <div class="form-group">
-            <label for="id_componentes">Componentes:</label>
+            <label class="roxinho" for="id_componentes">Componentes:</label>
             <select class="form-control bg-white" id="componentes" name="componentes" multiple>
               {% for componente in componentes %}
                 <option class="text-dark" value="{{ componente.id }}">{{ componente.user__username }}</option>
@@ -84,13 +84,13 @@
 
           <!-- Curso -->
           <div class="form-group">
-            <label for="id_curso">Curso:</label>
+            <label class="roxinho" for="id_curso">Curso:</label>
             {{ form.curso }}
           </div>
 
           <!-- Palavras-Chave -->
           <div class="form-group">
-            <label for="keywords">Palavras-Chave (separadas por vírgula):</label>
+            <label class="roxinho" for="keywords">Palavras-Chave (separadas por vírgula):</label>
             {{ form.palavras_chave }}
           </div>
 
