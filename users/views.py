@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
 from django.contrib.auth.models import Group
 from .forms import CadastroForm, ProfileForm, CursoForm, VinculoForm
-from .models import Profile, Curso, Vinculo
+from .models import Profile, Curso, Vinculo, User
 from ppi.models import Projeto
 
 def cadastro(request):
@@ -73,9 +73,11 @@ def superuser_required(user):
 def paineladmin(request):
     cursos = Curso.objects.all()
     vinculos = Vinculo.objects.all()
+    usuarios = User.objects.all()
     context = {
         "cursos": cursos,
         "vinculos": vinculos,
+        "usuarios": usuarios,
     }
     return render(request, 'paineladmin.html', context)
 
