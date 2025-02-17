@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
 from django.contrib.auth.models import Group
-from .forms import CadastroForm, ProfileForm
-from .models import Profile
+from .forms import CadastroForm, ProfileForm, CursoForm, VinculoForm
+from .models import Profile, Curso, Vinculo
 from ppi.models import Projeto
 
 def cadastro(request):
@@ -64,3 +64,95 @@ def editarperfil(request):
         }
 
     return render(request, "editarperfil.html", context)
+
+def superuser_required(user):
+    return user.is_superuser
+
+@login_required
+@user_passes_test(superuser_required)
+def paineladmin(request):
+    cursos = Curso.objects.all()
+    vinculos = Vinculo.objects.all()
+    context = {
+        "cursos": cursos,
+        "vinculos": vinculos,
+    }
+    return render(request, 'paineladmin.html', context)
+
+@login_required
+@permission_required('app.add_curso', raise_exception=True)
+def adicionarcurso(request):
+    if request.method == 'POST':
+        form = CursoForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect('painel')
+        else:
+            return render(request, 'adicionarcurso.html', {'form': form})
+
+    else:
+        form = CursoForm()
+        return render(request, 'adicionarcurso.html', {'form': form})
+    
+@login_required
+@permission_required('app.change_curso', raise_exception=True)
+def editarcurso(request, id_curso):
+    curso = get_object_or_404(Curso, pk=id_curso)
+    if request.method == 'POST':
+        form = CursoForm(request.POST, instance=curso)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = CursoForm(instance=curso)
+    return render(request, 'adicionarcurso.html', {'form': form})
+
+@login_required
+@permission_required('app.delete_curso', raise_exception=True)
+def removercurso(request, id_curso):
+    curso = get_object_or_404(Curso, pk=id_curso)
+    if request.method == 'POST':
+        curso.delete()
+        return redirect('index')
+    return render(request, 'remover.html')
+
+@login_required
+@permission_required('app.add_vinculo', raise_exception=True)
+def adicionarvinculo(request):
+    if request.method == 'POST':
+        form = VinculoForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect('painel')
+        else:
+            return render(request, 'adicionarvinculo.html', {'form': form})
+
+    else:
+        form = VinculoForm()
+        return render(request, 'adicionarvinculo.html', {'form': form})
+    
+@login_required
+@permission_required('app.change_vinculo', raise_exception=True)
+def editarvinculo(request, id_vinculo):
+    vinculo = get_object_or_404(Vinculo, pk=id_vinculo)
+    if request.method == 'POST':
+        form = VinculoForm(request.POST, instance=vinculo)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = VinculoForm(instance=vinculo)
+    return render(request, 'adicionarvinculo.html', {'form': form})
+
+@login_required
+@permission_required('app.delete_vinculo', raise_exception=True)
+def removervinculo(request, id_vinculo):
+    vinculo = get_object_or_404(vinculo, pk=id_vinculo)
+    if request.method == 'POST':
+        vinculo.delete()
+        return redirect('index')
+    return render(request, 'remover.html')

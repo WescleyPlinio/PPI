@@ -1,9 +1,29 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.forms import BaseUserCreationForm
-from .models import User, Profile
+from .models import User, Profile, Curso, Vinculo
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Row, Column, Submit
+
+class CursoForm(forms.ModelForm):
+    class Meta:
+        model = Curso
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+
+class VinculoForm(forms.ModelForm):
+    class Meta:
+        model = Vinculo
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
 
 class CadastroForm(BaseUserCreationForm):
     class Meta:

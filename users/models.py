@@ -12,7 +12,7 @@ class Curso(models.Model):
         return self.titulo
 
 class Vinculo(models.Model):
-    vinculo = models.CharField(max_length=50, default="Indefinido")
+    vinculo = models.CharField(max_length=50)
     
     def __str__(self):
         return self.vinculo
