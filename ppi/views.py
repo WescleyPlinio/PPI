@@ -130,9 +130,11 @@ def projetos(request):
 
 
 def pesquisar(request):
-    posts = Projeto.objects.all()
+    query = request.GET.get('q','')
+    resultados = Projeto.objects.filter(titulo__icontains=query) if query else Projeto.objects.all()
     context = {
-        "projetos" : posts,
+        'projetos' : resultados,
+        'query' : query,
         'pesquisas': ['Prorização e igualdade', 'Direção de hardware', 'Plantações Angiela', 'Rodeio informático', 'PPI'],
         'ideias': ['Prorização e igualdade', 'Direção de hardware', 'Plantações Angiela'],
         

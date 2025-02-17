@@ -12,24 +12,10 @@
     </div>
 </section>
 
-<!-- Ideias para Você -->
-<section class="container mt-4">
-    <h2 class="laranja">Ideias para você:</h2>
-    <div class="row">
-        {% for ideia in ideias %}
-            <div class="col-md-3 mb-3">
-                <div class="card blueback text-white text-center p-3">
-                    {{ ideia }}
-                </div>
-            </div>
-        {% endfor %}
-    </div>
-</section>
-
 <!-- Projetos Mais Vistos -->
  <div class="container-fluid blueback">
      <section class="container mt-5 py-3">
-         <h2 class="roxinho text-center mb-3">👑 Alguns dos projetos mais vistos:</h2>
+         <h2 class="roxinho text-center mb-3">Alguns dos projetos mais vistos:</h2>
          <div class="row">
              {% for projeto in projetos %}
                  <div class="col-md-4 mb-4">
@@ -42,7 +28,7 @@
                      </div>
                  </div>
                  {% empty %}
-                 <li>Nenhum projeto encotrado.<li/>
+                 <li>Nenhum projeto encotrado.</li>
              {% endfor %}
          </div>
      </section>
