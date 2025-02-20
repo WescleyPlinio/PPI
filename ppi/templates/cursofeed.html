@@ -12,7 +12,9 @@
       </div>
 
       <div class="col-md-4 d-flex my-auto">
-        <img src="{{ curso.logo.url }}" class="ms-auto" alt="{{ curso.titulo }}" style="max-height: 12em; max-width: 100%;" />
+        {% if curso.logo %}
+          <img src="{{ curso.logo.url }}" class="ms-auto" alt="{{ curso.titulo }}" style="max-height: 12em; max-width: 100%;" />
+        {% endif %}
       </div>
     </div>
   </div>
@@ -27,7 +29,9 @@
               <div class="card">
                 <div class="row">
                   <div class="col-md-12 col-lg-6 col-sm-12 d-flex">
-                    <img src="{{ projeto.capa.url }}" class="mh-100 mw-100 m-auto img-fluid rounded-0" alt="{{ projeto.titulo }}" />
+                    {% if projeto.capa %}
+                      <img src="{{ projeto.capa.url }}" class="mh-100 mw-100 m-auto img-fluid rounded-0" alt="{{ projeto.titulo }}" />
+                    {% endif %}
                   </div>
 
                   <div class="col-md-12 col-lg-6 col-sm-12">

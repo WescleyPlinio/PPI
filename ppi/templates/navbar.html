@@ -13,7 +13,7 @@
     <!-- Navbar para telas grandes -->
     <div class="collapse navbar-collapse d-none d-lg-flex justify-content-between">
       <form method="GET" action="{% url 'pesquisar' %}" class="d-flex mx-auto {% if request.path == '/perfil/' %}d-none{% endif %}">
-        <div class="position-relative" style="max-width: 500px;">
+        <div class="position-relative" style="width: 500px;">
           <input type="text" name="q" class="form-control pe-5" placeholder="Busque por palavras-chave:" value="{{ query }}" />
           <button type="submit" class="btn btn-link p-0 position-absolute top-50 end-0 translate-middle-y me-3"><i class="fas fa-search text-dark"></i></button>
         </div>
@@ -39,13 +39,6 @@
         {% if user.is_authenticated %}
           <li class="nav-item ms-2">
             <a class="nav-link" href="{% url 'verperfil' %}"><i class="fa-solid fa-user fa-xl laranja"></i></a>
-          </li>
-
-          <li class="nav-item">
-            <form method="post" action="{% url 'logout' %}">
-              {% csrf_token %}
-              <button type="submit" class="nav-link text-white border-0 bg-transparent"><i class="fa-solid fa-xl fa-right-from-bracket"></i></button>
-            </form>
           </li>
         {% else %}
           <li class="nav-item ms-2">
