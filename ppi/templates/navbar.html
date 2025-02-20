@@ -1,0 +1,112 @@
+{% load static %}
+<nav class="navbar main-header navbar-expand-lg fundo-bd border border-0">
+  <div class="container custom-container">
+    {% if request.path == '/perfil/' or request.path == '/painel/' %}
+      <a class="nav-link ms-3" data-widget="pushmenu" role="button"><i class="fas fa-bars text-white"></i></a>
+    {% else %}
+      <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'imgs/logotopo.svg' %}" alt="Logo" style="max-height: 100px;" /></a>
+    {% endif %}
+
+    <!-- Botão para abrir o offcanvas (aparece apenas no mobile) -->
+    <i class="fa-solid fa-bars fa-2xl navbar-toggler border-0 text-white d-lg-none {% if request.path == '/perfil/' %}d-none{% endif %}" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"></i>
+
+    <!-- Navbar para telas grandes -->
+    <div class="collapse navbar-collapse d-none d-lg-flex justify-content-between">
+      <form method="GET" action="{% url 'pesquisar' %}" class="d-flex mx-auto {% if request.path == '/perfil/' %}d-none{% endif %}">
+        <div class="position-relative" style="max-width: 500px;">
+          <input type="text" name="q" class="form-control pe-5" placeholder="Busque por palavras-chave:" value="{{ query }}" />
+          <button type="submit" class="btn btn-link p-0 position-absolute top-50 end-0 translate-middle-y me-3"><i class="fas fa-search text-dark"></i></button>
+        </div>
+      </form>
+      <ul class="navbar-nav ms-auto d-flex align-items-center">
+        {% if cursos %}
+          {% for curso in cursos %}
+            <li class="nav-tem ms-2">
+              <a href="{% url 'projetos' curso.id %}" class="text-decoration-none text-center text-white m-2">
+                {% if curso.logo %}
+                  <img src="{{ curso.logo.url }}" class="me-2" style="max-width: 1.5rem;" alt="{{ curso.titulo }}" />
+                {% endif %}
+                <p class="d-none d-xxl-inline">{{ curso.titulo }}</p>
+              </a>
+            </li>
+          {% endfor %}
+        {% endif %}
+
+        <li class="nav-item ms-2">
+          <a class="nav-link text-white" href="{% url 'sobre' %}">Sobre nós</a>
+        </li>
+
+        {% if user.is_authenticated %}
+          <li class="nav-item ms-2">
+            <a class="nav-link" href="{% url 'verperfil' %}"><i class="fa-solid fa-user fa-xl laranja"></i></a>
+          </li>
+
+          <li class="nav-item">
+            <form method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button type="submit" class="nav-link text-white border-0 bg-transparent"><i class="fa-solid fa-xl fa-right-from-bracket"></i></button>
+            </form>
+          </li>
+        {% else %}
+          <li class="nav-item ms-2">
+            <a class="nav-link" href="{% url 'login' %}"><i class="fa-solid fa-user fa-xl laranja"></i></a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Offcanvas (aparece apenas no mobile) -->
+<div class="offcanvas offcanvas-end blueback" tabindex="-1" id="offcanvasNavbar">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title roxinho">Menu</h5>
+    <i class="fa-solid fa-xmark fa-xl text-white ms-auto" data-bs-dismiss="offcanvas"></i>
+  </div>
+  <div class="offcanvas-body">
+    <!-- Barra de pesquisa no Offcanvas -->
+    <form method="GET" action="{% url 'pesquisar' %}" class="d-flex mb-3">
+      <div class="position-relative w-100">
+        <input type="text" name="q" class="form-control" placeholder="Busque por palavras-chave:" />
+        <i class="fas fa-search position-absolute top-50 end-0 translate-middle-y me-3"></i>
+      </div>
+    </form>
+
+    {% if cursos %}
+      <h6 class="roxinho">Cursos:</h6>
+      <ul class="list-unstyled">
+        {% for curso in cursos %}
+          <li>
+            <a href="{% url 'projetos' curso.id %}" class="text-decoration-none text-white d-flex align-items-center py-2">
+              {% if curso.logo %}
+                <img src="{{ curso.logo.url }}" class="me-1" style="max-width: 1.5rem;" alt="{{ curso.titulo }}" />
+              {% endif %}
+              {{ curso.titulo }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <ul class="navbar-nav">
+      {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link text-white text-center" href="{% url 'verperfil' %}"><i class="fa-solid fa-user me-1"></i>Meu Perfil</a>
+        </li>
+        <li class="nav-item">
+          <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="text-center nav-link text-white border-0 bg-transparent w-100 text-start"><i class="fa-solid fa-right-from-bracket me-1"></i>Sair</button>
+          </form>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link text-center text-white" href="{% url 'login' %}"><i class="fa-solid fa-user me-2"></i>Login</a>
+        </li>
+      {% endif %}
+      <li class="nav-item">
+        <a class="nav-link text-white" href="{% url 'sobre' %}">Sobre nós</a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -6,150 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Plataforma dos Projetos Integradores</title>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
+    <!-- Select2 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-    <link rel="stylesheet" href="{% static 'style.css' %}" />
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.full.min.js"></script>
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
   </head>
 
-  <body style="background-color: rgb(5, 14, 43);">
-    <nav class="navbar navbar-expand-lg">
-      <div class="container custom-container">
-        <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'imgs/logotopo.svg' %}" alt="Logo" style="max-height: 100px;" /></a>
-
-        <!-- Botão para abrir o offcanvas (aparece apenas no mobile) -->
-        <i class="fa-solid fa-bars fa-2xl navbar-toggler border-0 text-white d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"></i>
-
-        <!-- Navbar para telas grandes -->
-        <div class="collapse navbar-collapse d-none d-lg-flex justify-content-between">
-          <form method="GET" action="{% url 'pesquisar' %}" class="d-flex mx-auto">
-            <div class="position-relative w-100" style="min-width: 600px;">
-              <input type="text" name="q" class="form-control pe-5" placeholder="Busque por palavras-chave:" value="{{ query }}" />
-              <button type="submit" class="btn btn-link p-0 position-absolute top-50 end-0 translate-middle-y me-3"><i class="fas fa-search text-dark"></i></button>
-            </div>
-          </form>
-          <ul class="navbar-nav ms-auto d-flex align-items-center">
-            {% if cursos %}
-              {% for curso in cursos %}
-                <li class="nav-tem ms-2">
-                  <a href="{% url 'projetos' curso.id %}" class="text-decoration-none text-center text-white m-2">
-                    {% if curso.logo %}
-                      <img src="{{ curso.logo.url }}" class="me-2" style="max-width: 1.5rem;" alt="{{ curso.titulo }}" />
-                    {% endif %}
-                    <p class="d-none d-xxl-inline">{{ curso.titulo }}</p>
-                  </a>
-                </li>
-              {% endfor %}
-            {% endif %}
-
-            <li class="nav-item ms-2">
-              <a class="nav-link text-white" href="{% url 'sobre' %}">Sobre nós</a>
-            </li>
-
-            {% if user.is_superuser %}
-            <li class="nav-item ms-2">
-              <a class="nav-link text-white text-center" href="{% url 'painel' %}"><i class="fa-solid fa-user me-1"></i>Painel</a>
-            </li>
-            {% endif %}
-
-            {% if user.is_authenticated %}
-              <li class="nav-item ms-2">
-                <a class="nav-link" href="{% url 'verperfil' %}"><i class="fa-solid fa-user fa-xl laranja"></i></a>
-              </li>
-
-              <li class="nav-item">
-                <form method="post" action="{% url 'logout' %}">
-                  {% csrf_token %}
-                  <button type="submit" class="nav-link text-white border-0 bg-transparent"><i class="fa-solid fa-xl fa-right-from-bracket"></i></button>
-                </form>
-              </li>
-            {% else %}
-              <li class="nav-item ms-2">
-                <a class="nav-link" href="{% url 'login' %}"><i class="fa-solid fa-user fa-xl laranja"></i></a>
-              </li>
-            {% endif %}
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Offcanvas (aparece apenas no mobile) -->
-    <div class="offcanvas offcanvas-end blueback" tabindex="-1" id="offcanvasNavbar">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title roxinho">Menu</h5>
-        <i class="fa-solid fa-xmark fa-xl text-white ms-auto" data-bs-dismiss="offcanvas"></i>
-      </div>
-      <div class="offcanvas-body">
-        <!-- Barra de pesquisa no Offcanvas -->
-        <form method="GET" action="{% url 'pesquisar' %}" class="d-flex mb-3">
-          <div class="position-relative w-100">
-            <input type="text" name="q" class="form-control" placeholder="Busque por palavras-chave:" onkeyup="submit();" />
-            <i class="fas fa-search position-absolute top-50 end-0 translate-middle-y me-3"></i>
-          </div>
-        </form>
-
-        {% if cursos %}
-          <h6 class="roxinho">Cursos:</h6>
-          <ul class="list-unstyled">
-            {% for curso in cursos %}
-              <li>
-                <a href="{% url 'projetos' curso.id %}" class="text-decoration-none text-white d-flex align-items-center py-2">
-                  {% if curso.logo %}
-                    <img src="{{ curso.logo.url }}" class="me-1" style="max-width: 1.5rem;" alt="{{ curso.titulo }}" />
-                  {% endif %}
-                  {{ curso.titulo }}
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
-        {% endif %}
-
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link text-white" href="{% url 'sobre' %}">Sobre nós</a>
-          </li>
-
-          {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link text-white text-center" href="{% url 'verperfil' %}"><i class="fa-solid fa-user me-1"></i>Meu Perfil</a>
-            </li>
-            <li class="nav-item">
-              <form method="post" action="{% url 'logout' %}">
-                {% csrf_token %}
-                <button type="submit" class="text-center nav-link text-white border-0 bg-transparent w-100 text-start"><i class="fa-solid fa-right-from-bracket me-1"></i>Sair</button>
-              </form>
-            </li>
-            {% if user.is_superuser %}
-              <a class="nav-link text-white text-center" href="{% url 'painel' %}"><i class="fa-solid fa-user me-1"></i>Painel</a>
-            {% endif %}
-          {% else %}
-            <li class="nav-item">
-              <a class="nav-link text-center text-white" href="{% url 'login' %}"><i class="fa-solid fa-user me-2"></i>Login</a>
-            </li>
-          {% endif %}
-        </ul>
-      </div>
-    </div>
+  <body class="fundo-bd">
+    {% include 'navbar.html' %}
 
     {% block conteudo %}
-
     {% endblock %}
 
     <!-- Footer -->
     <footer class="py-5 text-center text-white">Todos os direitos reservados.</footer>
 
-    <!-- O Bootstrap Bundle (já inclui Popper.js) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- jQuery (apenas uma versão) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- Font Awesome -->
+    <!-- Bootstrap JS (Bundle inclui Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Select2 JS (apenas uma versão) -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- FontAwesome -->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
+    <!-- AdminLTE (se necessário, carregue por último) -->
+    <script src="{% static 'adminlte/js/adminlte.min.js' %}"></script>
+
+    <!-- Scripts personalizados -->
     <script src="{% static 'script.js' %}"></script>
   </body>
 </html>

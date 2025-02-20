@@ -155,3 +155,7 @@ form label {
 select option, select{
     color: black;
 }
+
+.fundo-bd {
+    background-color: rgb(5, 14, 43);
+}

@@ -1,0 +1,64 @@
+{% load static %}
+<!-- Sidebar -->
+<aside class="main-sidebar sidebar-dark-primary elevation-1 fundo-bd">
+  <a href="{% url 'index' %}" class="brand-link d-flex"><img src="{% static 'imgs/logotopo.svg' %}" class="w-100" alt="" /></a>
+  <div class="sidebar">
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column">
+        {% if user.is_authenticated %}
+          {% if request.path == '/painel/' %}
+            <li class="nav-item">
+              <a href="{% url 'verperfil' %}" class="nav-link">
+                <i class="fa-solid fa-user fa-lg me-2"></i>
+                Ver perfil
+              </a>
+            </li>
+          {% else %}
+            {% if request.user.is_superuser %}
+              <li class="nav-item">
+                <a href="{% url 'painel' %}" class="nav-link">
+                  <i class="fa-solid fa-user-tie fa-lg me-2"></i>
+                  Painel administrativo
+                </a>
+              </li>
+            {% endif %}
+
+            <li class="nav-item">
+              <a href="{% url 'editarperfil' %}" class="nav-link">
+                <i class="fa-solid fa-user-pen fa-lg me-2"></i>
+                Editar perfil
+              </a>
+            </li>
+
+            {% if perms.ppi.add_projeto %}
+              <li class="nav-item">
+                <a href="{% url 'form_post' %}" class="nav-link">
+                  <i class="fa-solid fa-plus fa-lg me-2"></i>
+                  Adicionar projeto
+                </a>
+              </li>
+            {% endif %}
+          {% endif %}
+        {% else %}
+          <li class="nav-item">
+            <a href="{% url 'criar' %}" class="nav-link">
+              <i class="fa-solid fa-user fa-lg"></i>
+              <p class="ms-2">Logar</p>
+            </a>
+          </li>
+        {% endif %}
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <form method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button type="submit" class="nav-link text-white">
+                <i class="fa-solid fa-lg fa-right-from-bracket"></i>
+                Log-out
+              </button>
+            </form>
+          </li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</aside>
