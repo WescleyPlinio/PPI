@@ -1,4 +1,7 @@
 {% extends 'base_admin.html' %}
+{% block title %}
+Painel de administração
+{% endblock title %}
 
 {% block content %}
   <section class="content-header">
@@ -82,10 +85,10 @@
                       <td>{{ vinculo.vinculo }}</td>
                       <td>
                         {% if perms.app.edit_vinculo %}
-                          <a href="{% url 'editarvinculo' vinculo.id %}" class="btn btn-warning text-white">Editar</a>
+                          <button type="submit" href="{% url 'editarvinculo' vinculo.id %}" class="btn btn-warning text-white">Editar</button>
                         {% endif %}
                         {% if perms.app.delete_vinculo %}
-                          <a href="{% url 'removervinculo' vinculo.id %}" class="btn btn-danger">Excluir</a>
+                          <button type="submit" href="{% url 'removervinculo' vinculo.id %}" class="btn btn-danger">Excluir</button>
                         {% endif %}
                       </td>
                     </tr>

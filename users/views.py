@@ -82,7 +82,7 @@ def paineladmin(request):
     return render(request, 'paineladmin.html', context)
 
 @login_required
-@permission_required('app.add_curso', raise_exception=True)
+@permission_required('users.add_curso', raise_exception=True)
 def adicionarcurso(request):
     if request.method == 'POST':
         form = CursoForm(request.POST)
@@ -99,7 +99,7 @@ def adicionarcurso(request):
         return render(request, 'adicionarcurso.html', {'form': form})
     
 @login_required
-@permission_required('app.change_curso', raise_exception=True)
+@permission_required('users.change_curso', raise_exception=True)
 def editarcurso(request, id_curso):
     curso = get_object_or_404(Curso, pk=id_curso)
     if request.method == 'POST':
@@ -112,16 +112,19 @@ def editarcurso(request, id_curso):
     return render(request, 'adicionarcurso.html', {'form': form})
 
 @login_required
-@permission_required('app.delete_curso', raise_exception=True)
+@permission_required('users.delete_curso', raise_exception=True)
 def removercurso(request, id_curso):
     curso = get_object_or_404(Curso, pk=id_curso)
+    
     if request.method == 'POST':
         curso.delete()
-        return redirect('index')
-    return render(request, 'remover.html')
+        return redirect('painel')  
+
+    return redirect('index')  
+
 
 @login_required
-@permission_required('app.add_vinculo', raise_exception=True)
+@permission_required('users.add_vinculo', raise_exception=True)
 def adicionarvinculo(request):
     if request.method == 'POST':
         form = VinculoForm(request.POST)
@@ -138,7 +141,7 @@ def adicionarvinculo(request):
         return render(request, 'adicionarvinculo.html', {'form': form})
     
 @login_required
-@permission_required('app.change_vinculo', raise_exception=True)
+@permission_required('users.change_vinculo', raise_exception=True)
 def editarvinculo(request, id_vinculo):
     vinculo = get_object_or_404(Vinculo, pk=id_vinculo)
     if request.method == 'POST':
@@ -151,10 +154,12 @@ def editarvinculo(request, id_vinculo):
     return render(request, 'adicionarvinculo.html', {'form': form})
 
 @login_required
-@permission_required('app.delete_vinculo', raise_exception=True)
+@permission_required('users.delete_vinculo', raise_exception=True)
 def removervinculo(request, id_vinculo):
-    vinculo = get_object_or_404(vinculo, pk=id_vinculo)
+    vinculo = get_object_or_404(Vinculo, pk=id_vinculo)
+    
     if request.method == 'POST':
         vinculo.delete()
-        return redirect('index')
-    return render(request, 'remover.html')
+        return redirect('painel')  
+
+    return redirect('index')  
