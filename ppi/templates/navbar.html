@@ -12,7 +12,7 @@
 
     <!-- Navbar para telas grandes -->
     <div class="collapse navbar-collapse d-none d-lg-flex justify-content-between">
-      <form method="GET" action="{% url 'pesquisar' %}" class="d-flex mx-auto {% if request.path == '/perfil/' %}d-none{% endif %}">
+      <form method="GET" action="{% url 'pesquisar' %}" class="d-flex mx-auto {% if request.path == '/perfil/' or request.path == '/painel/' %}d-none{% endif %}">
         <div class="position-relative" style="width: 500px;">
           <input type="text" name="q" class="form-control pe-5" placeholder="Busque por palavras-chave:" value="{{ query }}" />
           <button type="submit" class="btn btn-link p-0 position-absolute top-50 end-0 translate-middle-y me-3"><i class="fas fa-search text-dark"></i></button>

@@ -1,12 +1,12 @@
 {% extends 'base_admin.html' %}
 {% block title %}
-Painel de administração
-{% endblock title %}
+  Painel de administração
+{% endblock %}
 
 {% block content %}
   <section class="content-header">
     <div class="container-fluid">
-      <h1 class="text-primary">Lista de cursos</h1>
+      <h1 class="roxinho">Lista de cursos</h1>
     </div>
   </section>
 
@@ -19,7 +19,7 @@ Painel de administração
               <a href="{% url 'adicionarcurso' %}" class="btn btn-primary mb-3">Novo Curso</a>
             {% endif %}
             <div class="table-responsive">
-              <table class="table table-striped table-hover">
+              <table class="table table-dark table-hover table-hover">
                 <thead>
                   <tr>
                     <th>Id</th>
@@ -34,12 +34,18 @@ Painel de administração
                     <tr>
                       <th>{{ curso.id }}</th>
                       <td>{{ curso.titulo }}</td>
-                      <td>
+                      <td class="d-flex">
                         {% if perms.app.edit_curso %}
-                          <a href="{% url 'editarcurso' curso.id %}" class="btn btn-warning text-white">Editar</a>
+                          <form action="{% url 'editarcurso' curso.id %}">
+                            {% csrf_token %}
+                            <button class="btn btn-warning">Editar</button>
+                          </form>
                         {% endif %}
                         {% if perms.app.delete_curso %}
-                          <a href="{% url 'removercurso' curso.id %}" class="btn btn-danger">Excluir</a>
+                          <form method="POST" action="{% url 'removercurso' curso.id %}">
+                            {% csrf_token %}
+                            <button class="btn btn-danger ms-1">Excluir</button>
+                          </form>
                         {% endif %}
                       </td>
                     </tr>
@@ -55,7 +61,7 @@ Painel de administração
 
   <section class="content-header">
     <div class="container-fluid">
-      <h1 class="text-primary">Lista de vinculos</h1>
+      <h1 class="roxinho">Lista de vinculos</h1>
     </div>
   </section>
 
@@ -68,7 +74,7 @@ Painel de administração
               <a href="{% url 'adicionarvinculo' %}" class="btn btn-primary mb-3">Novo vinculo</a>
             {% endif %}
             <div class="table-responsive">
-              <table class="table table-striped table-hover">
+              <table class="table table-dark table-hover table-hover">
                 <thead>
                   <tr>
                     <th>Id</th>
@@ -83,12 +89,18 @@ Painel de administração
                     <tr>
                       <th>{{ vinculo.id }}</th>
                       <td>{{ vinculo.vinculo }}</td>
-                      <td>
-                        {% if perms.app.edit_vinculo %}
-                          <button type="submit" href="{% url 'editarvinculo' vinculo.id %}" class="btn btn-warning text-white">Editar</button>
+                      <td class="d-flex">
+                        {% if perms.users.edit_vinculo %}
+                          <form action="{% url 'editarvinculo' vinculo.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-warning">Editar</button>
+                          </form>
                         {% endif %}
-                        {% if perms.app.delete_vinculo %}
-                          <button type="submit" href="{% url 'removervinculo' vinculo.id %}" class="btn btn-danger">Excluir</button>
+                        {% if perms.users.delete_vinculo %}
+                          <form method="POST" action="{% url 'removervinculo' vinculo.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger ms-1">Excluir</button>
+                          </form>
                         {% endif %}
                       </td>
                     </tr>
@@ -104,7 +116,7 @@ Painel de administração
 
   <section class="content-header">
     <div class="container-fluid">
-      <h1 class="text-primary">Lista de Usuários</h1>
+      <h1 class="roxinho">Lista de Usuários</h1>
     </div>
   </section>
 
@@ -117,7 +129,7 @@ Painel de administração
               <a href="{% url 'cadastro' %}" class="btn btn-primary mb-3">Novo Usuário</a>
             {% endif %}
             <div class="table-responsive">
-              <table class="table table-striped table-hover">
+              <table class="table table-dark table-hover table-hover">
                 <thead>
                   <tr>
                     <th>Id</th>
