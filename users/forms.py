@@ -14,6 +14,7 @@ class CursoForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'post'
+        self.fields['titulo'].widget.attrs['placeholder'] = 'Digite o nome do curso'
 
 class VinculoForm(forms.ModelForm):
     class Meta:
@@ -24,8 +25,12 @@ class VinculoForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'post'
+        self.fields['vinculo'].widget.attrs['placeholder'] = 'Digite o nome do vínculo'
 
 class CadastroForm(BaseUserCreationForm):
+    curso = forms.ModelChoiceField(queryset=Curso.objects.all(), empty_label="Selecione um curso")
+    vinculo = forms.ModelChoiceField(queryset=Vinculo.objects.all(), empty_label="Selecione um vínculo")
+
     class Meta:
         model = User
         fields = ['username', 'email', 'curso', 'vinculo', 'password1', 'password2']
@@ -34,16 +39,6 @@ class CadastroForm(BaseUserCreationForm):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'post'
-        self.helper.layout = Layout(
-            Row(
-                Column('username', css_class='col-md-6'),
-                Column('email', css_class='col-md-6'),
-                Column('curso', css_class='col-md-6'),
-                Column('vinculo', css_class='col-md-6'),
-                Column('password1', css_class='col-md-6'),
-                Column('password2', css_class='col-md-6'),
-            )
-        )
 
 class ProfileForm(forms.ModelForm):
     class Meta:
@@ -54,6 +49,10 @@ class ProfileForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_method = 'post'
+
+        self.fields['primeiro_nome'].label = 'Digite seu primeiro nome:'
+        self.fields['ultimo_sobrenome'].label = 'Digite seu último sobrenome:'
+        
         self.helper.layout = Layout(
             Row(
                 Column('primeiro_nome', css_class='col-md-6'),
