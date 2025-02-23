@@ -1,15 +1,15 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block conteudo %}
 <section class="container my-5">
-    <h2 class="text-center mb-4 roxinho text-decoration-none">Nosso objetivo</h2>
+    <h1 class="text-center mb-4 roxinho text-decoration-none">Nossos objetivos</h1>
     <div class="row">
         <!-- Smart Classrooms -->
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm h-100">
                 <div class="card-body text-center">
-                    <img src="path/to/smart-classrooms-icon.png" alt="Smart Classrooms" class="mb-3" width="50" height="50">
-                    <h5 class="card-title">Smart Classrooms</h5>
+                    <img src="{% static "imgs/1.svg" %}" alt="Smart Classrooms" class="mb-3" width="100" height="50">
+                    <h5 class="card-title">Resgistrar</h5>
                     <p class="card-text">All our classrooms are equipped with E-Boards and Audio-Visual aids for 21st century teaching and learning.</p>
                 </div>
             </div>
@@ -19,8 +19,8 @@
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm h-100">
                 <div class="card-body text-center">
-                    <img src="path/to/advanced-library-icon.png" alt="Advanced Library" class="mb-3" width="50" height="50">
-                    <h5 class="card-title">Advanced Library</h5>
+                    <img src="{% static "imgs/3.svg" %}" alt="Advanced Library" class="mb-3" width="100" height="50">
+                    <h5 class="card-title">Divulgar</h5>
                     <p class="card-text">Libraries contain books, CDs, DVDs covering a spectrum of subjects to satisfy students' learning needs.</p>
                 </div>
             </div>
@@ -30,8 +30,8 @@
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm h-100">
                 <div class="card-body text-center">
-                    <img src="path/to/science-zones-icon.png" alt="Science Zones" class="mb-3" width="50" height="50">
-                    <h5 class="card-title">Science Zones</h5>
+                    <img src="{% static "imgs/2.svg" %}" alt="Science Zones" class="mb-3" width="100" height="50">
+                    <h5 class="card-title">Exemplificar</h5>
                     <p class="card-text">Concepts taught in the classroom are reinforced in our science zones, well-equipped for academic challenges.</p>
                 </div>
             </div>
