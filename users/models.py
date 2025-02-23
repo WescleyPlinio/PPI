@@ -33,6 +33,14 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
     
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        if self.avatar:
+            img = Image.open(self.avatar.path)
+            img = img.resize((350, 350), Image.LANCZOS)
+            img.save(self.avatar.path)
+    
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
