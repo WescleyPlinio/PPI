@@ -100,7 +100,7 @@
       <!-- Div alunos -->
       <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
         {% for aluno in projeto.componentes.all %}
-          {% if aluno.user.vinculo_id == 1 %}
+          {% if aluno.user.vinculo.vinculo == "Aluno" or  aluno.user.vinculo.vinculo == "Outros" %}
             <a href="{% url 'verperfil' %}" style="text-decoration: none;">
               <div>
                 <img src="{% if aluno.avatar %}
@@ -123,7 +123,7 @@
       <!-- Div orientadores -->
       <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
         {% for orientador in projeto.componentes.all %}
-          {% if orientador.user.vinculo_id == 2 %}
+          {% if orientador.user.vinculo.vinculo == "Professor" %}
             <a href="{% url 'verperfil' %}" style="text-decoration: none;">
               <div>
                 <img src="{% if orientador.avatar %}
