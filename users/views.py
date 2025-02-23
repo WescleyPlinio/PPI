@@ -15,12 +15,15 @@ def cadastro(request):
             usuario.save()
 
             if usuario.vinculo:
-                if usuario.vinculo_id == 1:
+                if usuario.vinculo.vinculo == "Aluno":
                     grupo_nome = "Alunos"
                      
-                if usuario.vinculo_id == 2: 
+                elif usuario.vinculo.vinculo == "Professor": 
                     grupo_nome = "Professores"
                 
+                elif usuario.vinculo.vinculo != "Aluno" and usuario.vinculo.vinculo != "Professor":
+                    grupo_nome = "Outros"
+
                 if grupo_nome:
                     grupo, _ = Group.objects.get_or_create(name=grupo_nome)
                     usuario.groups.add(grupo)
