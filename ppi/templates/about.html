@@ -1,41 +1,111 @@
 {% extends "base.html" %}
 {% load static %}
 {% block conteudo %}
+
 <section class="container my-5">
-    <h1 class="text-center mb-4 roxinho text-decoration-none">Nossos objetivos</h1>
-    <div class="row">
-        <!-- Smart Classrooms -->
-        <div class="col-md-4 mb-4">
-            <div class="card shadow-sm h-100">
-                <div class="card-body text-center">
-                    <img src="{% static "imgs/1.svg" %}" alt="Smart Classrooms" class="mb-3" width="100" height="50">
-                    <h5 class="card-title">Resgistrar</h5>
-                    <p class="card-text">All our classrooms are equipped with E-Boards and Audio-Visual aids for 21st century teaching and learning.</p>
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-3 text-center">
+            <img src="{% static 'imgs/LogoPPI.svg' %}" alt="Logo" class="img-fluid" style="max-width: 300px;">
+        </div>
+        <div class="col-md-9 text-start">
+            <h1 class="text-white">
+                Plataforma dos <a class="laranja text-decoration-none">Projetos</a> 
+                <a class="roxinho text-decoration-none">Integradores</a>
+            </h1>
+            <h6 class="text-white">
+                A Plataforma dos Projetos Integradores (PPI) é uma iniciativa desenvolvida por alunos do IFRN - Campus São Paulo do Potengi!
+                Acreditamos que o conhecimento deve ser compartilhado e valorizado. Por isso, criamos um espaço onde alunos, professores e profissionais do mercado podem se conectar, trocar experiências e fortalecer o aprendizado por meio da colaboração.
+            </h6>
+        </div>
+    </div>
+</section>
+
+<!-- Objetivos -->
+<section class="blueback shadow-lg">
+    <div class="container my-5 py-5">
+        <h1 class="text-center mb-4 roxinho text-decoration-none">Nossos objetivos</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-4 mb-4">
+                <div class="card bg-transparent border-0 shadow-none h-100">
+                    <div class="card-body text-center">
+                        <img src="{% static 'imgs/1.svg' %}" alt="Registrar" class="mb-3" width="200" height="200">
+                        <h3 class="card-title laranja">Registrar</h3>
+                        <h6 class="card-text text-white">O sistema irá registrar todos os projetos integradores já feitos, e os que serão criados virão a ser adicionados também.</h6>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Advanced Library -->
-        <div class="col-md-4 mb-4">
-            <div class="card shadow-sm h-100">
-                <div class="card-body text-center">
-                    <img src="{% static "imgs/3.svg" %}" alt="Advanced Library" class="mb-3" width="100" height="50">
-                    <h5 class="card-title">Divulgar</h5>
-                    <p class="card-text">Libraries contain books, CDs, DVDs covering a spectrum of subjects to satisfy students' learning needs.</p>
+            <div class="col-md-4 mb-4">
+                <div class="card bg-transparent border-0 shadow-none h-100">
+                    <div class="card-body text-center">
+                        <img src="{% static 'imgs/4.svg' %}" alt="Divulgar" class="mb-3" width="200" height="200">
+                        <h3 class="card-title laranja">Divulgar</h3>
+                        <h6 class="card-text text-white">Divulgar os projetos para qualquer pessoa interessada, bastando acessar o sistema.</h6>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Science Zones -->
-        <div class="col-md-4 mb-4">
-            <div class="card shadow-sm h-100">
-                <div class="card-body text-center">
-                    <img src="{% static "imgs/2.svg" %}" alt="Science Zones" class="mb-3" width="100" height="50">
-                    <h5 class="card-title">Exemplificar</h5>
-                    <p class="card-text">Concepts taught in the classroom are reinforced in our science zones, well-equipped for academic challenges.</p>
+            <div class="col-md-4 mb-4">
+                <div class="card bg-transparent border-0 shadow-none h-100">
+                    <div class="card-body text-center">
+                        <img src="{% static 'imgs/2.svg' %}" alt="Exemplificar" class="mb-3" width="200" height="200">
+                        <h3 class="card-title laranja">Exemplificar</h3>
+                        <h6 class="card-text text-white">Mostrar aos alunos que ainda não fizeram seu projeto para que assim possam ter uma noção melhor da criação do seu projeto.</h6>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Nossa Equipe -->
+<section class="container my-5">
+    <h2 class="laranja mt-4 text-center">Desenvolvedores:</h2>
+    <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
+        <div class="text-center">
+            <img src="{% static 'imgs/Wescley.png' %}" style="max-width: 10rem;" class="rounded-circle" alt="Wescley" />
+            <h5 class="roxinho mt-1">Wescley</h5>
+        </div>
+        <div class="text-center">
+            <img src="{% static 'imgs/ellainy.png' %}" style="max-width: 10rem;" class="rounded-circle" alt="Ellainy" />
+            <h5 class="roxinho mt-1">Ellainy</h5>
+        </div>
+        <div class="text-center">
+            <img src="{% static 'imgs/Joao.png' %}" style="max-width: 10rem;" class="rounded-circle" alt="João Henrique" />
+            <h5 class="roxinho mt-1">João Henrique</h5>
+        </div>
+    </div>
+
+    <h2 class="laranja mt-4 text-center">Orientadoras:</h2>
+    <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
+        <div class="text-center">
+            <img src="{% static 'imgs/pedrinha.jpeg' %}" style="max-width: 10rem;" class="rounded-circle" alt="Fernanda" />
+            <h5 class="roxinho mt-1">Fernanda</h5>
+        </div>
+        <div class="text-center">
+            <img src="{% static 'imgs/pedrinha.jpeg' %}" style="max-width: 10rem;" class="rounded-circle" alt="Pedrina" />
+            <h5 class="roxinho mt-1">Pedrina</h5>
+        </div>
+    </div>
+</section>
+
+<!-- Agradecimento -->
+<section class="blueback shadow-lg">
+    <div class="container my-5 py-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-9 text-start order-md-1">
+                <h1 class="text-white">
+                    Agradecemos por visitar a nossa plataforma!
+                </h1>
+                <h5 class="text-white">
+                    Agradecemos por visitar nossa plataforma! Esperamos que ela seja uma fonte de inspiração e aprendizado para você. Nosso objetivo é conectar alunos, professores e profissionais, incentivando a troca de experiências e o crescimento coletivo. Seja bem-vindo!
+                </h5>
+            </div>
+            <div class="col-md-3 text-center order-md-2">
+                <img src="{% static 'imgs/thanks.svg' %}" alt="Logo" class="img-fluid" style="max-width: 300px;">
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}
