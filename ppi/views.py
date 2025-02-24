@@ -135,8 +135,8 @@ def pesquisar(request):
     resultados_resumo = Projeto.objects.filter(resumo__icontains=query)
 
     resultados = resultados_titulo | resultados_resumo | resultados_objetivo
-    paginator = Paginator(resultados, 6)
-    numero_da_pagina = request.GET.get('p')
+    paginator = Paginator(resultados, 3)
+    numero_da_pagina = request.GET.get('pagina')
     resultados_paginados = paginator.get_page(numero_da_pagina)
 
     projetos_novos = Projeto.objects.all().order_by("criado_em")[:6]
