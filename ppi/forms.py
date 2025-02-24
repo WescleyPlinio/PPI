@@ -3,12 +3,24 @@ from django_select2.forms import Select2MultipleWidget
 from .models import Projeto, Comentario, FotoProjeto, Profile
 
 class ProjetoForm(forms.ModelForm):
+    orientados = forms.ModelMultipleChoiceField(
+        queryset=Profile.objects.filter(user__groups__name="Alunos"),
+        widget=Select2MultipleWidget(attrs={'class': 'form-control', 'style':'width: 100%;'})
+    )
+
+    orientadores = forms.ModelMultipleChoiceField(
+        queryset=Profile.objects.filter(user__groups__name="Professores"),
+        widget=Select2MultipleWidget(attrs={'class': 'form-control', 'style':'width: 100%;'})
+    )
+
     class Meta:
         model = Projeto
-        fields = ['titulo', 'resumo', 'objetivo', 'componentes', 'capa', 'pdf', 'palavras_chave', 'curso']
+        fields = ['titulo', 'resumo', 'objetivo', 'orientados', 'orientadores', 'capa', 'pdf', 'palavras_chave', 'curso']
         widgets = {
-            'componentes': Select2MultipleWidget(),
+            'orientados': Select2MultipleWidget(attrs={'class': 'form-control'}),
+            'orientadores': Select2MultipleWidget(attrs={'class': 'form-control'}),
         }
+
 
 class FotoProjetoForm(forms.ModelForm):
     class Meta:

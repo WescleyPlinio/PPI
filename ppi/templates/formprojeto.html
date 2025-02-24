@@ -75,8 +75,14 @@
 
           <!-- Componentes -->
           <div class="form-group">
-            <label class="roxinho" for="id_componentes">Componentes:</label>
-            {{ form.componentes }}
+            <label class="roxinho" for="id_orientados">Alunos:</label>
+            {{ form.orientados }}
+          </div>
+          
+          <!-- Professores -->
+          <div class="form-group">
+            <label class="roxinho" for="id_professores">Professores:</label>
+            {{ form.orientadores }}
           </div>
 
           <!-- Curso -->
@@ -106,7 +112,7 @@
       <script>
         $(document).ready(function() {
           // Inicializar Select2 com limites
-          $('#alunos').select2({
+          $('#id_orientados').select2({
             maximumSelectionLength: 3,
             placeholder: "Selecione até 3 alunos",
             allowClear: true
@@ -118,7 +124,7 @@
             allowClear: true
           });
       
-          $('#orientadores').select2({
+          $('#id_orientadores').select2({
             maximumSelectionLength: 2,
             placeholder: "Selecione até 2 orientadores",
             allowClear: true

@@ -10,7 +10,8 @@ class Projeto(models.Model):
     pdf = models.FileField(blank=True, null=True)
     palavras_chave = models.CharField(max_length=200, blank=True, null=True)
     curso = models.ForeignKey(Curso,on_delete=models.CASCADE, related_name="projetos")
-    componentes = models.ManyToManyField(Profile, related_name="projetos", blank=True)
+    orientados = models.ManyToManyField(Profile, related_name="projetos_orientados", blank=True)
+    orientadores = models.ManyToManyField(Profile, related_name="projetos_orientadores", blank=True)
     criado_em = models.DateTimeField(auto_now_add=True,null=True)
     
     def __str__(self):
