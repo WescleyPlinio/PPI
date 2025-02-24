@@ -7,6 +7,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required, permission_required
 from django.http import Http404
 from django.contrib import messages
+from django.templatetags.static import static
 
 def index(request):
     posts = Projeto.objects.all()
@@ -14,9 +15,6 @@ def index(request):
         "posts": posts,
     }
     return render(request, "index.html", context)
-
-def login(request):
-    return render(request, "login.html")
 
 def info(request, id):
     curso = get_object_or_404(Curso, id = id)
@@ -131,19 +129,37 @@ def projetos(request):
 
 def pesquisar(request):
     query = request.GET.get('q','')
-    resultados = Projeto.objects.filter(titulo__icontains=query) if query else Projeto.objects.all()
+    
+    resultados_titulo = Projeto.objects.filter(titulo__icontains=query)
+    resultados_objetivo = Projeto.objects.filter(objetivo__icontains=query)
+    resultados_resumo = Projeto.objects.filter(resumo__icontains=query)
+
+    resultados = resultados_titulo | resultados_resumo | resultados_objetivo
+    paginator = Paginator(resultados, 6)
+    numero_da_pagina = request.GET.get('p')
+    resultados_paginados = paginator.get_page(numero_da_pagina)
+
+    projetos_novos = Projeto.objects.all().order_by("criado_em")[:6]
+
     context = {
-        'projetos' : resultados,
+        'projetos' : resultados_paginados,
+        'projetos_novos' : projetos_novos,
         'query' : query,
-        'pesquisas': ['Prorização e igualdade', 'Direção de hardware', 'Plantações Angiela', 'Rodeio informático', 'PPI'],
-        'ideias': ['Prorização e igualdade', 'Direção de hardware', 'Plantações Angiela'],
         
     }
     return render(request, 'pesquisar.html', context)
 
 def sobre(request):
-    context = {
+    membros = [
+        {"nome": "Ellainy Nayara", "vinculo": "Aluna", "foto":static('imgs/ellainy.png')},
+        {"nome": "João Henrique", "vinculo": "Aluno", "foto":static('imgs/Joao.png')},
+        {"nome": "Wescley Plínio", "vinculo": "Aluno", "foto":static('imgs/Wescley.png')},
+        {"nome": "Fernanda Lígia", "vinculo": "Orientadora", "foto":static('imgs/fernanda.jpg')},
+        {"nome": "Pedrina Brasil", "vinculo": "Orientadora", "foto":static('imgs/pedrinha.jpeg')},
+    ]
 
-    }
+    grupos = [membros[i:i+3] for i in range(0, len(membros), 3)]
 
-    return render(request, 'about.html', context)
+    context = {"equipe": grupos}
+    
+    return render(request, "about.html", context)

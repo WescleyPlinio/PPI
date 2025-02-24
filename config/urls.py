@@ -22,6 +22,7 @@ urlpatterns = [
     path("", include("users.urls")),
     path("users/", include("django.contrib.auth.urls")),
     path('admin/', admin.site.urls),
+    path('select2/', include('django_select2.urls')),
 ]
 
 from django.conf import settings

@@ -2,21 +2,11 @@
 {% load static %}
 {% block conteudo %}
 
-<!-- Pesquisas Recentes -->
-<section class="container mt-4">
-    <h2 class="roxinho">Pesquisas recentes:</h2>
-    <div class="d-flex flex-wrap gap-2">
-        {% for pesquisa in pesquisas %}
-            <span class="badge blueback p-2">{{ pesquisa }}</span>
-        {% endfor %}
-    </div>
-</section>
-
 <!-- Projetos Mais Vistos -->
  <div class="container-fluid blueback">
-     <section class="container mt-5 py-3">
-         <h2 class="roxinho text-center mb-3">Alguns dos projetos mais vistos:</h2>
-         <div class="row">
+     <section class="container py-3">
+         <h2 class="roxinho mb-3">Resultados:</h2>
+         <div class="row mb-5">
              {% for projeto in projetos %}
                  <div class="col-md-4 mb-4">
                      <div class="card">
@@ -27,8 +17,52 @@
                          </div>
                      </div>
                  </div>
+                 <div class="py-3">
+                    <ul class="pagination d-flex justify-content-end">
+                      {% if projetos.has_previous %}
+                        <li class="page-item">
+                          <a class="page-link laranja" href="?pagina=1">Início</a>
+                        </li>
+            
+                        <li class="page-item">
+                          <a class="page-link roxinho" href="?pagina={{ projetos.previous_numero_da_pagina }}">Anterior</a>
+                        </li>
+                      {% endif %}
+            
+                      <li class="page-item">
+                        <a class="page-link text-dark">Página {{ projetos.number }} de {{ projetos.paginator.num_pages }}.</a>
+                      </li>
+            
+                      {% if projetos.has_next %}
+                        <li class="page-item">
+                          <a class="page-link roxinho" href="?pagina={{ projetos.next_numero_da_pagina }}">Próximo</a>
+                        </li>
+            
+                        <li class="page-item">
+                          <a class="page-link laranja" href="?pagina={{ projetos.paginator.num_pages }}">Fim</a>
+                        </li>
+                      {% endif %}
+                    </ul>
+                  </div>
                  {% empty %}
-                 <li>Nenhum projeto encotrado.</li>
+                 <h4 class="laranja text-center">Nenhum projeto encotrado.</h4 >
+             {% endfor %}
+         </div>
+         
+         <h2 class="roxinho mb-3">Projetos recentes:</h2>
+         <div class="row">
+             {% for projeto in projetos_novos %}
+                 <div class="col-md-4 mb-4">
+                     <div class="card">
+                         <img src="{{ projeto.capa.url }}" alt="{{ projeto.titulo }}" class="card-img-top">
+                         <div class="card-body">
+                             <h5 class="card-title roxinho">{{ projeto.titulo }}</h5>
+                             <p class="card-text">{{ projeto.descricao }}</p>
+                         </div>
+                     </div>
+                 </div>
+                 {% empty %}
+                 <h4 class="laranja text-center">Nenhum projeto encotrado.</h4 >
              {% endfor %}
          </div>
      </section>

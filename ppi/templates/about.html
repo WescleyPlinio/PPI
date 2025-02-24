@@ -2,7 +2,7 @@
 {% load static %}
 {% block conteudo %}
 
-<section class="container my-5">
+<section class="container custom-container my-5">
     <div class="row justify-content-center align-items-center">
         <div class="col-md-3 text-center">
             <img src="{% static 'imgs/LogoPPI.svg' %}" alt="Logo" class="img-fluid" style="max-width: 300px;">
@@ -23,7 +23,7 @@
 <!-- Objetivos -->
 <section class="blueback shadow-lg">
     <div class="container my-5 py-5">
-        <h1 class="text-center mb-4 roxinho text-decoration-none">Nossos objetivos</h1>
+        <h1 class="text-center mb-4 roxinho text-decoration-none">Nossos objetivos :</h1>
         <div class="row justify-content-center">
             <div class="col-md-4 mb-4">
                 <div class="card bg-transparent border-0 shadow-none h-100">
@@ -59,35 +59,36 @@
 </section>
 
 <!-- Nossa Equipe -->
-<section class="container my-5">
-    <h2 class="laranja mt-4 text-center">Desenvolvedores:</h2>
-    <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
-        <div class="text-center">
-            <img src="{% static 'imgs/Wescley.png' %}" style="max-width: 10rem;" class="rounded-circle" alt="Wescley" />
-            <h5 class="roxinho mt-1">Wescley</h5>
+<div id="carouselMembros" class="carousel slide container" data-bs-ride="carousel">
+    <h1 class="text-center roxinho mb-2">Nossa equipe</h1>
+    <div class="carousel-inner">
+        {% for grupo in equipe %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <div class="d-flex justify-content-center">
+                {% for membro in grupo %}
+                <div class="card bg-transparent mx-2" style="width: 18rem;">
+                    <img src="{{ membro.foto }}" class="card-img-top" alt="{{ membro.nome }}">
+                    <div class="card-body text-center">
+                        <h5 class="card-title laranja">{{ membro.nome }}</h5>
+                        <p class="card-text text-white">{{ membro.vinculo }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
-        <div class="text-center">
-            <img src="{% static 'imgs/ellainy.png' %}" style="max-width: 10rem;" class="rounded-circle" alt="Ellainy" />
-            <h5 class="roxinho mt-1">Ellainy</h5>
-        </div>
-        <div class="text-center">
-            <img src="{% static 'imgs/Joao.png' %}" style="max-width: 10rem;" class="rounded-circle" alt="João Henrique" />
-            <h5 class="roxinho mt-1">João Henrique</h5>
-        </div>
+        {% endfor %}
     </div>
 
-    <h2 class="laranja mt-4 text-center">Orientadoras:</h2>
-    <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
-        <div class="text-center">
-            <img src="{% static 'imgs/pedrinha.jpeg' %}" style="max-width: 10rem;" class="rounded-circle" alt="Fernanda" />
-            <h5 class="roxinho mt-1">Fernanda</h5>
-        </div>
-        <div class="text-center">
-            <img src="{% static 'imgs/pedrinha.jpeg' %}" style="max-width: 10rem;" class="rounded-circle" alt="Pedrina" />
-            <h5 class="roxinho mt-1">Pedrina</h5>
-        </div>
-    </div>
-</section>
+    <!-- Controles do carrossel -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselMembros" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselMembros" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Próximo</span>
+    </button>
+</div>
 
 <!-- Agradecimento -->
 <section class="blueback shadow-lg">

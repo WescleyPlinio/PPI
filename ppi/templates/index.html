@@ -11,7 +11,7 @@
         <div class="col-md-9 d-flex">
           <ul class="my-auto me-auto">
             <h1 class="text-white text-left">Plataforma dos <a class="laranja text-decoration-none">Projetos</a> <a class="roxinho text-decoration-none">Integradores</a></h1>
-            <h3 class="text-white text-left">O repositório para todos os projetos do campus SPP.</h3>
+            <h3 class="text-white text-left">Seja bem-vindo(a), ao repositório para todos os projetos  integradores do campus IFRN-SPP!</h3>
           </ul>
         </div>
 
@@ -21,11 +21,10 @@
       </div>
     </div>
   </div>
-
   <!-- Destaques -->
   <div class="container-fluid py-5 blueback shadow-lg">
     <div class="container custom-container d-flex flex-column">
-      <h1 class="laranja text-center">Destaques:</h1>
+      <h1 class="roxinho text-center">Conheça Alguns de nossos projetos!</h1>
 
       <div id="postCarousel" class="carousel slide" data-bs-ride="carousel">
         <!-- Slides -->
@@ -68,19 +67,56 @@
     </div>
   </div>
 
-  <div class="container-fluid bandeira py-5 d-flex position-relative overflow-hidden" style="min-height: 500px;">
-    <div class="row g-3 w-100 position-relative m-auto z-2 d-flex justify-content-evenly align-items-center">
-      <div class="col-md-5 col-lg-5 col-sm-10 bandeira-content p-3 bg-white rounded shadow-lg">
-        <h3 class="laranja text-left">O que são projetos integradores?</h3>
-        <p class="text-dark text-left">Os projetos integradores são iniciativas que conectam diferentes disciplinas e áreas do conhecimento do ensino médio integrado (entre outros). Esses projetos têm como objetivo principal consolidar a aprendizagem ao permitir que os estudantes apliquem na prática os conceitos teóricos aprendidos em sala de aula, muitas vezes atendendo demandas reais da comunidade, empresas ou setores públicos.</p>
+<!-- Compartilhe -->
+  <section class="container my-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-3 text-center">
+            <img src="{% static 'imgs/11.svg' %}" alt="Logo" class="img-fluid" style="max-width: 300px;">
+        </div>
+        <div class="col-md-9 text-start">
+            <h1 class="text-white">
+              Conecte,<a class="laranja text-decoration-none"> Compartilhe,</a><a class="roxinho text-decoration-none"> Colabore!</a>
+            </h1>
+            <h6 class="text-white">
+              Tem um projeto? Compartilhe conosco! Explore projetos, compartilhe suas ideias e colabore para fortalecer o aprendizado e a pesquisa! 
+            </h6>
+        </div>
+    </div>
+</section>
+<!-- Bandeira -->
+  <div class="container-fluid bandeira py-5 d-flex position-relative overflow-hidden" style="min-height: 400px;">
+    <div class="row g-3 w-200 position-relative m-auto z-2 d-flex justify-content-evenly align-items-center background-transparent">
+      <div class="col-md-6 col-lg-6 col-sm-6 bandeira-content p-3 bg-transparent rounded shadow-lg">
+        <h1 class="text-white text-left">O que são projetos integradores?</h1>
+        <h5 class="text-white text-left">Os projetos integradores são iniciativas que conectam diferentes disciplinas e áreas do conhecimento do ensino médio integrado. Esses projetos têm como objetivo principal consolidar a aprendizagem ao permitir que os estudantes
+           apliquem na prática os conceitos teóricos e tecnicos aprendidos em sala de aula, muitas vezes atendendo demandas reais da comunidade, empresas ou setores públicos.</h5>
       </div>
-
-      <div class="col-md-5 col-lg-5 col-sm-10 bandeira-content p-3 bg-white rounded shadow-lg">
-        <h3 class="laranja text-left">O que é este site?</h3>
-        <p class="text-dark">A Plataforma dos Projetos Integradores é um sistema que trás em suas mãos todos os projetos integradores do campus SPP já criados, permitindo que você possa visualizá-los.</p>
-      </div>
+      <div class="col-md-3 text-center">
+        <img src="{% static 'imgs/8.svg' %}" alt="Logo" class="img-fluid" style="max-width: 400px;">
     </div>
 
-    <div class="position-absolute top-0 start-0 w-100 h-100 bg-image z-1" style="background-image: url('{% static 'imgs/Tec.jfif' %}'); filter: blur(1px);"></div>
+    </div>
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-image z-1 opacity-50" style="background-image: url('{% static 'imgs/azul-violeta.jfif' %}'); filter: blur(1px);"></div>
+  </div>
+
+<!--Ir para o sobre nos -->
+  <div class="container custom-container my-5 py-5">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-4">
+          <img src="{% static 'imgs/12.svg' %}" alt="Logo" class="img-fluid mw-100">
+        </div>
+        <div class="col-md-7 text-start order-md-1">
+            <h1 class="text-white">
+              O que é este site?
+            </h1>
+            <h5 class="text-white">
+              O PPI é um sistema desenvolvido por alunos do 3º ano do curso de Informática para Internet do IFRN - Campus São Paulo do Potengi como parte de um Projeto Integrador.
+              Nosso propósito é disponibilizar, de forma acessível e organizada, todos os projetos integradores já criados no campus, permitindo que você os explore e se inspire! 
+            </h5>
+            <a href="{% url 'sobre' %}" class="fw-bold btn btn-dark butsu fundo-roxinho2 mt-2">
+              Saiba mais!
+            </a>
+        </div>
+      </div>
   </div>
 {% endblock %}

@@ -75,11 +75,7 @@
           <!-- Componentes -->
           <div class="form-group">
             <label class="roxinho" for="id_componentes">Componentes:</label>
-            <select class="form-control bg-white" id="componentes" name="componentes" multiple>
-              {% for componente in componentes %}
-                <option class="text-dark" value="{{ componente.id }}">{{ componente.user__username }}</option>
-              {% endfor %}
-            </select>
+            {{ form.componentes }}
           </div>
 
           <!-- Curso -->

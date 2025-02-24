@@ -1,10 +1,19 @@
 from django import forms
-from .models import Projeto, Comentario, FotoProjeto
+from django_select2.forms import ModelSelect2MultipleWidget
+from .models import Projeto, Comentario, FotoProjeto, Profile
 
 class ProjetoForm(forms.ModelForm):
+    componentes = forms.ModelMultipleChoiceField(
+        queryset=Profile.objects.all(),
+        widget=ModelSelect2MultipleWidget(
+            model=Profile,
+            search_fields=['user__username__icontains', 'user__first_name__icontains', 'user__last_name__icontains']
+        )
+    )
+
     class Meta:
         model = Projeto
-        fields = ['titulo', 'resumo', 'objetivo', 'capa', 'pdf', 'palavras_chave', 'curso']
+        fields = ['titulo', 'resumo', 'objetivo', 'componentes', 'capa', 'pdf', 'palavras_chave', 'curso']
 
 class FotoProjetoForm(forms.ModelForm):
     class Meta:

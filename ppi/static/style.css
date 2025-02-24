@@ -2,8 +2,16 @@
     color: rgb(246, 82, 255);
 }
 
+.roxinho2 {
+    color: rgb(87, 68, 255);
+}
+
 .fundo-roxinho {
     background-color: rgb(246, 82, 255);
+}
+
+.fundo-roxinho2 {
+    background-color: rgb(87, 68, 255);
 }
 
 .laranja {
@@ -66,7 +74,7 @@
     border-radius: 4px;
     cursor: pointer;
 }
-
+.butsu:hover, 
 .form-group button:hover {
     background-color: rgb(246, 82, 255);
 }
@@ -149,7 +157,6 @@ form label {
 .card:hover {
     transform: scale(1.02);
     transition: transform 0.2s ease;
-    box-shadow: white 0.5px 0.5px 0.5px 0.5px;
 }
 
 select option, select{
