@@ -89,7 +89,7 @@ def formprojeto(request, pk=None):
 
     return render(request, "formprojeto.html", context)
 
-    
+@login_required
 def criar_comentario(request,projeto_id):
     projeto = get_object_or_404(Projeto, id=projeto_id)
 
@@ -120,9 +120,9 @@ def excluir_projeto(request, pk):
     if request.method == 'POST':
         projeto = get_object_or_404(Projeto, pk=pk)
         projeto.delete()
-        return JsonResponse({"Sucesso!":True})
-        
-    return JsonResponse({"Erro":"Método de requisição inválido"}, status = 400)
+        return JsonResponse({"sucesso": True})
+    
+    return JsonResponse({"erro": "Método de requisição inválido"}, status=400)
 
 def projetos(request):
     projetos = Projeto.objects.all()
