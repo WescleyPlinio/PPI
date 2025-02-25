@@ -91,7 +91,7 @@ def paineladmin(request):
 @permission_required('users.add_curso', raise_exception=True)
 def adicionarcurso(request):
     if request.method == 'POST':
-        form = CursoForm(request.POST)
+        form = CursoForm(request.POST, request.FILES)
 
         if form.is_valid():
             form.save()
@@ -109,7 +109,7 @@ def adicionarcurso(request):
 def editarcurso(request, id_curso):
     curso = get_object_or_404(Curso, pk=id_curso)
     if request.method == 'POST':
-        form = CursoForm(request.POST, instance=curso)
+        form = CursoForm(request.POST, request.FILES, instance=curso)
         if form.is_valid():
             form.save()
             return redirect('index')
