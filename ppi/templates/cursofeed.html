@@ -5,7 +5,7 @@
 {% endblock %}
 {% block conteudo %}
   <!-- Menu -->
-  <div class="container custom-container mb-5 py-3 x">
+  <div class="container mb-5 py-3 x">
     <div class="row g-0">
       <div class="col-md-8 ms-auto my-auto">
         <h1 class="text-white">Projetos do curso de <a class="roxinho text-decoration-none">{{ curso.titulo }}</a></h1>
@@ -21,8 +21,8 @@
 
   <!-- Feed -->
   <div class="container-fluid blueback">
-    <div class="container custom-container">
-      <div class="row g-4 d-flex justify-content-center align-items-center">
+    <div class="container">
+      <div class="row g-4 d-flex justify-content-between align-items-center">
         {% for projeto in projetos %}
           <div class="col-md-12 col-lg-6 col-sm-12">
             <a class="text-decoration-none" href="{% url 'post' projeto.id %}">
