@@ -24,7 +24,7 @@
             <li class="nav-tem ms-2">
               <a href="{% url 'projetos' curso.id %}" class="text-decoration-none text-center text-white m-2">
                 {% if curso.logo %}
-                  <img src="{{ curso.logo.url }}" class="me-2" style="max-width: 1.5rem;" alt="{{ curso.titulo }}" />
+                  <img src="{{ curso.logo.url }}" class="me-1" style="max-width: 1.5rem;" alt="{{ curso.titulo }}" />
                 {% endif %}
                 <p class="d-none d-xxl-inline">{{ curso.titulo }}</p>
               </a>
@@ -34,10 +34,10 @@
 
         {% if user.is_authenticated %}
           <li class="nav-item ms-2">
-            <a class="nav-link" href="{% url 'verperfil' %}"><i class="fa-solid fa-user fa-xl text-white"></i></a>
+            <a class="nav-link" href="{% url 'verperfil' %}"><i class="fa-solid fa-user fa-xl laranja"></i></a>
           </li>
           <li class="nav-item ms-2">
-            <a class="nav-link" href="{% url 'form_post' %}"><i class="fa-solid fa-plus fa-xl laranja"></i></a>
+            <a class="nav-link" href="{% url 'form_post' %}"><i class="fa-solid fa-plus fa-xl text-white"></i></a>
           </li>
         {% else %}
           <li class="nav-item ms-2">

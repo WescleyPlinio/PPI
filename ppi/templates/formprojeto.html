@@ -22,7 +22,7 @@
 </div>
 
 <div class="container-fluid blueback py-5">
-  <div class="form-container mx-auto custom-container">
+  <div class="form-container container mx-auto">
     <form action="{% if projeto %}
     {% url 'editar_projeto' projeto.id %}{% else %}{% url 'form_post' %}
     {% endif %}" method="POST" enctype="multipart/form-data" method="POST" enctype="multipart/form-data">
