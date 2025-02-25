@@ -4,6 +4,7 @@ from django.contrib.auth.models import Group
 from .forms import CadastroForm, ProfileForm, CursoForm, VinculoForm
 from .models import Profile, Curso, Vinculo, User
 from ppi.models import Projeto
+from django.db.models import Q
 
 def cadastro(request):
     if request.method == 'POST':
@@ -39,15 +40,17 @@ def cadastro(request):
 @login_required
 def verperfil(request):
     profile = get_object_or_404(Profile, user=request.user)
-    post = Projeto.objects.all()
-    
+
+    projetos = Projeto.objects.filter(
+        Q(orientados=profile) | Q(orientadores=profile)
+    ).distinct()  
+
     context = {
-        "projetos" : post,
-        "range" : range(2),
         "profile": profile,
+        "projetos": projetos,
     }
 
-    return render (request, "verperfil.html", context)
+    return render(request, "verperfil.html", context)
 
 @login_required
 def editarperfil(request):

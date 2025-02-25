@@ -99,22 +99,20 @@
 
       <!-- Div alunos -->
       <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
-        {% for aluno in projeto.componentes.all %}
-          {% if aluno.user.vinculo.vinculo == "Aluno" or  aluno.user.vinculo.vinculo == "Outros" %}
-            <a href="{% url 'verperfil' %}" style="text-decoration: none;">
-              <div>
-                <img src="{% if aluno.avatar %}
-                    {{ aluno.avatar.url }}
-                  {% else %}
-                    {% static 'imgs/usericn.jpg' %}
-                  {% endif %}"
-                  style="max-width: 10rem;"
-                  class="rounded-circle"
-                  alt="..." />
-                <h5 class="text-center roxinho mt-1">{{ aluno.user.username }}</h5>
-              </div>
-            </a>
-          {% endif %}
+        {% for aluno in projeto.orientados.all %}
+          <a href="{% url 'verperfil' %}" style="text-decoration: none;">
+            <div>
+              <img src="{% if aluno.avatar %}
+                  {{ aluno.avatar.url }}
+                {% else %}
+                  {% static 'imgs/usericn.jpg' %}
+                {% endif %}"
+                style="max-width: 10rem;"
+                class="rounded-circle"
+                alt="..." />
+              <h5 class="text-center roxinho mt-1">{{ aluno.user.username }}</h5>
+            </div>
+          </a>
         {% endfor %}
       </div>
 
@@ -122,22 +120,20 @@
 
       <!-- Div orientadores -->
       <div class="d-flex flex-wrap justify-content-evenly align-items-center py-2">
-        {% for orientador in projeto.componentes.all %}
-          {% if orientador.user.vinculo.vinculo == "Professor" %}
-            <a href="{% url 'verperfil' %}" style="text-decoration: none;">
-              <div>
-                <img src="{% if orientador.avatar %}
-                    {{ orientador.avatar.url }}
-                  {% else %}
-                    {% static 'imgs/usericn.jpg' %}
-                  {% endif %}"
-                  style="max-width: 10rem;"
-                  class="rounded-circle"
-                  alt="..." />
-                <h5 class="text-center roxinho mt-1">{{ orientador.user.username }}</h5>
-              </div>
-            </a>
-          {% endif %}
+        {% for orientador in projeto.orientadores.all %}
+          <a href="{% url 'verperfil' %}" style="text-decoration: none;">
+            <div>
+              <img src="{% if orientador.avatar %}
+                  {{ orientador.avatar.url }}
+                {% else %}
+                  {% static 'imgs/usericn.jpg' %}
+                {% endif %}"
+                style="max-width: 10rem;"
+                class="rounded-circle"
+                alt="..." />
+              <h5 class="text-center roxinho mt-1">{{ orientador.user.username }}</h5>
+            </div>
+          </a>
         {% endfor %}
       </div>
     </div>
