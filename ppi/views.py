@@ -10,7 +10,7 @@ from django.contrib import messages
 from django.templatetags.static import static
 
 def index(request):
-    posts = Projeto.objects.all()
+    posts = Projeto.objects.all().order_by('?')
     context = {
         "posts": posts,
     }
