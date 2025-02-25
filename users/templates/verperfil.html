@@ -5,74 +5,46 @@
 {% endblock %}
 {% block content %}
   <!-- Menu -->
-  <div class="w-100 mx-auto row g-3 fundo-bd py-5">
-    <div class="col-sm-4 col-md-2 col-lg-2 my-auto">
-      {% if profile.avatar %}
-        <img src="{{ profile.avatar.url }}" class="rounded-circle mw-100" alt="{{ profile.user.username }}" />
-      {% endif %}
-    </div>
+   <div class="fundo-bd">
+     <div class="container mx-auto row g-3 py-5">
+       <div class="col-sm-4 col-md-2 col-lg-2 my-auto">
+         {% if profile.avatar %}
+           <img src="{{ profile.avatar.url }}" class="rounded-circle mw-100" alt="{{ profile.user.username }}" />
+         {% endif %}
+       </div>
+   
+       <div class="col-sm-8 col-md-10 col-lg-10 my-auto">
+         <ul>
+           <h6 class="text-left text-white fw-bold"><b class="fw-normal">{{ profile.user.vinculo }}</b></h6>
+           <h1 class="text-left roxinho">{{ profile.primeiro_nome }} {{ profile.ultimo_sobrenome }}</h1>
+           <h6 class="text-left text-white fw-bold"><b class="text-white fw-normal">{{ profile.user.curso }}</b></h6>
+         </ul>
+       </div>
+     </div>
+   </div>
 
-    <div class="col-sm-8 col-md-10 col-lg-10 my-auto">
-      <ul>
-        <h6 class="text-left text-white fw-bold"><b class="fw-normal">{{ profile.user.vinculo }}</b></h6>
-        <h1 class="text-left roxinho">{{ profile.primeiro_nome }} {{ profile.ultimo_sobrenome }}</h1>
-        <h6 class="text-left text-white fw-bold"><b class="text-white fw-normal">{{ profile.user.curso }}</b></h6>
-      </ul>
-    </div>
-  </div>
-
-  <!-- participações -->
-  <div class="container-fluid blueback py-5 h-100">
-    <div class="container custom-container">
-      <h1 class="laranja text-center pb-4">Participações:</h1>
-
-      <div class="row g-2 w-100 d-flex justify-content-start">
-        {% for x in range %}
-          {% for projeto in profile.projetos.all %}
-            <div class="col-md-6 col-lg-4 col-sm-12">
-              <div class="card h-100 fundo-bd" style="min-height: 12em;">
-                <div class="row h-100">
-                  <div class="col-10">
-                    <a href="{% url 'post' projeto.id %}" class="text-decoration-none">
-                      <div class="card-body d-flex flex-column h-100">
-                        <h4 class="card-title roxinho w-100">{{ projeto.titulo }}</h4>
-
-                        <h6 class="card-subtitle laranja mb-2">Orientado por:</h6>
-
-                        {% for componente in projeto.componentes.all %}
-                          {% if componente.user.vinculo_id == 2 %}
-                            <h6 class="card-subtitle fw-bold text-white">{{ componente.user.username }}</h6>
-                          {% endif %}
-                        {% endfor %}
-
-                        <p class="card-title text-white mb-3">{{ projeto.objetivo }}</p>
-
-                        {% if perms.ppi.add_projeto %}
-                          <ul class="mt-auto d-flex align-items-center mt-auto ms-auto">
-                            <a href="{% url 'editar_projeto' projeto.id %}" class="text-decoration-none m-0"><i class="fa-solid fa-pen-to-square text-white fa-xl"></i></a>
-
-                            <form class="delete-form" data-id="{{ projeto.id }}" action="{% url 'excluir_projeto' projeto.id %}" method="POST">
-                              {% csrf_token %}
-
-                              <button type="button" class="btn delete-btn"><i class="fa-solid fa-trash text-white fa-xl"></i></button>
-                            </form>
-                          </ul>
-                        {% endif %}
-                      </div>
-                    </a>
+  <!-- Projetos do Usuário -->
+  <h1 class="laranja text-center py-4">Seus Projetos:</h1>
+  <div class="container">
+    <div class="row g-2">
+      {% for projeto in projetos %}
+        <div class="col-md-6 col-lg-4 col-sm-12">
+          <div class="card h-100 fundo-bd" style="min-height: 12em;">
+            <div class="row h-100">
+              <div class="col-10">
+                <a href="{% url 'post' projeto.id %}" class="text-decoration-none">
+                  <div class="card-body d-flex flex-column h-100">
+                    <h4 class="card-title roxinho2 w-100">{{ projeto.titulo }}</h4>
+                    <p class="card-title text-white mb-3">{{ projeto.objetivo }}</p>
                   </div>
-
-                  <div class="card-body col-2 d-flex align-items-end">
-                    {% if projeto.curso.logo %}
-                      <img src="{{ projeto.curso.logo.url }}" alt="projeto.curso.titulo" class="mw-100 mb-auto" />
-                    {% endif %}
-                  </div>
-                </div>
+                </a>
               </div>
             </div>
-          {% endfor %}
-        {% endfor %}
-      </div>
+          </div>
+        </div>
+      {% empty %}
+        <p class="text-white">Você ainda não está envolvido em nenhum projeto.</p>
+      {% endfor %}
     </div>
   </div>
 {% endblock %}

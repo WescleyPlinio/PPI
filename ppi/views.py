@@ -64,9 +64,11 @@ def formprojeto(request, pk=None):
         if form.is_valid():
             projeto = form.save()
 
-            componentes_ids = request.POST.getlist('orientadores', 'orientados')
-            projeto.orientados.set(componentes_ids)
-            projeto.orientadores.set(componentes_ids)
+            orientadores_ids = request.POST.getlist('orientadores')
+            orientados_ids = request.POST.getlist('orientados')
+
+            projeto.orientadores.set(orientadores_ids)
+            projeto.orientados.set(orientados_ids)
 
             imagens = request.FILES.getlist('imagens')
             for imagem in imagens:
