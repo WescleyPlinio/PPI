@@ -51,9 +51,9 @@
           <li class="nav-item">
             <form method="post" action="{% url 'logout' %}">
               {% csrf_token %}
-              <button type="submit" class="nav-link text-white">
+              <button type="submit" class="nav-link text-danger">
                 <i class="fa-solid fa-lg fa-right-from-bracket nav-icon"></i>
-                <p class="text d-none d-md-inline">Log-out</p>
+                <p class="text d-none d-md-inline text-danger">Log-out</p>
               </button>
             </form>
           </li>

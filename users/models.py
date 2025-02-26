@@ -19,6 +19,7 @@ class Vinculo(models.Model):
 
 class User(AbstractUser):
     vinculo = models.ForeignKey(Vinculo, on_delete=models.CASCADE, null=True, blank=True)
+    
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
