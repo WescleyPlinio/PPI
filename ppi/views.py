@@ -55,7 +55,7 @@ def post(request, id):
 @login_required
 @permission_required('ppi.add_projeto', raise_exception=True)
 def formprojeto(request, pk=None):
-    componentes = list(Profile.objects.all().values('id', 'user__username'))    
+    componentes = list(Profile.objects.all().values('id', 'user__email'))    
     projeto = get_object_or_404(Projeto, pk=pk) if pk else None
 
     if request.method == 'POST':

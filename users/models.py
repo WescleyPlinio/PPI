@@ -32,7 +32,7 @@ class Profile(models.Model):
     ultimo_sobrenome = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
-        return self.user.username
+            return self.user.email if self.user.email else self.user.username
     
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
