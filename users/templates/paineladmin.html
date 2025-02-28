@@ -134,13 +134,15 @@
                   <tr>
                     <th>Id</th>
                     <th>Nome</th>
+                    <th>Email</th>
                   </tr>
                 </thead>
                 <tbody>
                   {% for usuario in usuarios %}
                     <tr>
-                      <th>{{ usuario.id }}</th>
+                      <td>{{ usuario.id }}</td>
                       <td>{{ usuario.username }}</td>
+                      <td>{{ usuario.email }}</td>
                     </tr>
                   {% endfor %}
                 </tbody>
