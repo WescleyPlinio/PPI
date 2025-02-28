@@ -22,58 +22,9 @@
   <!-- Feed -->
   <div class="container-fluid blueback">
     <div class="container">
-      <div class="row g-4 d-flex justify-content-between align-items-center">
-        {% for projeto in projetos %}
-          <div class="col-md-12 col-lg-6 col-sm-12">
-            <a class="text-decoration-none" href="{% url 'post' projeto.id %}">
-              <div class="card">
-                <div class="row">
-                  <div class="col-md-12 col-lg-6 col-sm-12 d-flex">
-                    {% if projeto.capa %}
-                      <img src="{{ projeto.capa.url }}" class="mh-100 w-100 m-auto img-fluid rounded-0" alt="{{ projeto.titulo }}" />
-                    {% endif %}
-                  </div>
+      {% include 'partials/_cursofeed.html' %}
 
-                  <div class="col-md-12 col-lg-6 col-sm-12">
-                    <div class="card-body">
-                      <h5 class="card-title roxinho2">{{ projeto.titulo }}</h5>
-                      <p class="card-text">{{ projeto.objetivo }}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        {% endfor %}
-      </div>
-
-      <div class="py-3">
-        <ul class="pagination d-flex justify-content-end">
-          {% if projetos.has_previous %}
-            <li class="page-item">
-              <a class="page-link laranja" href="?pagina=1">Início</a>
-            </li>
-
-            <li class="page-item">
-              <a class="page-link roxinho2" href="?pagina={{ projetos.previous_page_number }}">Anterior</a>
-            </li>
-          {% endif %}
-
-          <li class="page-item">
-            <a class="page-link text-dark">Página {{ projetos.number }} de {{ projetos.paginator.num_pages }}.</a>
-          </li>
-
-          {% if projetos.has_next %}
-            <li class="page-item">
-              <a class="page-link roxinho2" href="?pagina={{ projetos.next_page_number }}">Próximo</a>
-            </li>
-
-            <li class="page-item">
-              <a class="page-link laranja" href="?pagina={{ projetos.paginator.num_pages }}">Fim</a>
-            </li>
-          {% endif %}
-        </ul>
-      </div>
+      {% include "paginacao.html" %}
     </div>
   </div>
 {% endblock %}

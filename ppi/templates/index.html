@@ -27,28 +27,13 @@
       <h1 class="roxinho text-center mb-3">Conheça Alguns de nossos projetos!</h1>
 
       <div id="postCarousel" class="carousel slide" data-bs-ride="carousel">
+        
         <!-- Slides -->
-        <div class="carousel-inner">
-          {% for post in posts %}
+        <div class="carousel-inner w-75 mx-auto">
+          {% for projeto in projetos %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
               <div class="d-flex justify-content-center align-items-center">
-                <a class="text-decoration-none" href="{% url 'post' post.id %}">
-                  <div class="card shadow-lg" style="max-width: 40em;">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <img src="{{ post.capa.url }}" class="img-fluid rounded-0 w-100 h-100" style="max-height: 100%;" alt="{{ post.titulo }}" />
-                      </div>
-
-                      <div class="col-md-6">
-                        <div class="card-body py-2">
-                          <h5 class="card-title roxinho2">{{ post.titulo }}</h5>
-
-                          <p class="card-text">{{ post.objetivo }}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                {% include "partials/_card.html" %}
               </div>
             </div>
           {% endfor %}
