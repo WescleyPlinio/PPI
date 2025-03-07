@@ -1,0 +1,27 @@
+<div class="py-3">
+    <ul class="pagination d-flex justify-content-end">
+      {% if projetos.has_previous %}
+        <li class="page-item">
+          <a class="page-link link-pag laranja" data-url="{% url "ajax_projetos" curso.id %}?pagina=1" href="?pagina=1">Início</a>
+        </li>
+
+        <li class="page-item">
+          <a class="page-link link-pag roxinho2" data-url="{% url "ajax_projetos" curso.id %}?pagina={{ projetos.previous_page_number }}" href="?pagina={{ projetos.previous_page_number }}">Anterior</a>
+        </li>
+      {% endif %}
+
+      <li class="page-item">
+        <a class="page-link text-dark">Página {{ projetos.number }} de {{ projetos.paginator.num_pages }}.</a>
+      </li>
+
+      {% if projetos.has_next %}
+        <li class="page-item">
+          <a class="page-link link-pag roxinho2" data-url="{% url "ajax_projetos" curso.id %}?pagina={{ projetos.next_page_number }}" href="?pagina={{ projetos.next_page_number }}">Próximo</a>
+        </li>
+
+        <li class="page-item">
+          <a class="page-link link-pag laranja" data-url="{% url "ajax_projetos" curso.id %}?pagina={{ projetos.paginator.num_pages }}" href="?pagina={{ projetos.paginator.num_pages }}">Fim</a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
