@@ -28,12 +28,14 @@ def info(request, id):
     }
     return render(request, "cursofeed.html", context)
 
-def ajax_info(request):
-    projetos_all = Projeto.objects.filter( Curso )
+def ajax_info(request, id):
+    curso = get_object_or_404(Curso, id = id)
+    projetos_all = Projeto.objects.filter( curso = id )
     paginator = Paginator(projetos_all, 4)
     numero_pagina = request.GET.get('pagina')
     projetos = paginator.get_page(numero_pagina)
     context = {
+        "curso" : curso,
         "projetos" : projetos,
     }
     return render(request, "partials/_cursofeed.html", context)
