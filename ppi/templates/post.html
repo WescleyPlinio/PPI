@@ -145,17 +145,29 @@
       <h1 class="laranja text-center">Comentários</h1>
 
       <div class="py-2 mt-4">
-        <form method="post">
-          {% csrf_token %}
+        {% if user.is_autenticated %}
+          <form method="post">
+            {% csrf_token %}
 
-          <div class="row">
-            <div class="col-11">{{ form.as_p }}</div>
+            <div class="row">
+              <div class="col-11">{{ form.as_p }}</div>
 
-            <div class="col-1 p-0">
-              <button type="submit" class="btn btn-light me-auto my-auto fundo-roxinho">Enviar</button>
+              <div class="col-1 p-0">
+                <button type="submit" class="btn btn-light me-auto my-auto fundo-roxinho">Enviar</button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        {% else %}
+          <a class="text-decoration-none" href="{% url 'login' %}">
+            <div class="row">
+              <div class="col-11">{{ form.as_p }}</div>
+
+              <div class="col-1 p-0">
+                <button type="button" class="btn btn-light me-auto my-auto fundo-roxinho">Enviar</button>
+              </div>
+            </div>
+          </a>
+        {% endif %}
 
         <div class="w-100">
           {% for comentario in projeto.comentarios.all %}
