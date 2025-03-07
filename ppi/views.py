@@ -19,7 +19,7 @@ def index(request):
 def info(request, id):
     curso = get_object_or_404(Curso, id = id)
     projetos_all = Projeto.objects.filter( curso = id )
-    paginator = Paginator(projetos_all, 4)
+    paginator = Paginator(projetos_all, 6)
     numero_pagina = request.GET.get('pagina')
     projetos = paginator.get_page(numero_pagina)
     context = {
@@ -31,7 +31,7 @@ def info(request, id):
 def ajax_info(request, id):
     curso = get_object_or_404(Curso, id = id)
     projetos_all = Projeto.objects.filter( curso = id )
-    paginator = Paginator(projetos_all, 4)
+    paginator = Paginator(projetos_all, 6)
     numero_pagina = request.GET.get('pagina')
     projetos = paginator.get_page(numero_pagina)
     context = {
@@ -145,13 +145,14 @@ def projetos(request):
 
 
 def pesquisar(request):
-    query = request.GET.get('q','')
+    query = request.GET.get('q', '')
     
     resultados_titulo = Projeto.objects.filter(titulo__icontains=query)
     resultados_objetivo = Projeto.objects.filter(objetivo__icontains=query)
     resultados_resumo = Projeto.objects.filter(resumo__icontains=query)
 
-    resultados = resultados_titulo | resultados_resumo | resultados_objetivo
+    resultados = resultados_titulo | resultados_objetivo | resultados_resumo
+
     paginator = Paginator(resultados, 3)
     numero_da_pagina = request.GET.get('pagina')
     resultados_paginados = paginator.get_page(numero_da_pagina)
@@ -159,12 +160,12 @@ def pesquisar(request):
     projetos_novos = Projeto.objects.all().order_by("criado_em")[:6]
 
     context = {
-        'projetos' : resultados_paginados,
-        'projetos_novos' : projetos_novos,
-        'query' : query,
-        
+        'projetos': resultados_paginados,
+        'projetos_novos': projetos_novos,
+        'query': query,
     }
     return render(request, 'pesquisar.html', context)
+
 
 def sobre(request):
     membros = [
