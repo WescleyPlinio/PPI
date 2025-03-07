@@ -1,0 +1,442 @@
+[
+    {
+        "model": "ppi.Projeto",
+        "pk": 1,
+        "fields": {
+            "titulo": "Sistema de Gestão de Eventos Científicos",
+            "resumo": "O sistema será uma solução completa para eventos acadêmicos e científicos, permitindo que organizadores cadastrem palestras, simpósios e workshops. Os usuários poderão submeter trabalhos, acompanhar suas avaliações e se inscrever nos eventos de interesse. A plataforma também fornecerá certificados digitais personalizados e dashboards com estatísticas detalhadas.",
+            "objetivo": "Desenvolver uma plataforma para auxiliar na organização e gerenciamento de eventos acadêmicos e científicos.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "gestão de eventos, submissão de artigos, plataforma acadêmica",
+            "curso": 1,
+            "orientados": [
+                2,
+                4,
+                6
+            ],
+            "orientadores": [
+                3,
+                7
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 2,
+        "fields": {
+            "titulo": "Plataforma de Blog Acadêmico",
+            "resumo": "A plataforma permitirá que estudantes e professores publiquem artigos acadêmicos, compartilhem ideias e interajam por meio de comentários. Os blogs poderão ser categorizados por temas, como tecnologia, ciências humanas e engenharia. Haverá uma funcionalidade de busca otimizada para facilitar a navegação entre os conteúdos publicados.",
+            "objetivo": "Criar um sistema de blog simples e funcional utilizando Django.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "blog, Django, Bootstrap, CMS",
+            "curso": 1,
+            "orientados": [
+                6,
+                9,
+                10
+            ],
+            "orientadores": [
+                7,
+                8
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 3,
+        "fields": {
+            "titulo": "Sistema de Monitoramento de Consumo de Água em Edificações",
+            "resumo": "O projeto consiste no desenvolvimento de um sistema que monitora o consumo de água em prédios comerciais e residenciais. Utilizando sensores inteligentes, o sistema coletará dados em tempo real e gerará relatórios detalhados sobre o consumo. Ele também poderá identificar possíveis vazamentos e desperdícios, enviando alertas para os responsáveis pela manutenção.",
+            "objetivo": "Criar um sistema para monitoramento do consumo de água em edificações, auxiliando na economia e sustentabilidade.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "sustentabilidade, monitoramento, edificações",
+            "curso": 2,
+            "orientados": [
+                2,
+                6,
+                10
+            ],
+            "orientadores": [
+                3,
+                8
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 4,
+        "fields": {
+            "titulo": "Sistema de Gestão de Resíduos em Construção Civil",
+            "resumo": "Desenvolvimento de um sistema que auxilia na gestão de resíduos sólidos em canteiros de obras. O sistema permitirá o cadastro de materiais descartados e sugerirá soluções de reciclagem e reutilização, promovendo práticas sustentáveis no setor de construção.",
+            "objetivo": "Criar um sistema eficiente para monitoramento e reaproveitamento de resíduos da construção civil.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "sustentabilidade, construção civil, reciclagem",
+            "curso": 2,
+            "orientados": [
+                4,
+                9,
+                10
+            ],
+            "orientadores": [
+                3,
+                7
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 5,
+        "fields": {
+            "titulo": "Sistema de Irrigação Inteligente para Agricultura Sustentável",
+            "resumo": "O projeto visa desenvolver um sistema de irrigação inteligente que utiliza sensores para monitorar a umidade do solo e controlar automaticamente a quantidade de água utilizada. Isso reduz o desperdício de água e melhora a eficiência do cultivo.",
+            "objetivo": "Criar um sistema automatizado para otimização do consumo de água na agricultura.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "irrigação, automação, agricultura sustentável",
+            "curso": 3,
+            "orientados": [
+                2,
+                6,
+                9
+            ],
+            "orientadores": [
+                7,
+                8
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 6,
+        "fields": {
+            "titulo": "Sistema de Cadastro e Gestão de Alunos",
+            "resumo": "O projeto consiste no desenvolvimento de um sistema para cadastro e gestão de alunos em instituições de ensino. O sistema permitirá o acompanhamento do progresso acadêmico, frequência e emissão de boletins.",
+            "objetivo": "Facilitar a gestão acadêmica e administrativa de instituições de ensino.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "gestão escolar, alunos, administração acadêmica",
+            "curso": 1,
+            "orientados": [
+                2,
+                4,
+                9
+            ],
+            "orientadores": [
+                3,
+                7
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 7,
+        "fields": {
+            "titulo": "Sistema de Previsão de Demanda de Energia Elétrica",
+            "resumo": "Sistema desenvolvido para prever a demanda de energia elétrica com base em padrões históricos, ajudando empresas e governos na tomada de decisões sobre investimentos em infraestrutura.",
+            "objetivo": "Prever a demanda de energia elétrica, facilitando a gestão de recursos e investimentos.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "energia elétrica, previsão, gestão de recursos",
+            "curso": 2,
+            "orientados": [
+                2,
+                5,
+                6
+            ],
+            "orientadores": [
+                3,
+                7
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 8,
+        "fields": {
+            "titulo": "Plataforma de E-commerce Sustentável",
+            "resumo": "Plataforma de e-commerce que integra práticas sustentáveis no seu processo, com destaque para a utilização de materiais recicláveis e soluções ecológicas no transporte de mercadorias.",
+            "objetivo": "Criar um sistema de vendas online focado em práticas ecológicas e sustentáveis.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "e-commerce, sustentabilidade, reciclagem",
+            "curso": 1,
+            "orientados": [
+                2,
+                4,
+                6
+            ],
+            "orientadores": [
+                7,
+                8
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 9,
+        "fields": {
+            "titulo": "Aplicativo para Promoção de Saúde Mental",
+            "resumo": "Aplicativo que visa melhorar a saúde mental de usuários por meio de exercícios de relaxamento, meditação e acompanhamento psicológico.",
+            "objetivo": "Desenvolver uma solução para promover o bem-estar emocional e mental.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "saúde mental, bem-estar, meditação",
+            "curso": 3,
+            "orientados": [
+                2,
+                4,
+                6
+            ],
+            "orientadores": [
+                3,
+                7
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 10,
+        "fields": {
+            "titulo": "Plataforma de Ensino Interativo de Matemática",
+            "resumo": "Plataforma interativa de ensino de matemática para estudantes de nível fundamental e médio, com jogos educativos e explicações de conceitos.",
+            "objetivo": "Criar uma plataforma de ensino para melhorar o aprendizado de matemática de forma divertida.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "ensino de matemática, interatividade, educação",
+            "curso": 1,
+            "orientados": [
+                2,
+                5,
+                9
+            ],
+            "orientadores": [
+                3,
+                7
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 11,
+        "fields": {
+            "titulo": "Sistema de Gerenciamento de Tarefas Acadêmicas",
+            "resumo": "Um aplicativo que ajuda estudantes a organizarem suas tarefas acadêmicas, com funcionalidades para criar, editar e rastrear prazos.",
+            "objetivo": "Facilitar a organização das atividades acadêmicas para alunos e professores.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "gestão de tarefas, organização, produtividade",
+            "curso": 1,
+            "orientados": [
+                6,
+                9,
+                10
+            ],
+            "orientadores": [
+                3,
+                7
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 12,
+        "fields": {
+            "titulo": "Plataforma de Ensino de Programação",
+            "resumo": "Uma plataforma interativa para o ensino de programação, oferecendo cursos, quizzes e desafios práticos.",
+            "objetivo": "Criar uma plataforma de ensino de programação com foco em iniciantes.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "programação, ensino, desafios",
+            "curso": 1,
+            "orientados": [
+                4,
+                5,
+                9
+            ],
+            "orientadores": [
+                3,
+                8
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 13,
+        "fields": {
+            "titulo": "Sistema de Monitoramento de Energia em Edificações",
+            "resumo": "Este sistema é projetado para monitorar o consumo de energia elétrica em edifícios comerciais e residenciais, proporcionando relatórios detalhados e alertas sobre o uso excessivo.",
+            "objetivo": "Criar um sistema para monitoramento de consumo de energia, visando a eficiência energética.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "energia, sustentabilidade, monitoramento",
+            "curso": 2,
+            "orientados": [
+                4,
+                5,
+                9
+            ],
+            "orientadores": [
+                3,
+                7
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 14,
+        "fields": {
+            "titulo": "Aplicativo de Previsão Climática para Agricultores",
+            "resumo": "O aplicativo permite que agricultores consultem previsões meteorológicas precisas, ajudando-os a tomar decisões informadas sobre o plantio e cuidados com as culturas.",
+            "objetivo": "Desenvolver uma ferramenta para apoiar decisões agrícolas baseadas em condições climáticas.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "agricultura, previsão climática, tecnologia",
+            "curso": 3,
+            "orientados": [
+                2,
+                6,
+                9
+            ],
+            "orientadores": [
+                7,
+                8
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 15,
+        "fields": {
+            "titulo": "Sistema de Gestão de Estoques para Pequenos Negócios",
+            "resumo": "Desenvolvimento de um sistema simples e intuitivo para ajudar pequenos comerciantes a gerenciar seus estoques de produtos de maneira eficiente e sem complicações.",
+            "objetivo": "Criar uma plataforma para controle e gestão de estoques para pequenos negócios.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "gestão de estoques, pequenos negócios, automação",
+            "curso": 2,
+            "orientados": [
+                1,
+                4,
+                6
+            ],
+            "orientadores": [
+                3,
+                8
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 16,
+        "fields": {
+            "titulo": "Sistema de Votação Eletrônica Seguro",
+            "resumo": "O projeto propõe o desenvolvimento de um sistema de votação eletrônica que assegure a integridade e a privacidade dos votos, com foco em eleições online.",
+            "objetivo": "Desenvolver um sistema seguro para votação eletrônica em processos eleitorais.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "votação, segurança, eleições online",
+            "curso": 1,
+            "orientados": [
+                2,
+                5,
+                9
+            ],
+            "orientadores": [
+                7,
+                8
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 17,
+        "fields": {
+            "titulo": "Plataforma de Streaming de Conteúdos Educacionais",
+            "resumo": "Uma plataforma que permite a criação e o compartilhamento de vídeos educacionais em diversas áreas do conhecimento, com funcionalidades de busca e categorização.",
+            "objetivo": "Desenvolver uma plataforma para streaming de conteúdos educacionais.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "streaming, educação, vídeos",
+            "curso": 1,
+            "orientados": [
+                2,
+                4,
+                6
+            ],
+            "orientadores": [
+                3,
+                8
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 18,
+        "fields": {
+            "titulo": "Sistema de Controle de Qualidade em Indústrias",
+            "resumo": "Desenvolvimento de um sistema para monitorar e controlar os parâmetros de qualidade de produção em indústrias, gerando relatórios e alertas de possíveis falhas.",
+            "objetivo": "Criar um sistema de controle de qualidade para melhorar a eficiência das produções industriais.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "indústria, qualidade, monitoramento",
+            "curso": 2,
+            "orientados": [
+                5,
+                6,
+                10
+            ],
+            "orientadores": [
+                2,
+                7
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 19,
+        "fields": {
+            "titulo": "Sistema de Gerenciamento de Tarefas Acadêmicas",
+            "resumo": "Um aplicativo que ajuda estudantes a organizarem suas tarefas acadêmicas, com funcionalidades para criar, editar e rastrear prazos.",
+            "objetivo": "Facilitar a organização das atividades acadêmicas para alunos e professores.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "gestão de tarefas, organização, produtividade",
+            "curso": 1,
+            "orientados": [
+                6,
+                9,
+                10
+            ],
+            "orientadores": [
+                3,
+                7
+            ]
+        }
+    },
+    {
+        "model": "ppi.Projeto",
+        "pk": 20,
+        "fields": {
+            "titulo": "Plataforma de Ensino de Programação",
+            "resumo": "Uma plataforma interativa para o ensino de programação, oferecendo cursos, quizzes e desafios práticos.",
+            "objetivo": "Criar uma plataforma de ensino de programação com foco em iniciantes.",
+            "capa": "ppi/static/imgs/placeholder.png",
+            "pdf": null,
+            "palavras_chave": "programação, ensino, desafios",
+            "curso": 1,
+            "orientados": [
+                4,
+                5,
+                9
+            ],
+            "orientadores": [
+                7,
+                8
+            ]
+        }
+    }
+]
