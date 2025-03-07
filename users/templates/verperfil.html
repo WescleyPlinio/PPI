@@ -4,14 +4,45 @@
   Perfil
 {% endblock %}
 {% block content %}
+  {% if messages %}
+    <div>
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  <!-- Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Confirmar Exclusão</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">Tem certeza que deseja excluir este projeto?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <!-- Formulário de Exclusão -->
+          <form class="delete-form" id="deleteForm" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger delete-btn">Deletar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Menu -->
   <div class="fundo-bd">
     <div class="container mx-auto row g-3 py-5">
       <div class="col-sm-4 col-md-2 col-lg-2 my-auto">
         {% if profile.avatar %}
           <img src="{{ profile.avatar.url }}" class="rounded-circle mw-100" alt="{{ profile.user.username }}" />
-          {% else %}
-            <img src="{% static 'imgs/usericn.png' %}" class="rounded-circle mw-100" alt="{{ profile.user.username }}" />
+        {% else %}
+          <img src="{% static 'imgs/usericn.png' %}" class="rounded-circle mw-100" alt="{{ profile.user.username }}" />
         {% endif %}
       </div>
 
@@ -42,10 +73,7 @@
                       <ul class="mt-auto d-flex align-items-center mt-auto ms-auto">
                         <a href="{% url 'editar_projeto' projeto.id %}" class="text-decoration-none m-0"><i class="fa-solid fa-pen-to-square text-white fa-xl"></i></a>
 
-                        <form class="delete-form" data-id="{{ projeto.id }}" action="{% url 'excluir_projeto' projeto.id %}" method="POST">
-                          {% csrf_token %}
-                          <button type="button" class="btn delete-btn" data-id="{{ projeto.id }}"><i class="fa-solid fa-trash text-white fa-xl"></i></button>
-                        </form>
+                        <button type="button" class="btn" id="deleteButton" data-id="{{ projeto.id }}"><i class="fa-solid fa-trash text-white fa-xl"></i></button>
                       </ul>
                     {% endif %}
                   </div>

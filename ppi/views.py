@@ -132,9 +132,11 @@ def excluir_projeto(request, pk):
     if request.method == 'POST':
         projeto = get_object_or_404(Projeto, pk=pk)
         projeto.delete()
-        return JsonResponse({"sucesso": True})
     
-    return JsonResponse({"erro": "Método de requisição inválido"}, status=400)
+        messages.success(request, 'Projeto deletado com sucesso!')
+        return redirect("verperfil")
+    
+    return render(request, 'index')
 
 def projetos(request):
     projetos = Projeto.objects.all()
