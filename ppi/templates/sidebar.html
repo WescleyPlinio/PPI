@@ -12,7 +12,7 @@
             <li class="nav-item">
               <a href="{% url 'verperfil' %}" class="nav-link">
                 <i class="fa-solid fa-user fa-lg nav-icon"></i>
-                <p class="text d-none d-md-inline">Ver perfil</p>
+                <p class="text">Ver perfil</p>
               </a>
             </li>
           {% else %}
@@ -20,21 +20,21 @@
               <li class="nav-item">
                 <a href="{% url 'painel' %}" class="nav-link">
                   <i class="fa-solid fa-user-tie fa-lg nav-icon"></i>
-                  <p class="text d-none d-md-inline">Painel administrativo</p>
+                  <p class="text">Painel administrativo</p>
                 </a>
               </li>
             {% endif %}
             <li class="nav-item">
               <a href="{% url 'editarperfil' %}" class="nav-link">
                 <i class="fa-solid fa-user-pen fa-lg nav-icon"></i>
-                <p class="text d-none d-md-inline">Editar perfil</p>
+                <p class="text">Editar perfil</p>
               </a>
             </li>
             {% if perms.ppi.add_projeto %}
               <li class="nav-item">
                 <a href="{% url 'form_post' %}" class="nav-link">
                   <i class="fa-solid fa-plus fa-lg nav-icon"></i>
-                  <p class="text d-none d-md-inline">Adicionar projeto</p>
+                  <p class="text">Adicionar projeto</p>
                 </a>
               </li>
             {% endif %}
@@ -43,7 +43,7 @@
           <li class="nav-item">
             <a href="{% url 'criar' %}" class="nav-link">
               <i class="fa-solid fa-user fa-lg nav-icon"></i>
-              <p class="text d-none d-md-inline">Logar</p>
+              <p class="text">Logar</p>
             </a>
           </li>
         {% endif %}
@@ -53,7 +53,7 @@
               {% csrf_token %}
               <button type="submit" class="nav-link text-danger">
                 <i class="fa-solid fa-lg fa-right-from-bracket nav-icon"></i>
-                <p class="text d-none d-md-inline text-danger">Log-out</p>
+                <p class="text text-danger">Log-out</p>
               </button>
             </form>
           </li>
