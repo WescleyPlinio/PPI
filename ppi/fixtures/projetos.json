@@ -1,5 +1,151 @@
 [
     {
+        "model": "users.Vinculo",
+        "pk": 1,
+        "fields": {
+            "vinculo": "Aluno"
+        }
+    },
+    {
+        "model": "users.Vinculo",
+        "pk": 2,
+        "fields": {
+            "vinculo": "Professor"
+        }
+    },
+    {
+        "model": "users.Curso",
+        "pk": 1,
+        "fields": {
+            "titulo": "Informática para Internet"
+        }
+    },
+    {
+        "model": "users.Curso",
+        "pk": 2,
+        "fields": {
+            "titulo": "Meio Ambiente"
+        }
+    },
+    {
+        "model": "users.Curso",
+        "pk": 3,
+        "fields": {
+            "titulo": "Edificações"
+        }
+    },
+
+    {
+        "model": "users.User",
+        "pk": 1,
+        "fields": {
+            "username": "ana_silva",
+            "email": "ana_silva@gmail.com",
+            "curso": 1,
+            "vinculo": 2,
+            "password": "pbkdf2_sha256$870000$WcERKOpw6emfVnnJIhfyYb$FGy9nu4a/wZjAJ0KAqVN+dBHs+v2OBouEOuHHKDSxuM="
+        }
+    },
+    {
+        "model": "users.User",
+        "pk": 2,
+        "fields": {
+            "username": "joao_pereira",
+            "email": "joao_pereira@gmail.com",
+            "curso": 2,
+            "vinculo": 2,
+            "password": "pbkdf2_sha256$870000$WcERKOpw6emfVnnJIhfyYb$FGy9nu4a/wZjAJ0KAqVN+dBHs+v2OBouEOuHHKDSxuM="
+        }
+    },
+    {
+        "model": "users.User",
+        "pk": 3,
+        "fields": {
+            "username": "maria_oliveira",
+            "email": "maria_oliveira@gmail.com",
+            "curso": 3,
+            "vinculo": 2,
+            "password": "pbkdf2_sha256$870000$WcERKOpw6emfVnnJIhfyYb$FGy9nu4a/wZjAJ0KAqVN+dBHs+v2OBouEOuHHKDSxuM="
+        }
+    },
+    {
+        "model": "users.User",
+        "pk": 4,
+        "fields": {
+            "username": "carlos_santos",
+            "email": "carlos_santos@gmail.com",
+            "curso": 1,
+            "vinculo": 2,
+            "password": "pbkdf2_sha256$870000$WcERKOpw6emfVnnJIhfyYb$FGy9nu4a/wZjAJ0KAqVN+dBHs+v2OBouEOuHHKDSxuM="
+        }
+    },
+    {
+        "model": "users.User",
+        "pk": 5,
+        "fields": {
+            "username": "fernanda_lima",
+            "email": "fernanda_lima@gmail.com",
+            "curso": 2,
+            "vinculo": 1,
+            "password": "pbkdf2_sha256$870000$WcERKOpw6emfVnnJIhfyYb$FGy9nu4a/wZjAJ0KAqVN+dBHs+v2OBouEOuHHKDSxuM="
+        }
+    },
+    {
+        "model": "users.User",
+        "pk": 6,
+        "fields": {
+            "username": "lucas_martins",
+            "email": "lucas_martins@gmail.com",
+            "curso": 3,
+            "vinculo": 1,
+            "password": "pbkdf2_sha256$870000$WcERKOpw6emfVnnJIhfyYb$FGy9nu4a/wZjAJ0KAqVN+dBHs+v2OBouEOuHHKDSxuM="
+        }
+    },
+    {
+        "model": "users.User",
+        "pk": 7,
+        "fields": {
+            "username": "beatriz_souza",
+            "email": "beatriz_souza@gmail.com",
+            "curso": 1,
+            "vinculo": 1,
+            "password": "pbkdf2_sha256$870000$WcERKOpw6emfVnnJIhfyYb$FGy9nu4a/wZjAJ0KAqVN+dBHs+v2OBouEOuHHKDSxuM="
+        }
+    },
+    {
+        "model": "users.User",
+        "pk": 8,
+        "fields": {
+            "username": "roberto_ferreira",
+            "email": "roberto_ferreira@gmail.com",
+            "curso": 2,
+            "vinculo": 1,
+            "password": "pbkdf2_sha256$870000$WcERKOpw6emfVnnJIhfyYb$FGy9nu4a/wZjAJ0KAqVN+dBHs+v2OBouEOuHHKDSxuM="
+        }
+    },
+    {
+        "model": "users.User",
+        "pk": 9,
+        "fields": {
+            "username": "isabela_rocha",
+            "email": "isabela_rocha@gmail.com",
+            "curso": 3,
+            "vinculo": 1,
+            "password": "pbkdf2_sha256$870000$WcERKOpw6emfVnnJIhfyYb$FGy9nu4a/wZjAJ0KAqVN+dBHs+v2OBouEOuHHKDSxuM="
+        }
+    },
+    {
+        "model": "users.User",
+        "pk": 10,
+        "fields": {
+            "username": "eduardo_almeida",
+            "email": "eduardo_almeida@gmail.com",
+            "curso": 1,
+            "vinculo": 1,
+            "password": "pbkdf2_sha256$870000$WcERKOpw6emfVnnJIhfyYb$FGy9nu4a/wZjAJ0KAqVN+dBHs+v2OBouEOuHHKDSxuM="
+        }
+    },
+    {
         "model": "ppi.Projeto",
         "pk": 1,
         "fields": {
@@ -11,13 +157,13 @@
             "palavras_chave": "gestão de eventos, submissão de artigos, plataforma acadêmica",
             "curso": 1,
             "orientados": [
-                2,
-                4,
+                7,
+                5,
                 6
             ],
             "orientadores": [
-                3,
-                7
+                4,
+                2
             ]
         }
     },
@@ -34,12 +180,12 @@
             "curso": 1,
             "orientados": [
                 6,
-                9,
-                10
+                5,
+                7
             ],
             "orientadores": [
-                7,
-                8
+                2,
+                4
             ]
         }
     },
@@ -55,13 +201,13 @@
             "palavras_chave": "sustentabilidade, monitoramento, edificações",
             "curso": 2,
             "orientados": [
-                2,
+                5,
                 6,
-                10
+                7
             ],
             "orientadores": [
-                3,
-                8
+                2,
+                3
             ]
         }
     },
@@ -77,13 +223,13 @@
             "palavras_chave": "sustentabilidade, construção civil, reciclagem",
             "curso": 2,
             "orientados": [
-                4,
-                9,
-                10
+                5,
+                7,
+                6
             ],
             "orientadores": [
                 3,
-                7
+                2
             ]
         }
     },
@@ -99,13 +245,13 @@
             "palavras_chave": "irrigação, automação, agricultura sustentável",
             "curso": 3,
             "orientados": [
-                2,
+                7,
                 6,
-                9
+                5
             ],
             "orientadores": [
-                7,
-                8
+                4,
+                3
             ]
         }
     },
@@ -121,13 +267,13 @@
             "palavras_chave": "gestão escolar, alunos, administração acadêmica",
             "curso": 1,
             "orientados": [
-                2,
-                4,
-                9
+                6,
+                7,
+                5
             ],
             "orientadores": [
                 3,
-                7
+                2
             ]
         }
     },
@@ -143,13 +289,13 @@
             "palavras_chave": "energia elétrica, previsão, gestão de recursos",
             "curso": 2,
             "orientados": [
-                2,
+                7,
                 5,
                 6
             ],
             "orientadores": [
                 3,
-                7
+                4
             ]
         }
     },
@@ -165,13 +311,13 @@
             "palavras_chave": "e-commerce, sustentabilidade, reciclagem",
             "curso": 1,
             "orientados": [
-                2,
-                4,
+                7,
+                5,
                 6
             ],
             "orientadores": [
-                7,
-                8
+                2,
+                4
             ]
         }
     },
@@ -187,13 +333,13 @@
             "palavras_chave": "saúde mental, bem-estar, meditação",
             "curso": 3,
             "orientados": [
-                2,
-                4,
+                7,
+                5,
                 6
             ],
             "orientadores": [
                 3,
-                7
+                2
             ]
         }
     },
@@ -209,13 +355,13 @@
             "palavras_chave": "ensino de matemática, interatividade, educação",
             "curso": 1,
             "orientados": [
-                2,
+                6,
                 5,
-                9
+                7
             ],
             "orientadores": [
                 3,
-                7
+                4
             ]
         }
     },
@@ -232,12 +378,12 @@
             "curso": 1,
             "orientados": [
                 6,
-                9,
-                10
+                5,
+                7
             ],
             "orientadores": [
                 3,
-                7
+                2
             ]
         }
     },
@@ -253,13 +399,13 @@
             "palavras_chave": "programação, ensino, desafios",
             "curso": 1,
             "orientados": [
-                4,
+                6,
                 5,
-                9
+                7
             ],
             "orientadores": [
                 3,
-                8
+                2
             ]
         }
     },
@@ -275,13 +421,13 @@
             "palavras_chave": "energia, sustentabilidade, monitoramento",
             "curso": 2,
             "orientados": [
-                4,
+                6,
                 5,
-                9
+                7
             ],
             "orientadores": [
                 3,
-                7
+                4
             ]
         }
     },
@@ -297,13 +443,13 @@
             "palavras_chave": "agricultura, previsão climática, tecnologia",
             "curso": 3,
             "orientados": [
-                2,
+                7,
                 6,
-                9
+                5
             ],
             "orientadores": [
-                7,
-                8
+                2,
+                4
             ]
         }
     },
@@ -319,13 +465,13 @@
             "palavras_chave": "gestão de estoques, pequenos negócios, automação",
             "curso": 2,
             "orientados": [
-                1,
-                4,
+                7,
+                5,
                 6
             ],
             "orientadores": [
                 3,
-                8
+                4
             ]
         }
     },
@@ -341,13 +487,13 @@
             "palavras_chave": "votação, segurança, eleições online",
             "curso": 1,
             "orientados": [
-                2,
+                7,
                 5,
-                9
+                6
             ],
             "orientadores": [
-                7,
-                8
+                2,
+                4
             ]
         }
     },
@@ -363,13 +509,13 @@
             "palavras_chave": "streaming, educação, vídeos",
             "curso": 1,
             "orientados": [
-                2,
-                4,
+                7,
+                5,
                 6
             ],
             "orientadores": [
                 3,
-                8
+                2
             ]
         }
     },
@@ -387,11 +533,11 @@
             "orientados": [
                 5,
                 6,
-                10
+                7
             ],
             "orientadores": [
                 2,
-                7
+                4
             ]
         }
     },
@@ -408,12 +554,12 @@
             "curso": 1,
             "orientados": [
                 6,
-                9,
-                10
+                5,
+                7
             ],
             "orientadores": [
                 3,
-                7
+                2
             ]
         }
     },
@@ -429,13 +575,13 @@
             "palavras_chave": "programação, ensino, desafios",
             "curso": 1,
             "orientados": [
-                4,
+                6,
                 5,
-                9
+                7
             ],
             "orientadores": [
-                7,
-                8
+                4,
+                3
             ]
         }
     }
