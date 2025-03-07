@@ -13,7 +13,7 @@
 
       <div class="col-md-4 d-flex my-auto">
         {% if curso.logo %}
-          <img src="{{ curso.logo.url }}" class="ms-auto" alt="{{ curso.titulo }}" style="max-height: 12em; max-width: 100%;" />
+          <img src="{{ curso.logo.url }}" class="ms-auto mw-100" alt="{{ curso.titulo }}" style="max-height: 12em;" />
         {% endif %}
       </div>
     </div>
@@ -21,10 +21,8 @@
 
   <!-- Feed -->
   <div class="container-fluid blueback">
-    <div class="container">
+    <div class="container" id="lista-projetos">
       {% include 'partials/_cursofeed.html' %}
-
-      {% include "paginacao.html" %}
     </div>
   </div>
 {% endblock %}

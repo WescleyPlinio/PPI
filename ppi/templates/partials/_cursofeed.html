@@ -1,7 +1,8 @@
 <div class="row g-4 d-flex justify-content-between align-items-center">
   {% for projeto in projetos %}
-    <div class="col-md-12 col-lg-6 col-sm-12">
+    <div class="col-md-12 col-lg-6 col-sm-12" id="lista-projetos">
       {% include 'partials/_card.html' %}
     </div>
   {% endfor %}
+  {% include 'paginacao.html' %}
 </div>

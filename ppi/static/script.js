@@ -53,3 +53,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+function projetosPaginacao() {
+    $(".link-pag").click(function(evento) {
+        evento.preventDefault();
+        const url = $(this).data("url");
+        $.get(url, function(resposta) {
+            $("#lista-projetos").html(resposta);
+            projetosPaginacao();
+        });
+    });
+}
+projetosPaginacao();
