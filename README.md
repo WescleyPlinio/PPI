@@ -17,7 +17,9 @@
 
 ## Para rodar o sistema localmente, faça o seguinte:
 - Faça as migrações do banco de dados e baixe projetos fictícios prontos:
+
 python manage.py migrate
+
 python manage.py loaddata fixtures/projetos.json
 
 - Crie um super usuário para definir os grupos e permissões sempre que clonar o repositório. 
