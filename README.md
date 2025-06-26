@@ -20,7 +20,7 @@
 
 python manage.py migrate
 
-python manage.py loaddata fixtures/projetos.json
+python manage.py loaddata ppi/fixtures/projetos.json
 
 - Crie um super usuário para definir os grupos e permissões sempre que clonar o repositório. 
 
